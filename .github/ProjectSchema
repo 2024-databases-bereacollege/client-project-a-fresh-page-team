@@ -1,0 +1,14 @@
+Food banks: The food bank relation has an internal ID (denoted as FB_ID) which acts as the primary key for the relation. foodBankUsername is a unique username chosen by the food bank which they use to login to the dashboard. We also have the name, location, type of organization, phone number, primary contact and email as the attributes of the food bank. 
+This relation is connected to Donation relation and Documentation relation, both of which have FB_ID as one of the attributes. 
+
+Distributer: The distributor relation has an internal ID (denoted as DR_ID) which acts as the primary key for the relation. distributerUsername is a unique username chosen by the distributor which they use to login to the dashboard. We also have the name, location, type of organization, joining date, phone number, primary contact and email as the attributes of the distributor. 
+This relation is connected to Donation relation and Documentation relation, both of which have DR_ID as one of the attributes
+
+Donor: The donor relation has an internal ID (denoted as DN_ID) which acts as the primary key for the relation. donorUsername is a unique username chosen by the donor which they use to login to the dashboard. We also have the name, address, phone number, age (if an individual), joining date and email as attributes. Donors can be either an individual or an organization that does not need tax benefits like school or community gardens. 
+This relation is connected to the Donation relation which has DN_ID as one of its attributes. This foreign relation helps track the donor who made the donation. 
+
+Admin: The admin relation has an internal ID (denoted as AD_ID) which acts as the primary key for the relation. adminUsername is a unique username chosen by the admin which they use to login to the dashboard. We also have the name, address, phone number, and email as the attributes of the admin. 
+
+Donation: Donation relation also has an internal ID which tracks donations from a particular distributor or donor to a particular food bank. Donation relation requires internal IDs of both a donor/distributor and a food bank (foreign keys used as a composite key). It is created whenever a donor/distributor makes a donation. Its attributes are the Type of Donation (food, toys, etc.), Quantity of Donation (lbs or number), and Expiration Date.
+
+Documentation: Documentation relation uses the official registration or certificate number as its primary key. It has the internal IDs of Food bank, Distributor and Donor as foreign keys to track which organization a particular document belongs to. It also has the name of the organization, type of organization, type of documentation, date obtained and date valid and its attributes. 
