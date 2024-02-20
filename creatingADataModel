@@ -1,11 +1,11 @@
-P1 - A Fresh Page: Creating a Data Model
+# P1 - A Fresh Page: Creating a Data Model
 
-Data Sources:
+## Data Sources:
 1. Meeting notes from our Meeting
 2. Document shared by the client (We are still waiting for the document to be shared)
 
 
-Entities & Descriptions:
+## Entities & Descriptions:
 
 1. Donor - people who wants to donate; name, address, phone number, age?, username, date joined
 2. Distributor - any bigger organization/ farmer that would want to donate food to second hand distributors (ex: Walmart); name, location, store number, phone number, username, type of organization, date joined
@@ -14,7 +14,7 @@ Entities & Descriptions:
 5. Documentation - Stores legal documents regarding food banks and distributors for certification, etc. (ex. Proof of identity/legitimacy); type of documentation, date obtained, date valid, type of organization, name of organization, username
 6. Admin - Dr. Page, someone who can view and manage; name, username, address, phone number
 
-Business Rules:
+## Business Rules:
 
 1. A distributor may optionally make many donations.
 2. A donation is made by one and only one distributor.
@@ -35,6 +35,6 @@ Business Rules:
 17. A food bank may optionally contact many distributors.
 18. A distributor may optionally contact many food banks.
 
-![ERD Afreshpage](P01.png)
+![ERD Afreshpage](P01.drawio.png)
 
 [Google Doc for ERD + Bussiness Rules](https://docs.google.com/document/d/1ybDSIRTjVTnCF4mJB89i41WM6z4zlfJB6mOm6C3Yo6Y/edit?usp=sharing)
