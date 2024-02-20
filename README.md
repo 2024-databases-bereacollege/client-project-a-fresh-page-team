@@ -38,6 +38,6 @@ Business Rules:
 17. A food bank may optionally contact many distributors.
 18. A distributor may optionally contact many food banks.
 
-![ERD Afreshpage](P01.png)
+![ERD Afreshpage](P01.drawio.png)
 
 [Google Doc for ERD + Bussiness Rules](https://docs.google.com/document/d/1ybDSIRTjVTnCF4mJB89i41WM6z4zlfJB6mOm6C3Yo6Y/edit?usp=sharing)
