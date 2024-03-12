@@ -122,5 +122,5 @@ Data Type: CHAR
 This describes if the donation was food, clothes, or anything else
 
 
-![Relational Model : Project Schema](!Relational Data modeling.png)
+![Relational Model : Project Schema](Relational Data modeling.png)
 [Google Doc for Revised Milestone 1 & 2](https://docs.google.com/document/d/14JDE1mvGcXmmlmXxE5GFxppWWMzUcaM1512_ShI-OKQ/edit?usp=sharing)
