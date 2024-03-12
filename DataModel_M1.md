@@ -35,6 +35,6 @@
 15. A food bank may optionally receive many messages.
 16. A message is received by one and only one food bank.
 
-![ERD Afreshpage](!Revised_ERD_M1.png)
+![ERD Afreshpage](Revised_ERD_M1.png)
 [Google Doc for revised Milestone 1 and 2](https://docs.google.com/document/d/14JDE1mvGcXmmlmXxE5GFxppWWMzUcaM1512_ShI-OKQ/edit?usp=sharing)
 
