@@ -1,10 +1,10 @@
 # Remove objects from the database
-psql -c "DROP table example;"
+psql -c "DROP table foodbank;"
 psql -c "DROP table othertable;"
-
-psql -c "DELETE FROM migratehistory;"
-rm -rf migrations
-rm -rf migrations.json
+"""
+#psql -c "DELETE FROM migratehistory;"
+#rm -rf migrations
+#rm -rf migrations.json
 
 pem init
 
@@ -17,6 +17,6 @@ pem migrate
 
 rm -rf migrations
 rm -rf migrations.json
-
+"""
 # Load data back into database
 < data.sql psql

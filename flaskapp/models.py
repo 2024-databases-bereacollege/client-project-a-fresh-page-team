@@ -20,3 +20,11 @@ class Example (baseModel):
     other = ForeignKeyField(OtherTable)
     isInt = BooleanField(default=0)
     isBool = BooleanField()
+
+
+class foodbank(baseModel):
+    FB_ID = PrimaryKeyField()
+    username = CharField(20, unique = True)
+    
+
+

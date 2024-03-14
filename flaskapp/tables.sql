@@ -1,8 +1,14 @@
 -- https://www.postgresqltutorial.com/
 
-CREATE TABLE othertable (
-    otherid integer PRIMARY KEY,
-    data varchar
+CREATE TABLE foodbank (
+    "FB_ID" integer PRIMARY KEY,
+    username varchar(20) UNIQUE, 
+    name_of_org varchar(100), 
+    address varchar(255), 
+    phone_num integer,
+    primary_contact_name varchar(100),
+    email varchar(100), 
+    date_joined date
 );
 
 CREATE TABLE example (
