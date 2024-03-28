@@ -9,8 +9,11 @@ psql -c "DROP table othertable;"
 pem init
 
 # Use peewee-migrate to create tables from Peewee models
-pem add models.OtherTable
-pem add models.Example
+pem add models.Donor
+pem add models.Foodbank
+pem add models.Messages
+pem add models.Donation
+pem add models.Documentation
 
 pem watch
 pem migrate
