@@ -1,6 +1,8 @@
 # Remove objects from the database
-psql -c "DROP table foodbank;"
-psql -c "DROP table othertable;"
+psql -c "DROP table Foodbank;"
+psql -c "DROP table Donor;"
+psql -c "DROP table Donation;"
+psql -c "DROP table Documentation;"
 """
 #psql -c "DELETE FROM migratehistory;"
 #rm -rf migrations

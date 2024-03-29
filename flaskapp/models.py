@@ -32,29 +32,22 @@ class Foodbank(baseModel):
     primary_contact_name = CharField(100)
     phone = CharField(10)
     email = CharField(100)
-    date_joined = DateField() #check the correct US format for date
+    date_joined = DateField() 
     
 class Donor (baseModel):
     DO_ID = PrimaryKeyField()
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
-    type_of_donor = CharField(100) #adding options as org or individual type_of_donor in sql list
-    subscribed = BooleanField(default= False) # default False means the subscription is free
+    type_of_donor = CharField(100) 
+    subscribed = BooleanField(default= False) 
     address = CharField(255, unique = True)
     primary_contact_name = CharField(100)
     phone = CharField(10)
     email = CharField(100)
     date_joined = DateField()
-
-
-
-class Messages(baseModel):
-    MSG_ID = PrimaryKeyField()
-    username_sender = CharField(20, unique = True)
-    username_receiver = CharField(20, unique = True)
-    content = CharField(255)
-    time_stamp = DateTimeField() #check if datatype is correct
-
+    
+    class Meta:
+        constraints = [Check('type_of_donor in ("individual", "organization")')]
 
 
 
@@ -63,17 +56,16 @@ class Donation(baseModel):
     DO_ID = ForeignKeyField(Donor)
     FB_ID = ForeignKeyField(Foodbank)
     type_of_donation = CharField(255)
-    Quantity = IntegerField #check how to quantify donations
+    Quantity = IntegerField # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
 
 
 class Documentation(baseModel):
     DOC_ID = PrimaryKeyField()
-    FB_ID = ForeignKeyField(Foodbank,null = True) # check ic its correct way to make optional
-    DO_ID = ForeignKeyField(Donor, null = True) #check constraint: FB_ID NOT NULL or DO_ID not NULL
-    #check ORG_ID 
+    FB_ID = ForeignKeyField(Foodbank,null = True) 
+    DO_ID = ForeignKeyField(Donor, null = True) 
     type_of_documentation = CharField(255)
-    date_obtained = DateField #check format
-    date_valid = DateField #check format
+    date_obtained = DateField() 
+    date_valid = DateField() 
 
 
 
