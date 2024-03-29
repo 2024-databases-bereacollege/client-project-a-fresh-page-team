@@ -1,6 +1,4 @@
-"""-- https://www.postgresqltutorial.com/"""
-
-CREATE TABLE Foodbank(
+CREATE TABLE Foodbank (
     "FB_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
     name_of_org varchar(100), 
@@ -16,7 +14,7 @@ CREATE TABLE Donor (
     username varchar(20) UNIQUE, 
     name_of_org varchar(100), 
     type_of_org varchar (100) CHECK (type_of_org IN ('individual', 'organization')),
-    subscribed boolean DEFAULT = False
+    subscribed boolean DEFAULT False
     address varchar(255), 
     phone_num integer,
     primary_contact_name varchar(100),
@@ -44,16 +42,3 @@ CREATE TABLE Documentation(
     date_obtained date,
     date_valid date
 );
-
-
-
-"""
-CREATE TABLE example (
-    id serial PRIMARY KEY,
-    username varchar(32) UNIQUE,
-    description varchar(255) NOT NULL,
-    fkey_other integer REFERENCES othertable(otherid), 
-    isInt smallint NOT NULL DEFAULT(0),
-    isBool boolean
-);
-"""
