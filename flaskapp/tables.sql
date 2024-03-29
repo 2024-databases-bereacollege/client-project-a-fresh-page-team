@@ -1,6 +1,6 @@
--- https://www.postgresqltutorial.com/
+"""-- https://www.postgresqltutorial.com/"""
 
-CREATE TABLE Foodbank (
+CREATE TABLE Foodbank(
     "FB_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
     name_of_org varchar(100), 
