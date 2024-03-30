@@ -1,7 +1,7 @@
 -- https://www.programiz.com/sql/insert-into
 
 -- Add SQL inserts here
-INSERT INTO `Foodbank` (`FB_ID`,`Organisation`,`Primary Contact Name`,`Primary Contact Info`,`address`,`email`,`Joining Date`)
+INSERT INTO `Foodbank` (`FB_ID`,`Organisation`,`Primary Contact Name`,`Primary Contact Info`,`address`,`email`,`Joining Date`);
 VALUES
   (84134,"Dictum Limited","Gavin Olsen","(805) 811-5218","1721 Nascetur Av.","curabitur.sed@google.edu","Apr 13, 2024"),
   (44204,"Nunc PC","Omar Compton","(495) 487-2527","P.O. Box 394, 9121 Adipiscing Rd.","tristique.senectus@outlook.couk","Mar 23, 2025"),
@@ -14,7 +14,7 @@ VALUES
   (58335,"Molestie Tortor PC","Valentine Figueroa","1-446-684-2218","P.O. Box 650, 4463 Feugiat Road","ornare.facilisis@protonmail.edu","Sep 25, 2023"),
   (85300,"Est Mollis Industries","Kaitlin Serrano","(528) 516-5768","594-8395 Est St.","nonummy.ultricies@outlook.net","Nov 24, 2023");
 
-INSERT INTO `Documentation` (`DOC_ID`,`DO_ID`,`FB_ID`,`Type of Documentation`,`Date Obtained`,`Date valid`)
+INSERT INTO `Documentation` (`DOC_ID`,`DO_ID`,`FB_ID`,`Type of Documentation`,`Date Obtained`,`Date valid`);
 VALUES
   (32128,93567,10532,"Finances","05/08/29","06/23/23"),
   (69644,93506,59752,"Licenses","06/21/27","07/08/24"),
@@ -27,7 +27,7 @@ VALUES
   (66381,36938,31099,"Quality Assurance","04/24/28","10/23/23"),
   (28244,72077,16114,"Finances","09/02/24","01/07/25");
 
-INSERT INTO `Donor` (`DO_ID`,`Organisation`,`Primary Contact Name`,`Subscribed`,`Primary Contact Info`,`address`,`email`,`Joining Date`,`Type of Organisation`)
+INSERT INTO `Donor` (`DO_ID`,`Organisation`,`Primary Contact Name`,`Subscribed`,`Primary Contact Info`,`address`,`email`,`Joining Date`,`Type of Organisation`);
 VALUES
   (55214,"Turpis Ltd","Jesse Lopez","1-510-766-9562","P.O. Box 966, 174 Nec, St.","eu.turpis@hotmail.net","May 2, 2023","Individual","Yes"),
   (36580,"Mollis Nec LLC","Angelica Barnes","1-644-561-3419","Ap #897-4039 Diam. Rd.","donec.sollicitudin@outlook.ca","Feb 24, 2024","Individual","No"),
@@ -40,7 +40,7 @@ VALUES
   (52309,"Hendrerit Consectetuer Cursus PC","Aspen Weaver","(466) 332-1228","859-2853 Nec, Rd.","cras.dolor@protonmail.net","Jun 13, 2023","Organisation","No"),
   (35740,"Metus Aliquam Limited","Lael Skinner","1-658-111-7564","Ap #401-251 Mauris Street","molestie.dapibus@google.ca","Apr 13, 2024","Individual","No");
 
-INSERT INTO `Donation` (`DN_ID`,`DO_ID`,`FB_ID`,`Type of Donation`,`Quantity (lbs)`,`Date valid`)
+INSERT INTO `Donation` (`DN_ID`,`DO_ID`,`FB_ID`,`Type of Donation`,`Quantity (lbs)`,`Date valid`);
 VALUES
   (37828,13326,18607,"pies",3,"12/23/23"),
   (31474,90074,85306,"sandwiches",0,"07/03/23"),
