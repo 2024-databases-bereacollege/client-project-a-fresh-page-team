@@ -1,5 +1,13 @@
-
-
+CREATE TABLE Foodbank (
+  "FB_ID" integer PRIMARY KEY,
+  username varchar(20) UNIQUE,
+  name_of_org varchar(100),
+  primary_contact_name varchar(100),
+  phone_num integer,
+  address varchar(255),
+  email varchar(100), 
+  date_joined date
+) 
 
 
 
@@ -24,6 +32,7 @@ CREATE TABLE Donation(
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     type_of_donation varchar(255),
     quantity integer  --in pounds
+    date_donated date 
 );
 
 CREATE TABLE Documentation(
