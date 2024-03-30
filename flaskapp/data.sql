@@ -41,7 +41,7 @@ VALUES
   (28244,72077,16114,'Finances','2024-09-02','2025-01-07'),
   (28244,72077,16114,"Finances","2024-09-02","2025-01-07"); 
 
-INSERT INTO Donation ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
+INSERT INTO "Donation" ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
 VALUES
   (37828,13326,18607,'pies',3,'2023-12-23'),
   (31474,90074,85306,'sandwiches',0,'2023-07-03'),

@@ -28,9 +28,9 @@ class Foodbank(baseModel):
     FB_ID = PrimaryKeyField()
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
-    address = CharField(255, unique = True)
     primary_contact_name = CharField(100)
     phone = CharField(10)
+    address = CharField(255, unique = True)
     email = CharField(100)
     date_joined = DateField() 
     
