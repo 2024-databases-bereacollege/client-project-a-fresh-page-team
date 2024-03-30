@@ -1,4 +1,4 @@
-CREATE TABLE "Foodbank" (
+CREATE TABLE "foodbank" (
   "FB_ID" integer PRIMARY KEY,
   username varchar(20) UNIQUE,
   name_of_org varchar(100),
@@ -8,8 +8,9 @@ CREATE TABLE "Foodbank" (
   email varchar(100), 
   date_joined date
 );
+
 """
-CREATE TABLE "Donor"(
+CREATE TABLE "donor"(
     "DO_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
     name_of_org varchar(100), 
@@ -22,7 +23,7 @@ CREATE TABLE "Donor"(
     date_joined date
 );
 
-CREATE TABLE "Donation"(
+CREATE TABLE "donation"(
     "DN_ID" INTEGER PRIMARY KEY,
     "FB_ID" INTEGER,
     "DO_ID" INTEGER,
@@ -32,6 +33,8 @@ CREATE TABLE "Donation"(
     quantity integer, --in pounds
     date_donated date 
 );
+
+
 
 CREATE TABLE "Documentation"(
     "DOC_ID" INTEGER PRIMARY KEY,

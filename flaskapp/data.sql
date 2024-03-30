@@ -1,7 +1,7 @@
 -- https://www.programiz.com/sql/insert-into
 
 -- Add SQL inserts here
-INSERT INTO "Foodbank" ("FB_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined)
+INSERT INTO "foodbank" ("FB_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined)
 VALUES 
     (84134, 'fb_user84134', 'Dictum Limited', 'Gavin Olsen', '(805) 811-5218', '1721 Nascetur Av.', 'curabitur.sed@google.edu', '2024-04-13'),
     (44204, 'fb_user44204', 'Nunc PC', 'Omar Compton', '(495) 487-2527', 'P.O. Box 394, 9121 Adipiscing Rd.', 'tristique.senectus@outlook.couk', '2025-03-23'),
@@ -14,7 +14,7 @@ VALUES
     (58335, 'fb_user58335', 'Molestie Tortor PC', 'Valentine Figueroa', '1-446-684-2218', 'P.O. Box 650, 4463 Feugiat Road', 'ornare.facilisis@protonmail.edu', '2023-09-25'),
     (85300, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24');
 
-INSERT INTO "Donor" ("DO_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined, type_of_org, subscribed)
+INSERT INTO "donor" ("DO_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined, type_of_org, subscribed)
 VALUES
     (55214, 'jesse_lopez', 'Turpis Ltd', 'Jesse Lopez', '1-510-766-9562', 'P.O. Box 966, 174 Nec, St.', 'eu.turpis@hotmail.net', '2023-05-02', 'Individual', 'Yes'),
     (36580, 'angelica_barnes', 'Mollis Nec LLC', 'Angelica Barnes', '1-644-561-3419', 'Ap #897-4039 Diam. Rd.', 'donec.sollicitudin@outlook.ca', '2024-02-24', 'Individual', 'No'),
@@ -27,7 +27,7 @@ VALUES
     (52309, 'aspen_weaver', 'Hendrerit Consectetuer Cursus PC', 'Aspen Weaver', '(466) 332-1228', '859-2853 Nec, Rd.', 'cras.dolor@protonmail.net', '2023-06-13', 'Organisation', 'No'),
     (35740, 'lael_skinner', 'Metus Aliquam Limited', 'Lael Skinner', '1-658-111-7564', 'Ap #401-251 Mauris Street', 'molestie.dapibus@google.ca', '2024-04-13', 'Individual', 'No');
 
-INSERT INTO "Documentation" ("DOC_ID","DO_ID","FB_ID",type_of_documentation,date_obtained,date_valid)
+INSERT INTO "documentation" ("DOC_ID","DO_ID","FB_ID",type_of_documentation,date_obtained,date_valid)
 VALUES
   (32128,93567,10532,'Finances','2029-05-08','2023-06-23'),
   (69644,93506,59752,'Licenses','2027-06-21','2024-07-08'),
@@ -41,7 +41,7 @@ VALUES
   (28244,72077,16114,'Finances','2024-09-02','2025-01-07'),
   (28244,72077,16114,"Finances","2024-09-02","2025-01-07"); 
 
-INSERT INTO "Donation" ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
+INSERT INTO "donation" ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
 VALUES
   (37828,13326,18607,'pies',3,'2023-12-23'),
   (31474,90074,85306,'sandwiches',0,'2023-07-03'),

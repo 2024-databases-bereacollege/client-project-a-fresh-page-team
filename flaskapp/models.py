@@ -24,17 +24,17 @@ class Example (baseModel):
 
 """
 
-class Foodbank(baseModel):
+class foodbank(baseModel):
     FB_ID = PrimaryKeyField()
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
     primary_contact_name = CharField(100)
-    phone = CharField(10)
+    phone_num = CharField(10)
     address = CharField(255, unique = True)
     email = CharField(100)
     date_joined = DateField() 
     
-class Donor (baseModel):
+class donor (baseModel):
     DO_ID = PrimaryKeyField()
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
@@ -42,7 +42,7 @@ class Donor (baseModel):
     subscribed = BooleanField(default= False) 
     address = CharField(255, unique = True)
     primary_contact_name = CharField(100)
-    phone = CharField(10)
+    phone_num = CharField(10)
     email = CharField(100)
     date_joined = DateField()
     
@@ -51,7 +51,7 @@ class Donor (baseModel):
 
 
 
-class Donation(baseModel):
+class donation(baseModel):
     DN_ID = PrimaryKeyField()
     DO_ID = ForeignKeyField(Donor)
     FB_ID = ForeignKeyField(Foodbank)
@@ -59,7 +59,7 @@ class Donation(baseModel):
     Quantity = IntegerField # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
 
-class Documentation(baseModel):
+class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
     FB_ID = ForeignKeyField(Foodbank,null = True) 
     DO_ID = ForeignKeyField(Donor, null = True) 
