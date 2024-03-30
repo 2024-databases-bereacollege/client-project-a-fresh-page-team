@@ -3,8 +3,8 @@ psql -c 'DROP TABLE IF EXISTS "foodbank" CASCADE;'
 
 
 psql -c 'DROP table IF EXISTS "donor" CASCADE;'
-#psql -c 'DROP table IF EXISTS "donation" CASCADE;'
-#psql -c 'DROP table IF EXISTS "documentation"CASCADE;
+psql -c 'DROP table IF EXISTS "donation" CASCADE;'
+psql -c 'DROP table IF EXISTS "documentation"CASCADE;'
 
 
 

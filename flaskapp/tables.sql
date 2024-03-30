@@ -9,7 +9,7 @@ CREATE TABLE "foodbank" (
   date_joined date
 );
 
-"""
+
 CREATE TABLE "donor"(
     "DO_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
@@ -36,14 +36,13 @@ CREATE TABLE "donation"(
 
 
 
-CREATE TABLE "Documentation"(
+CREATE TABLE "documentation"(
     "DOC_ID" INTEGER PRIMARY KEY,
-    FB_ID INTEGER,
-    DO_ID INTEGER,
-    FOREIGN KEY (FB_ID) REFERENCES Foodbank(FB_ID),
-    FOREIGN KEY (DO_ID) REFERENCES Donor(DO_ID),
+    "FB_ID" INTEGER,
+    "DO_ID" INTEGER,
+    FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
+    FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     type_of_documentation varchar(100),
     date_obtained date,
     date_valid date
 );
-"""
