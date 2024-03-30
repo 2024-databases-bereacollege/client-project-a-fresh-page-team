@@ -1,13 +1,5 @@
-CREATE TABLE Foodbank (
-    "FB_ID" integer PRIMARY KEY,
-    username varchar(20) UNIQUE, 
-    name_of_org varchar(100), 
-    address varchar(255), 
-    phone_num integer,
-    primary_contact_name varchar(100),
-    email varchar(100), 
-    date_joined date
-);
+
+
 
 CREATE TABLE Donor (
     "DO_ID" integer PRIMARY KEY,
