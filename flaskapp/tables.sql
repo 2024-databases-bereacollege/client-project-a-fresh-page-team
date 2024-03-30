@@ -1,6 +1,8 @@
 
 
 
+
+
 CREATE TABLE Donor (
     "DO_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
