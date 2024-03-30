@@ -24,10 +24,10 @@ CREATE TABLE Donor (
 
 CREATE TABLE Donation(
     "DN_ID" INTEGER PRIMARY KEY,
-    FB_ID INTEGER,
-    DO_ID INTEGER,
-    FOREIGN KEY (FB_ID) REFERENCES Foodbank(FB_ID) NOT NULL,
-    FOREIGN KEY (DO_ID) REFERENCES Donor(DO_ID) NOT NULL,
+    "FB_ID" INTEGER,
+    "DO_ID" INTEGER,
+    FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
+    FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     type_of_donation varchar(255),
     quantity integer  --in pounds
 );
