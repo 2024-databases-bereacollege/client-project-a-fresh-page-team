@@ -6,7 +6,7 @@ CREATE TABLE Donor (
     username varchar(20) UNIQUE, 
     name_of_org varchar(100), 
     type_of_org varchar (100) CHECK (type_of_org IN ('individual', 'organization')),
-    subscribed boolean DEFAULT False
+    subscribed boolean DEFAULT False,
     address varchar(255), 
     phone_num integer,
     primary_contact_name varchar(100),
