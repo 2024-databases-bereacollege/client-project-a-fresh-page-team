@@ -14,7 +14,7 @@ CREATE TABLE "donor"(
     "DO_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
     name_of_org varchar(100), 
-    type_of_org varchar (100) CHECK (type_of_org IN ('individual', 'organization')),
+    type_of_org varchar (100) CHECK (type_of_org IN ('Individual', 'Organization')),
     subscribed boolean DEFAULT False,
     address varchar(255), 
     phone_num varchar(50),

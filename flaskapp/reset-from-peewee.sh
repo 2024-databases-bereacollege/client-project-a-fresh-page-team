@@ -1,12 +1,15 @@
+#!/bin/bash
+
 # Remove objects from the database
-psql -c 'DROP table "Foodbank";'
-psql -c "DROP table Donor;"
-psql -c "DROP table Donation;"
-psql -c "DROP table Documentation;"
-"""
-#psql -c "DELETE FROM migratehistory;"
-#rm -rf migrations
-#rm -rf migrations.json
+psql -c 'DROP TABLE IF EXISTS foodbank CASCADE;'
+psql -c 'DROP TABLE IF EXISTS donor CASCADE;'
+psql -c 'DROP TABLE IF EXISTS donation CASCADE;'
+psql -c 'DROP TABLE IF EXISTS documentation CASCADE;'
+
+psql -c 'DELETE FROM migratehistory;'
+
+rm -rf migrations
+rm -rf migrations.json
 
 pem init
 
@@ -21,6 +24,6 @@ pem migrate
 
 rm -rf migrations
 rm -rf migrations.json
-"""
-# Load data back into database
+
+# Load data back into the database (if needed)
 < data.sql psql

@@ -9,7 +9,7 @@ psql -c 'DROP table IF EXISTS "documentation"CASCADE;'
 
 
 # Create tables
-< tables.sql psql
+#< tables.sql psql
 
 # Load data back into database
 #< data.sql psql

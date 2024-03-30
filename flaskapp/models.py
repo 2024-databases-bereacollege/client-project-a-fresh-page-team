@@ -29,11 +29,11 @@ class foodbank(baseModel):
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
     primary_contact_name = CharField(100)
-    phone_num = CharField(10)
+    phone_num = CharField(100)
     address = CharField(255, unique = True)
     email = CharField(100)
     date_joined = DateField() 
-    
+
 class donor (baseModel):
     DO_ID = PrimaryKeyField()
     username = CharField(20, unique = True)
@@ -42,27 +42,27 @@ class donor (baseModel):
     subscribed = BooleanField(default= False) 
     address = CharField(255, unique = True)
     primary_contact_name = CharField(100)
-    phone_num = CharField(10)
+    phone_num = CharField(100)
     email = CharField(100)
     date_joined = DateField()
     
-    class Meta:
-        constraints = [Check('type_of_donor in ("individual", "organization")')]
+    #class Meta:
+        #constraints = [Check('type_of_donor IN ("individual", "organization")')]
 
 
 
 class donation(baseModel):
     DN_ID = PrimaryKeyField()
-    DO_ID = ForeignKeyField(Donor)
-    FB_ID = ForeignKeyField(Foodbank)
+    DO_ID = ForeignKeyField(donor)
+    FB_ID = ForeignKeyField(foodbank)
     type_of_donation = CharField(255)
     Quantity = IntegerField # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
 
 class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
-    FB_ID = ForeignKeyField(Foodbank,null = True) 
-    DO_ID = ForeignKeyField(Donor, null = True) 
+    FB_ID = ForeignKeyField(foodbank,null = True) 
+    DO_ID = ForeignKeyField(donor, null = True) 
     type_of_documentation = CharField(255)
     date_obtained = DateField() 
     date_valid = DateField() 

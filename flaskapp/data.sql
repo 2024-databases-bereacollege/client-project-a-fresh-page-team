@@ -14,6 +14,8 @@ VALUES
     (58335, 'fb_user58335', 'Molestie Tortor PC', 'Valentine Figueroa', '1-446-684-2218', 'P.O. Box 650, 4463 Feugiat Road', 'ornare.facilisis@protonmail.edu', '2023-09-25'),
     (85300, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24');
 
+
+
 INSERT INTO "donor" ("DO_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined, type_of_org, subscribed)
 VALUES
     (55214, 'jesse_lopez', 'Turpis Ltd', 'Jesse Lopez', '1-510-766-9562', 'P.O. Box 966, 174 Nec, St.', 'eu.turpis@hotmail.net', '2023-05-02', 'Individual', 'Yes'),
@@ -27,6 +29,7 @@ VALUES
     (52309, 'aspen_weaver', 'Hendrerit Consectetuer Cursus PC', 'Aspen Weaver', '(466) 332-1228', '859-2853 Nec, Rd.', 'cras.dolor@protonmail.net', '2023-06-13', 'Organisation', 'No'),
     (35740, 'lael_skinner', 'Metus Aliquam Limited', 'Lael Skinner', '1-658-111-7564', 'Ap #401-251 Mauris Street', 'molestie.dapibus@google.ca', '2024-04-13', 'Individual', 'No');
 
+"""
 INSERT INTO "documentation" ("DOC_ID","DO_ID","FB_ID",type_of_documentation,date_obtained,date_valid)
 VALUES
   (32128,93567,10532,'Finances','2029-05-08','2023-06-23'),
@@ -53,3 +56,4 @@ VALUES
   (87051,82473,10066,'noodles',6,'2023-09-11'),
   (48349,22255,10111,'pies',9,'2023-12-14'),
   (15100,66685,47658,'sandwiches',8,'2024-08-04');
+"""
