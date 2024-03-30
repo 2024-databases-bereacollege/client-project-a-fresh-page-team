@@ -57,7 +57,7 @@ class Donation(baseModel):
     FB_ID = ForeignKeyField(Foodbank)
     type_of_donation = CharField(255)
     Quantity = IntegerField # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
-
+    date_donated = DateField()
 
 class Documentation(baseModel):
     DOC_ID = PrimaryKeyField()
