@@ -46,8 +46,7 @@ class donor (baseModel):
     email = CharField(100)
     date_joined = DateField()
     
-    #class Meta:
-        #constraints = [Check('type_of_donor IN ("individual", "organization")')]
+    
 
 
 

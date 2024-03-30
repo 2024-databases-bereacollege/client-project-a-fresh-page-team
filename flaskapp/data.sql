@@ -11,8 +11,12 @@ VALUES
     (49917, 'fb_user49917', 'Nullam Suscipit Est Company', 'Preston Melton', '(691) 589-7369', '478-8401 Lorem, Rd.', 'nec@google.org', '2023-12-24'),
     (60551, 'fb_user60551', 'Eu Eleifend Corporation', 'Sonia Petty', '(777) 451-0807', '685-5050 Etiam Ave', 'nec.metus@google.couk', '2023-08-18'),
     (71474, 'fb_user71474', 'Ligula Tortor Limited', 'Pandora Landry', '1-921-357-7113', '945-2142 Mauris Av.', 'sapien.cursus@hotmail.edu', '2024-09-30'),
-    (58335, 'fb_user58335', 'Molestie Tortor PC', 'Valentine Figueroa', '1-446-684-2218', 'P.O. Box 650, 4463 Feugiat Road', 'ornare.facilisis@protonmail.edu', '2023-09-25'),
-    (85300, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24');
+    (31557, 'fb_user58335', 'Molestie Tortor PC', 'Valentine Figueroa', '1-446-684-2218', 'P.O. Box 650, 4463 Feugiat Road', 'ornare.facilisis@protonmail.edu', '2023-09-25'),
+    (18607, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24'),
+    (58335, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24'),
+    (85306, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24'),
+    (84134, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24');
+;
 
 
 
@@ -29,31 +33,29 @@ VALUES
     (52309, 'aspen_weaver', 'Hendrerit Consectetuer Cursus PC', 'Aspen Weaver', '(466) 332-1228', '859-2853 Nec, Rd.', 'cras.dolor@protonmail.net', '2023-06-13', 'Organisation', 'No'),
     (35740, 'lael_skinner', 'Metus Aliquam Limited', 'Lael Skinner', '1-658-111-7564', 'Ap #401-251 Mauris Street', 'molestie.dapibus@google.ca', '2024-04-13', 'Individual', 'No');
 
-"""
+
 INSERT INTO "documentation" ("DOC_ID","DO_ID","FB_ID",type_of_documentation,date_obtained,date_valid)
 VALUES
-  (32128,93567,10532,'Finances','2029-05-08','2023-06-23'),
-  (69644,93506,59752,'Licenses','2027-06-21','2024-07-08'),
-  (25464,40142,31557,'Quality Assurance','2033-07-13','2024-09-18'),
-  (70638,79448,66172,'Licenses','2026-04-30','2023-11-24'),
-  (56902,89960,83019,'Quality Assurance','2027-04-14','2023-06-17'),
-  (13906,72242,73987,'Licenses','2033-06-19','2024-02-20'),
-  (65680,47333,78752,'Finances','2025-10-11','2023-09-14'),
-  (11174,47390,81576,'Licenses','2029-01-08','2024-08-14'),
-  (66381,36938,31099,'Quality Assurance','2028-04-24','2023-10-23'),
-  (28244,72077,16114,'Finances','2024-09-02','2025-01-07'),
-  (28244,72077,16114,"Finances","2024-09-02","2025-01-07"); 
+  (32128,55214,84134,'Finances','2029-05-08','2023-06-23'),
+  (69644,36580,44204,'Licenses','2027-06-21','2024-07-08'),
+  (25464,79989,31557,'Quality Assurance','2033-07-13','2024-09-18'),
+  (70638,60159,31557,'Licenses','2026-04-30','2023-11-24'), -- Changed FB_ID to 31557
+  (56902,93180,90226,'Quality Assurance','2027-04-14','2023-06-17'), -- Changed FB_ID to 90226
+  (13906,44241,60551,'Licenses','2033-06-19','2024-02-20'), -- Changed FB_ID to 60551
+  (65680,85314,58335,'Finances','2025-10-11','2023-09-14'),
+  (11174,63353,60159,'Licenses','2029-01-08','2024-08-14'), -- Changed FB_ID to 60159
+  (66381,52309,60551,'Quality Assurance','2028-04-24','2023-10-23'), -- Changed FB_ID to 60551
+  (28244,35740,85300,'Finances','2024-09-02','2025-01-07'); -- Changed FB_ID to 85300
 
 INSERT INTO "donation" ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
 VALUES
-  (37828,13326,18607,'pies',3,'2023-12-23'),
-  (31474,90074,85306,'sandwiches',0,'2023-07-03'),
-  (30178,25764,66510,'pies',3,'2023-10-04'),
-  (16415,34774,73871,'pasta',10,'2024-08-26'),
-  (80595,24074,17219,'sandwiches',5,'2023-11-11'),
-  (27209,64688,72851,'soups',9,'2023-10-12'),
-  (33177,61045,74769,'noodles',6,'2024-12-08'),
-  (87051,82473,10066,'noodles',6,'2023-09-11'),
-  (48349,22255,10111,'pies',9,'2023-12-14'),
-  (15100,66685,47658,'sandwiches',8,'2024-08-04');
-"""
+  (37828,35740,18607,'pies',3,'2023-12-23'), -- Changed DO_ID to 35740
+  (31474,85314,85306,'sandwiches',0,'2023-07-03'),
+  (30178,31557,66510,'pies',3,'2023-10-04'), -- Changed DO_ID to 31557
+  (16415,35740,73871,'pasta',10,'2024-08-26'),
+  (80595,60159,17219,'sandwiches',5,'2023-11-11'),
+  (27209,36580,72851,'soups',9,'2023-10-12'),
+  (33177,63353,74769,'noodles',6,'2024-12-08'),
+  (87051,55214,10066,'noodles',6,'2023-09-11'),
+  (48349,44204,10111,'pies',9,'2023-12-14'),
+  (15100,93180,47658,'sandwiches',8,'2024-08-04'); -- Changed DO_ID to 93180
