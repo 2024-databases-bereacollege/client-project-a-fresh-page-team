@@ -25,8 +25,8 @@ CREATE TABLE "donor"(
 
 CREATE TABLE "donation"(
     "DN_ID" INTEGER PRIMARY KEY,
-    "FB_ID" INTEGER,
     "DO_ID" INTEGER,
+    "FB_ID" INTEGER,
     FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     type_of_donation varchar(255),

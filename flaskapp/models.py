@@ -38,7 +38,7 @@ class donor (baseModel):
     DO_ID = PrimaryKeyField()
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
-    type_of_donor = CharField(100) 
+    type_of_org = CharField(100) 
     subscribed = BooleanField(default= False) 
     address = CharField(255, unique = True)
     primary_contact_name = CharField(100)
@@ -55,13 +55,13 @@ class donation(baseModel):
     DO_ID = ForeignKeyField(donor)
     FB_ID = ForeignKeyField(foodbank)
     type_of_donation = CharField(255)
-    Quantity = IntegerField # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
+    quantity = IntegerField() # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
 
 class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
-    FB_ID = ForeignKeyField(foodbank,null = True) 
     DO_ID = ForeignKeyField(donor, null = True) 
+    FB_ID = ForeignKeyField(foodbank,null = True) 
     type_of_documentation = CharField(255)
     date_obtained = DateField() 
     date_valid = DateField() 

@@ -30,7 +30,7 @@ VALUES
     (35740, 'lael_skinner', 'Metus Aliquam Limited', 'Lael Skinner', '1-658-111-7564', 'Ap #401-251 Mauris Street', 'molestie.dapibus@google.ca', '2024-04-13', 'Individual', 'No');
 
 
-INSERT INTO "documentation" ("DOC_ID","DO_ID","FB_ID",type_of_documentation,date_obtained,date_valid)
+INSERT INTO "documentation" ("DOC_ID","DO_ID_id","FB_ID_id",type_of_documentation,date_obtained,date_valid)
 VALUES
   (32128,55214,84134,'Finances','2029-05-08','2023-06-23'),
   (69644,36580,44204,'Licenses','2027-06-21','2024-07-08'),
@@ -43,7 +43,7 @@ VALUES
   (66381,52309,60551,'Quality Assurance','2028-04-24','2023-10-23'), -- Changed FB_ID to 60551
   (28244,35740,85300,'Finances','2024-09-02','2025-01-07'); -- Changed FB_ID to 85300
 
-INSERT INTO "donation" ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
+INSERT INTO "donation" ("DN_ID","DO_ID_id","FB_ID_id",type_of_donation,quantity,date_donated)
 VALUES
   (37828,35740,18607,'pies',3,'2023-12-23'), -- Changed DO_ID to 35740
   (31474,85314,85306,'sandwiches',0,'2023-07-03'),
