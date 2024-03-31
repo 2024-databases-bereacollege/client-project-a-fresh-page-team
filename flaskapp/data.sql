@@ -1,7 +1,7 @@
 -- https://www.programiz.com/sql/insert-into
 
 -- Add SQL inserts here
-INSERT INTO "foodbank" ("FB_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined)
+INSERT INTO "foodbank" ("FB_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "date_joined")
 VALUES 
     (84134, 'fb_user84134', 'Dictum Limited', 'Gavin Olsen', '(805) 811-5218', '1721 Nascetur Av.', 'curabitur.sed@google.edu', '2024-04-13'),
     (44204, 'fb_user44204', 'Nunc PC', 'Omar Compton', '(495) 487-2527', 'P.O. Box 394, 9121 Adipiscing Rd.', 'tristique.senectus@outlook.couk', '2025-03-23'),
@@ -14,9 +14,8 @@ VALUES
     (31557, 'fb_user58335', 'Molestie Tortor PC', 'Valentine Figueroa', '1-446-684-2218', 'P.O. Box 650, 4463 Feugiat Road', 'ornare.facilisis@protonmail.edu', '2023-09-25'),
     (18607, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', '2023-11-24');
 
-
-
-INSERT INTO "donor" ("DO_ID", username, name_of_org, primary_contact_name, phone_num, address, email, date_joined, type_of_org, subscribed)
+-- Insert data into "donor" table
+INSERT INTO "donor" ("DO_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "date_joined", "type_of_org", "subscribed")
 VALUES
     (55214, 'jesse_lopez', 'Turpis Ltd', 'Jesse Lopez', '1-510-766-9562', 'P.O. Box 966, 174 Nec, St.', 'eu.turpis@hotmail.net', '2023-05-02', 'Individual', 'Yes'),
     (36580, 'angelica_barnes', 'Mollis Nec LLC', 'Angelica Barnes', '1-644-561-3419', 'Ap #897-4039 Diam. Rd.', 'donec.sollicitudin@outlook.ca', '2024-02-24', 'Individual', 'No'),
@@ -29,29 +28,33 @@ VALUES
     (52309, 'aspen_weaver', 'Hendrerit Consectetuer Cursus PC', 'Aspen Weaver', '(466) 332-1228', '859-2853 Nec, Rd.', 'cras.dolor@protonmail.net', '2023-06-13', 'Organisation', 'No'),
     (35740, 'lael_skinner', 'Metus Aliquam Limited', 'Lael Skinner', '1-658-111-7564', 'Ap #401-251 Mauris Street', 'molestie.dapibus@google.ca', '2024-04-13', 'Individual', 'No');
 
+-- Insert data into "documentation" table
 
-INSERT INTO "documentation" ("DOC_ID","DO_ID","FB_ID",type_of_documentation,date_obtained,date_valid)
+-- Insert data into "donation" table
+INSERT INTO "donation" ("DN_ID", "DO_ID", "FB_ID", "type_of_donation", "quantity", "date_donated")
 VALUES
-  (32128,55214,84134,'Finances','2029-05-08','2023-06-23'),
-  (69644,36580,44204,'Licenses','2027-06-21','2024-07-08'),
-  (25464,79989,31557,'Quality Assurance','2033-07-13','2024-09-18'),
-  (70638,60159,31557,'Licenses','2026-04-30','2023-11-24'), -- Changed FB_ID to 31557
-  (56902,93180,90226,'Quality Assurance','2027-04-14','2023-06-17'), -- Changed FB_ID to 90226
-  (13906,44241,60551,'Licenses','2033-06-19','2024-02-20'), -- Changed FB_ID to 60551
-  (65680,85314,58335,'Finances','2025-10-11','2023-09-14'),
-  (11174,63353,60159,'Licenses','2029-01-08','2024-08-14'), -- Changed FB_ID to 60159
-  (66381,52309,60551,'Quality Assurance','2028-04-24','2023-10-23'), -- Changed FB_ID to 60551
-  (28244,35740,85300,'Finances','2024-09-02','2025-01-07'); -- Changed FB_ID to 85300
+    (37828, 35740, 18607, 'pies', 3, '2023-12-23'),
+    (31474, 85314, 44204, 'sandwiches', 0, '2023-07-03'),
+    (30178, 35740, 60551, 'pies', 3, '2023-10-04'),
+    (16415, 35740, 90226, 'pasta', 10, '2024-08-26'),
+    (80595, 60159, 90226, 'sandwiches', 5, '2023-11-11'),
+    (27209, 36580, 31557, 'soups', 9, '2023-10-12'),
+    (33177, 63353, 31557, 'noodles', 6, '2024-12-08'),
+    (87051, 55214, 84134, 'noodles', 6, '2023-09-11'),
+    (48349, 44241, 84134, 'pies', 9, '2023-12-14'),
+    (15100, 93180, 49917, 'sandwiches', 8, '2024-08-04'); 
 
-INSERT INTO "donation" ("DN_ID","DO_ID","FB_ID",type_of_donation,quantity,date_donated)
+INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
 VALUES
-  (37828,35740,18607,'pies',3,'2023-12-23'), -- Changed DO_ID to 35740
-  (31474,85314,85306,'sandwiches',0,'2023-07-03'),
-  (30178,31557,66510,'pies',3,'2023-10-04'), -- Changed DO_ID to 31557
-  (16415,35740,73871,'pasta',10,'2024-08-26'),
-  (80595,60159,17219,'sandwiches',5,'2023-11-11'),
-  (27209,36580,72851,'soups',9,'2023-10-12'),
-  (33177,63353,74769,'noodles',6,'2024-12-08'),
-  (87051,55214,10066,'noodles',6,'2023-09-11'),
-  (48349,44204,10111,'pies',9,'2023-12-14'),
-  (15100,93180,47658,'sandwiches',8,'2024-08-04'); -- Changed DO_ID to 93180
+    (32128, 55214, 84134, 'Finances', '2029-05-08', '2023-06-23'),
+    (69644, 36580, 44204, 'Licenses', '2027-06-21', '2024-07-08'),
+    (25464, 79989, 31557, 'Quality Assurance', '2033-07-13', '2024-09-18'), -- Changed FB_ID to match foodbank FB_ID
+    (70638, 60159, 31557, 'Licenses', '2026-04-30', '2023-11-24'), -- Changed FB_ID to match foodbank FB_ID
+    (56902, 93180, 90226, 'Quality Assurance', '2027-04-14', '2023-06-17'),
+    (13906, 44241, 60551, 'Licenses', '2033-06-19', '2024-02-20'),
+    (65680, 85314, 31557, 'Finances', '2025-10-11', '2023-09-14'), -- Changed FB_ID to match foodbank FB_ID
+    (11174, 63353, 18607, 'Licenses', '2029-01-08', '2024-08-14'),
+    (66381, 52309, 60551, 'Quality Assurance', '2028-04-24', '2023-10-23'),
+    (28244, 35740, 90226, 'Finances', '2024-09-02', '2025-01-07'); -- Changed FB_ID to match foodbank FB_ID
+
+
