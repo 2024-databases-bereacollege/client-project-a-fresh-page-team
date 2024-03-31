@@ -52,16 +52,16 @@ class donor (baseModel):
 
 class donation(baseModel):
     DN_ID = PrimaryKeyField()
-    DO_ID = ForeignKeyField(donor)
-    FB_ID = ForeignKeyField(foodbank)
+    DO_ID = ForeignKeyField(donor, column_name='DO_ID')
+    FB_ID = ForeignKeyField(foodbank, column_name='FB_ID')
     type_of_donation = CharField(255)
     quantity = IntegerField() # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
 
 class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
-    DO_ID = ForeignKeyField(donor, null = True) 
-    FB_ID = ForeignKeyField(foodbank,null = True) 
+    DO_ID = ForeignKeyField(donor, null = True, column_name='DO_ID') 
+    FB_ID = ForeignKeyField(foodbank,null = True, column_name='FB_ID') 
     type_of_documentation = CharField(255)
     date_obtained = DateField() 
     date_valid = DateField() 
