@@ -5,7 +5,7 @@ FOODBANK (FB_ID, username, name of organization, address, primary contact name, 
 DOCUMENTATION (DOC_ID, FB_ID, DO_ID, type of documentation, date obtained, date valid)
 DONATION(DN_ID, DO_ID, FB_ID, type of donation, quantity)
 
-Normalization:
+**Normalization**:
 1NF (First Normal Form):
 No attributes contain atomic values, no repeating groups or arrays.
 2NF (Second Normal Form):
