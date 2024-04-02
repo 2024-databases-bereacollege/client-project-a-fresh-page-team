@@ -14,6 +14,8 @@ No attributes contain atomic values, no repeating groups or arrays.
 2NF (Second Normal Form):
 No partial dependencies exist.
 Attributes in our Databases do not depend on one another. 
+
+
 3NF (Third Normal Form):
 No transitive dependencies exist.
 Attributes like Primary Contact Name, Address, Email, and Phone Number are dependent only on the primary key, DO_ID, not on any other non-key attributes.
