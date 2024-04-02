@@ -45,10 +45,6 @@ class donor (baseModel):
     phone_num = CharField(100)
     email = CharField(100)
     date_joined = DateField()
-    
-    
-
-
 
 class donation(baseModel):
     DN_ID = PrimaryKeyField()
@@ -57,6 +53,20 @@ class donation(baseModel):
     type_of_donation = CharField(255)
     quantity = IntegerField() # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
+
+class fb_donation_requests(baseModel):
+    FB_REQ_ID = PrimaryKeyField()
+    FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
+    item = CharField(100)
+    quantity = IntegerField()
+    date_requested = DateField()
+
+class do_donation_requests(baseModel):
+    DO_REQ_ID = PrimaryKeyField()
+    DO_ID = ForeignKeyField(donor,column_name='DO_ID')
+    item = CharField(100)
+    quantity = IntegerField()
+    date_requested = DateField()
 
 class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
