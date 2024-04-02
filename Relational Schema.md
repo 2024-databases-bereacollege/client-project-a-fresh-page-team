@@ -6,8 +6,11 @@ DOCUMENTATION (DOC_ID, FB_ID, DO_ID, type of documentation, date obtained, date 
 DONATION(DN_ID, DO_ID, FB_ID, type of donation, quantity)
 
 **Normalization**:
+
 1NF (First Normal Form):
 No attributes contain atomic values, no repeating groups or arrays.
+
+
 2NF (Second Normal Form):
 No partial dependencies exist.
 Attributes in our Databases do not depend on one another. 
