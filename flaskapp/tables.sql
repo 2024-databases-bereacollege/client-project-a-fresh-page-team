@@ -5,7 +5,10 @@ CREATE TABLE "foodbank" (
   primary_contact_name varchar(100),
   phone_num varchar(50),
   address varchar(255),
-  email varchar(100), 
+  email varchar(100),
+  city varchar(255), 
+  state varchar(255),
+  zip varchar(5),
   date_joined date
 );
 
@@ -13,14 +16,17 @@ CREATE TABLE "foodbank" (
 CREATE TABLE "donor"(
     "DO_ID" integer PRIMARY KEY,
     username varchar(20) UNIQUE, 
-    name_of_org varchar(100), 
-    type_of_org varchar (100),
-    subscribed boolean DEFAULT False,
-    address varchar(255), 
-    phone_num varchar(50),
+    name_of_org varchar(100),
     primary_contact_name varchar(100),
-    email varchar(100), 
-    date_joined date
+    phone_num varchar(50),
+    address varchar(255),
+    email varchar(100),
+    city varchar(255), 
+    state varchar(255),
+    zip varchar(5),
+    date_joined date,
+    type_of_org varchar(255),
+    subscribed varchar(4)
 );
 
 CREATE TABLE "donation"(
