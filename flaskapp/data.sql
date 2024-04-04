@@ -1,7 +1,7 @@
 -- https://www.programiz.com/sql/insert-into
 
 -- Add SQL inserts here
-INSERT INTO "foodbank" ("FB_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip_code", "date_joined")
+INSERT INTO "foodbank" ("FB_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip", "date_joined")
 VALUES 
     (84134, 'fb_user84134', 'Dictum Limited', 'Gavin Olsen', '(805) 811-5218', '1721 Nascetur Av.', 'curabitur.sed@google.edu', 'New York', 'NY', '10001', '2024-04-13'),
     (44204, 'fb_user44204', 'Nunc PC', 'Omar Compton', '(495) 487-2527', 'P.O. Box 394, 9121 Adipiscing Rd.', 'tristique.senectus@outlook.couk', 'Los Angeles', 'CA', '90001', '2025-03-23'),
@@ -15,7 +15,7 @@ VALUES
     (18607, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', 'San Jose', 'CA', '95101', '2023-11-24');
 
 -- Insert data into "donor" table
-INSERT INTO "donor" ("DO_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip_code", "date_joined", "type_of_org", "subscribed")
+INSERT INTO "donor" ("DO_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip", "date_joined", "type_of_org", "subscribed")
 VALUES
     (55214, 'jesse_lopez', 'Turpis Ltd', 'Jesse Lopez', '1-510-766-9562', 'P.O. Box 966, 174 Nec, St.', 'eu.turpis@hotmail.net', 'New York', 'NY', '10001', '2023-05-02', 'Individual', 'Yes'),
     (36580, 'angelica_barnes', 'Mollis Nec LLC', 'Angelica Barnes', '1-644-561-3419', 'Ap #897-4039 Diam. Rd.', 'donec.sollicitudin@outlook.ca', 'Los Angeles', 'CA', '90001', '2024-02-24', 'Individual', 'No'),
