@@ -34,7 +34,7 @@ CREATE TABLE "donation"(
     date_donated date 
 );
 
-CREATE TABLE "fb_donation_requests"(
+CREATE TABLE "fb_donation_request"(
     "FB_REQ_ID" INTEGER PRIMARY KEY,
     "FB_ID" INTEGER,
     FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
@@ -43,7 +43,7 @@ CREATE TABLE "fb_donation_requests"(
     date_requested date;
 );
 
-CREATE TABLE "do_donation_requests"(
+CREATE TABLE "do_donation_request"(
     "DO_REQ_ID" INTEGER PRIMARY KEY,
     "DO_ID" INTEGER,
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),

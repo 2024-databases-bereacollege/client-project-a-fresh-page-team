@@ -5,6 +5,8 @@ psql -c 'DROP TABLE IF EXISTS foodbank CASCADE;'
 psql -c 'DROP TABLE IF EXISTS donor CASCADE;'
 psql -c 'DROP TABLE IF EXISTS donation CASCADE;'
 psql -c 'DROP TABLE IF EXISTS documentation CASCADE;'
+psql -c 'DROP TABLE IF EXISTS fb_donation_request CASCADE;'
+psql -c 'DROP TABLE IF EXISTS do_donation_request CASCADE;'
 
 psql -c 'DELETE FROM migratehistory;'
 
