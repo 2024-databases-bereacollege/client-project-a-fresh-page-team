@@ -45,6 +45,7 @@ CREATE TABLE "fb_donation_request"(
     "FB_ID" INTEGER,
     "DO_ID" INTEGER,
     FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
+    FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     item varchar(100),
     quantity integer,
     date_requested date
@@ -55,6 +56,7 @@ CREATE TABLE "do_donation_request"(
     "DO_ID" INTEGER,
     "FB_ID" INTEGER,
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
+    FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
     item varchar(100),
     quantity INTEGER,
     date_requested date

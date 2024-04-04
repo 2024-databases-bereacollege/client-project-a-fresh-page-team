@@ -33,6 +33,9 @@ class foodbank(baseModel):
     address = CharField(255, unique = True)
     email = CharField(100)
     date_joined = DateField() 
+    city = CharField()
+    state = CharField()
+    zip = CharField()
 
 class donor (baseModel):
     DO_ID = PrimaryKeyField()
@@ -45,6 +48,9 @@ class donor (baseModel):
     phone_num = CharField(100)
     email = CharField(100)
     date_joined = DateField()
+    city = CharField()
+    state = CharField()
+    zip = CharField()
 
 class donation(baseModel):
     DN_ID = PrimaryKeyField()
