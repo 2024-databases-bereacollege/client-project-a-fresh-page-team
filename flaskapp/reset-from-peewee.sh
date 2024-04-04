@@ -5,6 +5,8 @@ psql -c 'DROP TABLE IF EXISTS foodbank CASCADE;'
 psql -c 'DROP TABLE IF EXISTS donor CASCADE;'
 psql -c 'DROP TABLE IF EXISTS donation CASCADE;'
 psql -c 'DROP TABLE IF EXISTS documentation CASCADE;'
+psql -c 'DROP TABLE IF EXISTS fb_donation_request CASCADE;'
+psql -c 'DROP TABLE IF EXISTS do_donation_request CASCADE;'
 
 psql -c 'DELETE FROM migratehistory;'
 
@@ -18,6 +20,8 @@ pem add models.donor
 pem add models.foodbank
 pem add models.donation
 pem add models.documentation
+pem add models.fb_donation_request
+pem add models.do_donation_request
 
 pem watch
 pem migrate

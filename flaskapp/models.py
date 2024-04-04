@@ -33,6 +33,9 @@ class foodbank(baseModel):
     address = CharField(255, unique = True)
     email = CharField(100)
     date_joined = DateField() 
+    city = CharField()
+    state = CharField()
+    zip = CharField()
 
 class donor (baseModel):
     DO_ID = PrimaryKeyField()
@@ -45,10 +48,9 @@ class donor (baseModel):
     phone_num = CharField(100)
     email = CharField(100)
     date_joined = DateField()
-    
-    
-
-
+    city = CharField()
+    state = CharField()
+    zip = CharField()
 
 class donation(baseModel):
     DN_ID = PrimaryKeyField()
@@ -57,6 +59,24 @@ class donation(baseModel):
     type_of_donation = CharField(255)
     quantity = IntegerField() # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
+
+class fb_donation_request(baseModel):
+    FB_REQ_ID = PrimaryKeyField()
+    FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
+    DO_ID = ForeignKeyField(donor,column_name='DO_ID')
+    item = CharField(100)
+    quantity = IntegerField()
+    date_requested = DateField()
+    status = CharField(255, default = 'pending') #
+
+class do_donation_request(baseModel):
+    DO_REQ_ID = PrimaryKeyField()
+    DO_ID = ForeignKeyField(donor,column_name='DO_ID')
+    FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
+    item = CharField(100)
+    quantity = IntegerField()
+    date_requested = DateField()
+    status = CharField(255, default = 'pending')
 
 class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
