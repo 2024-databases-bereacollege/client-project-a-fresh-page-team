@@ -54,14 +54,14 @@ class donation(baseModel):
     quantity = IntegerField() # in pounds - check with Dr.Page if detailed breakdown of donations are needed, f so, we will create a different table to track quantity
     date_donated = DateField()
 
-class fb_donation_requests(baseModel):
+class fb_donation_request(baseModel):
     FB_REQ_ID = PrimaryKeyField()
     FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
     item = CharField(100)
     quantity = IntegerField()
     date_requested = DateField()
 
-class do_donation_requests(baseModel):
+class do_donation_request(baseModel):
     DO_REQ_ID = PrimaryKeyField()
     DO_ID = ForeignKeyField(donor,column_name='DO_ID')
     item = CharField(100)
