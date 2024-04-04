@@ -45,14 +45,14 @@ VALUES
     (15100, 93180, 49917, 'sandwiches', 8, '2024-08-04'); 
 
 -- Insert data into "fb_donation_request" table
-INSERT INTO "fb_donation_request" ("FB_REQ_ID","FB_ID", "DO_ID", "item", "quantity", "date_requested")
+INSERT INTO "fb_donation_request" ("FB_REQ_ID","FB_ID", "DO_ID", "item", "quantity","status", "date_requested")
 VALUES
-    (00000, 84134, 36580, 'shoes', 3, '2021-12-01');
+    (00000, 84134, 36580, 'shoes', 3, 'pending', '2021-12-01');
 
 -- Insert data into "do_donation_request" table
-INSERT INTO "do_donation_request" ("DO_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "date_requested")
+INSERT INTO "do_donation_request" ("DO_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "status", "date_requested")
 VALUES
-    (11111, 55214, 44204, 'hats', 5, '2023-11-26');
+    (11111, 55214, 44204, 'hats', 5, 'pending', '2023-11-26');
 
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
 VALUES

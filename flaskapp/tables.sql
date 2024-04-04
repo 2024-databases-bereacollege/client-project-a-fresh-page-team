@@ -48,7 +48,8 @@ CREATE TABLE "fb_donation_request"(
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     item varchar(100),
     quantity integer,
-    date_requested date
+    date_requested date,
+    status varchar(255)
 );
 
 CREATE TABLE "do_donation_request"(
@@ -59,7 +60,8 @@ CREATE TABLE "do_donation_request"(
     FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
     item varchar(100),
     quantity INTEGER,
-    date_requested date
+    date_requested date,
+    status varchar(255)
     
 );
 

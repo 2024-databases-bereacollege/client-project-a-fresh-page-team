@@ -67,6 +67,7 @@ class fb_donation_request(baseModel):
     item = CharField(100)
     quantity = IntegerField()
     date_requested = DateField()
+    status = CharField(255, default = 'pending') #
 
 class do_donation_request(baseModel):
     DO_REQ_ID = PrimaryKeyField()
@@ -75,6 +76,7 @@ class do_donation_request(baseModel):
     item = CharField(100)
     quantity = IntegerField()
     date_requested = DateField()
+    status = CharField(255, default = 'pending')
 
 class documentation(baseModel):
     DOC_ID = PrimaryKeyField()
