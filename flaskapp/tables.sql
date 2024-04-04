@@ -45,16 +45,17 @@ CREATE TABLE "fb_donation_request"(
     "FB_ID" INTEGER,
     FOREIGN KEY ("FB_ID") REFERENCES Foodbank("FB_ID"),
     item varchar(100),
-    quantity integer;
-    date_requested date;
+    quantity integer,
+    date_requested date
 );
 
 CREATE TABLE "do_donation_request"(
     "DO_REQ_ID" INTEGER PRIMARY KEY,
     "DO_ID" INTEGER,
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
-    item varchar(100);
-    quantity INTEGER;
+    item varchar(100),
+    quantity INTEGER,
+    date_requested date
     
 );
 

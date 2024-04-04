@@ -44,6 +44,16 @@ VALUES
     (48349, 44241, 84134, 'pies', 9, '2023-12-14'),
     (15100, 93180, 49917, 'sandwiches', 8, '2024-08-04'); 
 
+-- Insert data into "fb_donation_request" table
+INSERT INTO "fb_donation_request" ("FB_REQ_ID","FB_ID", "item", "quantity", "date_requested")
+VALUES
+    (00000, 84134, 'shoes', 3, '2021-12-01');
+
+-- Insert data into "do_donation_request" table
+INSERT INTO "do_donation_request" ("DO_REQ_ID", "DO_ID", "item", "quantity", "date_requested")
+VALUES
+    (11111, 55214, 'hats', 5, '2023-11-26');
+
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
 VALUES
     (32128, 55214, 84134, 'Finances', '2029-05-08', '2023-06-23'),
