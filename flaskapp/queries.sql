@@ -1,4 +1,4 @@
-#!/bin/bash
+
 /* Documents: 
  1. Submit documents - (HIGH) - CREATE */
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
@@ -103,61 +103,61 @@ WHERE "DO_ID" = '36580';
 
 
 --13. Search for the details of a document - (HIGH) - READ
-SELECT "DOC_ID", "FB_ID", "DO_ID", type_of_documentation,date_obtained, date_valid;
+SELECT "DOC_ID", "FB_ID", "DO_ID", type_of_documentation,date_obtained, date_valid
 FROM Documentation; 
 
 --14. Search for food banks in the area - (HIGH) - READ ( fliter by state, city and zip code)
 
 --Filter by State
-SELECT name_of_org, phone_num, primary_contact_name, email;
-FROM foodbank;
-WHERE state = TX’;
+SELECT name_of_org, phone_num, primary_contact_name, email
+FROM foodbank
+WHERE state = 'TX';
 
---Filter by City
-SELECT name_of_org, phone_num, primary_contact_name, email;
-FROM foodbank;
+--Filter by City - works
+SELECT name_of_org, phone_num, primary_contact_name, email
+FROM foodbank
 WHERE city= 'Houston';
 
---Filter by Zip Code
+--Filter by Zip Code - works
 SELECT name_of_org, phone_num, primary_contact_name, email
 FROM foodbank
 WHERE zip = '77001';
 
---15.View details of food banks - (HIGH)- READ
-SELECT "FB_ID", username, name_of_org, address, phone_num, primary_contact_name, email, data joined 
+--15.View details of food banks - (HIGH)- READ - works
+SELECT "FB_ID", username, name_of_org, address, phone_num, primary_contact_name, email, date_joined 
 FROM foodbank; 
 
---16. Request to donate by filling out a form (HIGH) - CREATE 
-INSERT INTO do_donation_request (“DO_REQ_ID”, “DO_ID”, “FB_ID”, “item”, “quantity”, “status”, “date requested”) 
-VALUES (12121, 93180, 71474, 'shirt', 10, 'pending', '2024-01-28');
+--16. Request to donate by filling out a form (HIGH) - CREATE - works
+-- INSERT INTO do_donation_request ("DO_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "status", "date_requested") 
+-- VALUES (12121, 93180, 71474, 'shirt', 10, 'pending', '2024-01-28');
 
---17.Accept/decline to make a donation (food banks can ask donors who have donated before to donate again) - (HIGH) - UPDATE ( depends on the response of donor)
+--17.Accept/decline to make a donation (food banks can ask donors who have donated before to donate again) - (HIGH) - UPDATE ( depends on the response of donor) - works
 
 --If accepted:
-UPDATE fb_donation_request
-SET status = 'accepted'
-WHERE FB_REQ_ID = 00000;
+-- UPDATE fb_donation_request
+-- SET status = 'accepted'
+-- WHERE "FB_REQ_ID" = 00000;
 
 --If declined:
-UPDATE fb_donation_request
-SET status = 'declined'
-WHERE FB_REQ_ID = 00000;
+-- UPDATE fb_donation_request
+-- SET status = 'declined'
+-- WHERE "FB_REQ_ID" = 00000;
 
 
---18.View donation requests from food banks- (HIGH) - READ (Requests from food banks)
+--18.View donation requests from food banks- (HIGH) - READ (Requests from food banks) - works
 SELECT foodbank.name_of_org, donor.name_of_org, fb_donation_request.item, fb_donation_request.quantity, fb_donation_request.date_requested, fb_donation_request.status 
 FROM fb_donation_request
 INNER JOIN foodbank ON fb_donation_request."FB_ID" = foodbank."FB_ID"
 INNER JOIN donor ON fb_donation_request."DO_ID" = donor."DO_ID";
 
---19.View details of a donation requested by a food bank - (HIGH) - READ (A request from a food bank)
+--19.View details of a donation requested by a food bank - (HIGH) - READ (A request from a food bank) - works
 SELECT foodbank.name_of_org, donor.name_of_org, fb_donation_request.item, fb_donation_request.quantity, fb_donation_request.date_requested
 FROM fb_donation_request
-JOIN foodbank ON fb_donation_request.FB_ID = foodbank.FB_ID
-JOIN donor ON fb_donation_request.DO_ID = donor.DO_ID
+JOIN foodbank ON fb_donation_request."FB_ID" = foodbank."FB_ID"
+JOIN donor ON fb_donation_request."DO_ID" = donor."DO_ID"
 WHERE foodbank.name_of_org = 'Dictum Limited';
 
---20. View personal information of a specific food bank - (HIGH) - READ
+--20. View personal information of a specific food bank - (HIGH) - READ - works
 SELECT name_of_org, primary_contact_name, city, state, zip
 FROM foodbank
 WHERE name_of_org = 'Nunc PC';
