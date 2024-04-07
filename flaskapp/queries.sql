@@ -1,14 +1,14 @@
-#!/bin/bash
 /* Documents: 
- 1. Submit documents - (HIGH) - CREATE */
+ 1. Submit documents - (HIGH) - CREATE - works */
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
 VALUES
-    (32567, 55214, NULL, ‘Registration’, '2025-09-09', '2023-04-21');
+    (32567, 55214, NULL, 'Registration', '2025-09-09', '2023-04-21'); 
 
---2.View the details of a document - (HIGH) - READ 
+--2.View the details of a document - (HIGH) - READ - works
 
-SELECT “DOC_ID”, “DO_ID”, “FB_ID”, type_of_documentation, date_obtained, date_valid 
+SELECT "DOC_ID", "DO_ID", "FB_ID", type_of_documentation, date_obtained, date_valid 
 FROM documentation;
+
 
 -- 3. View donation received history - (HIGH) - READ 
 
@@ -18,11 +18,13 @@ JOIN donor ON donor."DO_ID" = donation."DO_ID"
 JOIN foodbank ON foodbank."FB_ID" = donation."FB_ID"
 WHERE foodbank."FB_ID" = '18607';
 
+
 --4. View details of a donation - (HIGH) - READ 
 SELECT "DN_ID", donor.name_of_org, foodbank.name_of_org, type_of_donation, quantity, date_donated FROM donation
 JOIN donor on donor."DO_ID" = donation."DO_ID"
 JOIN foodbank on foodbank."FB_ID" = donation."FB_ID"
 WHERE donation."DN_ID" = '37828 ';
+
 
 --5.Sign up to the website (HIGH) - CREATE (username, ID etc.) - works
 --Donor: 
@@ -30,15 +32,18 @@ INSERT INTO donor ("DO_ID", "username", "name_of_org", "primary_contact_name", "
 VALUES
     (52389, 'Karina_Lumaru', 'Karina_Lumaru', 'Karina_Lumaru', '1-510-778-2257', '190 Ferri St 1234.', 'k_lumaru@gmail.com', 'Berea', 'KY', '40404', '2023-07-09', 'Individual', 'Yes');
 
+
 --Foodbank:
 INSERT INTO foodbank ("FB_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip", "date_joined")
 VALUES 
     (84890, 'fb_user84890', 'Creative Limited', 'Anna Luis', '(805) 855-8902', '1721 Oliver Av.', 'lame.email@google.org',  'Berea', 'KY', '40404', '2024-03-23');
 
 
+
 -- 6.View details of donors (phone number, email, name, date last donated) - (HIGH) - READ 
 
 SELECT phone_num, primary_contact_name, address, email, date_joined FROM donor; 
+
 
 --7. Search for donors in the area (city, zip code, state) - (HIGH) - READ
 SELECT  city, state, zip, name_of_org, primary_contact_name, phone_num, address, email FROM donor ORDER BY city;
@@ -46,13 +51,13 @@ SELECT  city, state, zip, name_of_org, primary_contact_name, phone_num, address,
 
 --8. Request donations by filling out a form (HIGH) - CREATE
 
-INSERT INTO fb_donation_request (“FB_REQ_ID”, “DO_ID”, “FB_ID”, “item”, “quantity”, “status”, “date requested”) 
+INSERT INTO fb_donation_request ("FB_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "status", "date_requested") 
 VALUES (12121, 93180, 71474, 'shirt', 10, 'pending', '2024-01-28');
 
 
 --9. View donation requests made by donors (HIGH) - READ
 
-SELECT donor.name_of_org, foodbank.name_of_org, do_donation_request.item, do_donation_request.quantity, do_donation_request.date_requested 
+SELECT donor.name_of_org AS donor_org , foodbank.name_of_org AS foodbank_org , do_donation_request.item, do_donation_request.quantity, do_donation_request.date_requested 
 FROM do_donation_request
 JOIN donor ON do_donation_request."DO_ID" = donor."DO_ID"
 JOIN foodbank ON do_donation_request."FB_ID"= foodbank."FB_ID";
@@ -60,10 +65,11 @@ JOIN foodbank ON do_donation_request."FB_ID"= foodbank."FB_ID";
 
 --10.View details of expected donation (HIGH) - READ
 
-SELECT donor.name_of_org, foodbank.name_of_org, do_donation_request.item, do_donation_request.quantity, do_donation_request.date_requested 
+SELECT donor.name_of_org AS donor_org, foodbank.name_of_org AS foodbank_org , do_donation_request.item, do_donation_request.quantity, do_donation_request.date_requested 
 FROM do_donation_request
-JOIN donor ON do_donation_request.”DO_ID” = donor.DO_ID
-JOIN foodbank ON do_donation_request.FB_ID = foodbank.FB_ID;
+JOIN donor ON do_donation_request."DO_ID" = donor."DO_ID"
+JOIN foodbank ON do_donation_request."FB_ID" = foodbank."FB_ID";
+
 
 --11. View personal Information of a specific donor - (HIGH) - READ WORKS 
 
@@ -161,7 +167,6 @@ WHERE foodbank.name_of_org = 'Dictum Limited';
 SELECT name_of_org, primary_contact_name, city, state, zip
 FROM foodbank
 WHERE name_of_org = 'Nunc PC';
-
 
 
 
