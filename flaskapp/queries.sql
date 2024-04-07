@@ -134,21 +134,21 @@ WHERE zip = '77001';
 SELECT "FB_ID", username, name_of_org, address, phone_num, primary_contact_name, email, date_joined 
 FROM foodbank; 
 
---16. Request to donate by filling out a form (HIGH) - CREATE - works
--- INSERT INTO do_donation_request ("DO_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "status", "date_requested") 
--- VALUES (12121, 93180, 71474, 'shirt', 10, 'pending', '2024-01-28');
+16. Request to donate by filling out a form (HIGH) - CREATE - works
+INSERT INTO do_donation_request ("DO_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "status", "date_requested") 
+VALUES (12121, 93180, 71474, 'shirt', 10, 'pending', '2024-01-28');
 
---17.Accept/decline to make a donation (food banks can ask donors who have donated before to donate again) - (HIGH) - UPDATE ( depends on the response of donor) - works
+17.Accept/decline to make a donation (food banks can ask donors who have donated before to donate again) - (HIGH) - UPDATE ( depends on the response of donor) - works
 
---If accepted:
--- UPDATE fb_donation_request
--- SET status = 'accepted'
--- WHERE "FB_REQ_ID" = 00000;
+If accepted:
+UPDATE fb_donation_request
+SET status = 'accepted'
+WHERE "FB_REQ_ID" = 00000;
 
---If declined:
--- UPDATE fb_donation_request
--- SET status = 'declined'
--- WHERE "FB_REQ_ID" = 00000;
+If declined:
+UPDATE fb_donation_request
+SET status = 'declined'
+WHERE "FB_REQ_ID" = 00000;
 
 
 --18.View donation requests from food banks- (HIGH) - READ (Requests from food banks) - works
