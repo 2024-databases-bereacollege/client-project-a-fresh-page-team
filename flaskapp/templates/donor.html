@@ -1,0 +1,43 @@
+<!-- 
+  THIS IS AN EXAMPLE to show how to send values to a DataTable
+  Key variables: DATA is a list
+  Uses the BASELIST template for formatting and javascript. Just add content 
+-->
+
+{% extends "base.html" %} 
+
+{% block content %}
+<div style="flex:50%; float: left; padding: 20px;">
+
+  <table id = "listTable" class="display" flex="50%">
+    <thead>
+      <tr>
+        <!-- Do the filtering through the columns -->
+        <th>Name of Org</th>
+        <th>Type of Org</th>
+        <th>Primary Contact Name</th>
+        <th>Subscribed</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for donor in donors %}
+          <tr>
+            <!-- Each row name is clickable-->
+            <td>{{donor.name_of_org}}</td>
+            <td>{{ donor.type_of_org }}</td>
+            <td>{{ donor.primary_contact_name }}</td>
+            <td>{{ donor.subscribed }}</td>
+            <td>
+              <form action="/see_details" method="POST">
+                <input type="hidden" name="donorID" value="{{donor.DO_ID}}" />
+                <input type="submit" value="See Details"/>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+        
