@@ -18,3 +18,10 @@ def register():
     gg = request.form.get('DO_ID')
 
     return 'Hi there'
+
+
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
+
+
