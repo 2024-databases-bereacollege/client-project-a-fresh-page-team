@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .profile-header {
+            background-color: #18a2f2;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .profile-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .profile-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .profile-info p {
+            margin: 10px 0;
+        }
+        .post {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-header">
+        <h1>{{donor.name_of_org}}</h1>
+        <img src="profile-picture.jpg" alt="Profile Picture">
+    </div>
+    <div class="profile-info">
+        <p><strong>Name:</strong> {{donor.name_of_org}}</p>
+        <p><strong>Email:</strong> {{donor.email}}</p>
+        <p><strong>Location:</strong> {{donor.city}} {{donor.state}} {{donor.zip}}</p>
+        <p><strong>Bio:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget turpis ac nisi varius commodo.</p>
+    </div>
+    <div class="post">
+        <h2>Post Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget turpis ac nisi varius commodo. Mauris sodales auctor enim, sit amet convallis ligula tincidunt nec.</p>
+    </div>
+    <!-- More posts can be added here -->
+</body>
+</html>
+
