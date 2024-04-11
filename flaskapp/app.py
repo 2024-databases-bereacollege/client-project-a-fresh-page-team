@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 
 from models import donor
 
+from models import foodbank
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,5 +26,11 @@ def register():
 @app.route('/homepage')
 def homepage():
     return render_template('homepage.html')
+
+@app.route('/search')
+
+def search():
+   foodbank = foobank.select()
+    return render_template('search.html',banks=banks)
 
 
