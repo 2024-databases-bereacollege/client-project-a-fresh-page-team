@@ -24,4 +24,6 @@ def register():
 def homepage():
     return render_template('homepage.html')
 
-
+@app.route('/do_form')
+def donation_form():
+    return render_template('donation_form.html')

@@ -45,16 +45,16 @@ VALUES
     (15100, 93180, 49917, 'sandwiches', 8, '2024-08-04'); 
 
 -- Insert data into "fb_donation_request" table
-INSERT INTO "fb_donation_request" ("FB_REQ_ID","FB_ID", "DO_ID", "item", "quantity","status", "date_requested")
+INSERT INTO "fb_donation_request" ("FB_REQ_ID","FB_ID", "DO_ID","name_of_org", "item", "quantity","status", "date_requested")
 VALUES
-    (00000, 84134, 36580, 'shoes', 3, 'pending', '2021-12-01'),
-    (01111, 14789, 36580, 'apples', 50, 'pending', '2022-11-01');
+    (00000, 84134, 36580,'Dictum Limited','shoes', 3, 'pending', '2021-12-01'),
+    (01111, 14789, 36580, 'Libero Est LLP','apples', 50, 'pending', '2022-11-01');
 
 -- Insert data into "do_donation_request" table
-INSERT INTO "do_donation_request" ("DO_REQ_ID", "DO_ID", "FB_ID", "item", "quantity", "status", "date_requested")
+INSERT INTO "do_donation_request" ("DO_REQ_ID", "DO_ID", "FB_ID","name_of_org", "item", "quantity", "status", "date_requested")
 VALUES
-    (11111, 55214, 44204, 'hats', 5, 'pending', '2023-11-26'),
-    (12222, 55214, 18607, 'oranges', 9, 'pending', '2024-02-01');
+    (11111, 55214, 44204,'Turpis Ltd','hats', 5, 'pending', '2023-11-26'),
+    (12222, 55214, 18607, 'Turpis Ltd','oranges', 9, 'pending', '2024-02-01');
 
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
 VALUES
