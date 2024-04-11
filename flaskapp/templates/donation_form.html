@@ -10,12 +10,18 @@
 <header>
     <h1 Please fill in this form to request a donation /h1>
     <form action= "/submit form" method = "POST"> 
-        <label for = "name" > Name:</label>
-        <input type="text" id="name" name ="name" required> 
+        <label for = "username" > Username of donor:</label>
+        <input type="text" name ="username" required> 
         <br>
-        <label for = "email"> Email:</label>
-        <input type="text" id="email" email ="email" required>
+        <label for = "name_of_org" > Name of org:</label>
+        <input type="text" name ="name_of_org" required> 
         <br>
-        <label for = ""
+        <label for = "item"> Item</label>
+        <input type="text" name ="item" required>
+        <br>
+        <label for = "quantity"> Quantity(in number):</label>
+        <input type ="number" name="quantity" required>
+        <label for = "date"> Date(yyyy/mm/dd)</label>
+        <input type ="date" name="date" requuired>
     </form>
 </header>
