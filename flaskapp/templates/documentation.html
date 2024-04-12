@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Documents</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation - {{document.DO_ID.name_of_org}}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Document Type</th>
+                <th>Organization Name</th>
+                <th>Date Obtained</th>
+                <th>Date Valid</th>
+                <th>View Document</th>
+                <th>Updates</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>{{document.type_of_documentation}}</td>
+                <td>{{document.DO_ID.name_of_org}}</td>
+                <td>{{document.date_obtained}}</td>
+                <td>{{document.date_valid}}</td>
+                <td><a href="document1.pdf" target="_blank">View Document</a></td>
+                <td>
+                    <form action="/update_document" method="POST">
+                      <input type="submit" value="Update Document"/>
+                    </form>
+                  </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</body>
+</html>
