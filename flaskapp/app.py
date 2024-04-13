@@ -1,13 +1,11 @@
 from flask import Flask, render_template, request
 
-from models import donor
-
-from models import foodbank
+from models import foodbank, donor, donation
 
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/donor')
 def donorList():
     donors = donor.select()
     return render_template("donor.html", 
@@ -22,15 +20,21 @@ def register():
     return 'Hi there'
 
 
-@app.route('/homepage')
+@app.route('/')
 def homepage():
     return render_template('homepage.html')
 
 @app.route('/search')
-
 def search():
-   foodbank = foobank.select()
-    return render_template('search.html',banks=banks)
+    if request.method == 'POST':
+        # Get the search query from the form
+        query = request.form['query']
+
+        # Perform the search using Peewee
+        search_results = foodbank.select().where(foodbank.item_name.contains(query))
+
+        # Render the search results template with the search results
+        return render_template('search_results.html', results = search_results)
 
 @app.route('/do_form')
 def donation_form():
