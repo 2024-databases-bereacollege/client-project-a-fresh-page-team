@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,8 +33,28 @@
   </header>
 
   <div class="profile-container">
-    <img class="profile-pic" src="" alt="Profile Picture">
+    <img class="profile-pic" src="SCOTUS22.jpg" alt="Profile Picture">
   </div>
 
+  <!-- Added sections for organization, username, email, address, phone, and date joined -->
+  <section id="section2">
+    <h2>Profile Information</h2>
+    <ul>
+      <li><strong>Organization:</strong> Example Organization</li>
+      <li><strong>Username:</strong> example_user</li>
+      <li><strong>Email:</strong> example@example.com</li>
+      <li><strong>Address:</strong> 123 Example Street, City, Country</li>
+      <li><strong>Phone:</strong> +1234567890</li>
+      <li><strong>Date Joined:</strong> January 1, 2024</li>
+    </ul>
+  </section>
+
+  <!-- Rest of your content goes here -->
+
+  <script>
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
