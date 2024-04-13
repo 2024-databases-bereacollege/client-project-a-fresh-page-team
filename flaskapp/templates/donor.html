@@ -28,8 +28,7 @@
             <td>{{ donor.primary_contact_name }}</td>
             <td>{{ donor.subscribed }}</td>
             <td>
-              <form action="/see_details" method="POST">
-                <input type="hidden" name="donorID" value="{{donor.DO_ID}}" />
+              <form action="/see_details" method="GET">
                 <input type="submit" value="See Details"/>
               </form>
             </td>

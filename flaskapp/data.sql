@@ -17,7 +17,7 @@ VALUES
 -- Insert data into "donor" table
 INSERT INTO "donor" ("DO_ID", "username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip", "date_joined", "type_of_org", "subscribed")
 VALUES
-    (55214, 'jesse_lopez', 'Turpis Ltd', 'Jesse Lopez', '1-510-766-9562', 'P.O. Box 966, 174 Nec, St.', 'eu.turpis@hotmail.net', 'New York', 'NY', '10001', '2023-05-02', 'Individual', 'Yes'),
+    (55214, 'jesse_lopez', 'Turpis Ltd', 'Jesse Lopez', '1-510-766-9562', 'P.O. Box 966 174 Nec St.', 'eu.turpis@hotmail.net', 'New York', 'NY', '10001', '2023-05-02', 'Individual', 'Yes'),
     (36580, 'angelica_barnes', 'Mollis Nec LLC', 'Angelica Barnes', '1-644-561-3419', 'Ap #897-4039 Diam. Rd.', 'donec.sollicitudin@outlook.ca', 'Los Angeles', 'CA', '90001', '2024-02-24', 'Individual', 'No'),
     (93180, 'naida_cash', 'Gravida PC', 'Naida Cash', '(284) 430-8637', '176-7009 Et, Road', 'elit.erat@yahoo.co.uk', 'Chicago', 'IL', '60601', '2023-04-26', 'Individual', 'Yes'),
     (44241, 'boris_hines', 'Magna Suspendisse Associates', 'Boris Hines', '1-684-837-5382', 'Ap #680-6297 Ac Av.', 'donec.tincidunt@google.net', 'Houston', 'TX', '77001', '2023-05-19', 'Organisation', 'No'),
