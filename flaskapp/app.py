@@ -41,25 +41,6 @@ def donation_form():
     return render_template('donation_form.html')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/donorprofile')
 def donor_profile():
     donors = donor.get_by_id(55214)
@@ -77,3 +58,7 @@ def documents():
 @app.route('/update_document', methods=['POST'])
 def update_doc():
     return 'Document Updated'
+
+@app.route('/')
+def index():
+    return render_template('foodbank.html')
