@@ -19,7 +19,6 @@ def register():
     """
     """
     gg = request.form.get('DO_ID')
-
     return 'Hi there'
 
 
@@ -33,4 +32,6 @@ def search():
    foodbank = foobank.select()
     return render_template('search.html',banks=banks)
 
-
+@app.route('/do_form')
+def donation_form():
+    return render_template('donation_form.html')
