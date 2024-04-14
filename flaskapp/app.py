@@ -12,6 +12,7 @@ def donorList():
                             page_title="Donor List",
                             page_description="Choose from one of the available Donor", 
                             donors=donors)
+
 @app.route('/see details', methods=['POST'])
 def see_details():
     """
@@ -24,17 +25,24 @@ def see_details():
 def homepage():
     return render_template('homepage.html')
 
+
 @app.route('/search')
 def search():
-    if request.method == 'POST':
-        # Get the search query from the form
-        query = request.form['query']
+    # Get the search query from the request arguments (query parameters)
+    query = request.args.get('query')
 
-        # Perform the search using Peewee
-        search_results = foodbank.select().where(foodbank.item_name.contains(query))
+    if query:
+        # Perform the search using Peewee and filter by city
+        search_results = foodbank.select().where(foodbank.city.ilike(f'%{query}%'))
+    else:
+        # If no query is provided, return an empty result set
+        search_results = []
 
-        # Render the search results template with the search results
-        return render_template('search_results.html', results = search_results)
+    # Render the search results template with the search results
+    return render_template('search.html', search_results=search_results)
+
+
+
 
 @app.route('/do_form')
 def donation_form():

@@ -8,9 +8,14 @@
 <body>
     <h1>Foodbank Items</h1>
     <ul>
-        {% for foodbank in foodbanks %}
-            <li>{{ foodbank.name_of_org }}</li>
-        {% endfor %}
+        {% if search_results %}
+            {% for foodbank in search_results %}
+                <li>{{ foodbank.name_of_org }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No results found</li>
+        {% endif %}
     </ul>
+    
 </body>
 </html>
