@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
+from werkzeug.utils import secure_filename
 
 from models import foodbank, donor, documentation, donation
 
 
 app = Flask(__name__)
 
-@app.route('/donor')
+@app.route('/')
 def donorList():
     donors = donor.select()
     return render_template("donor.html", 
@@ -68,20 +69,49 @@ def donation_form():
 
 
 
+
+
+
+
+
+
+
+
+
+
 @app.route('/donorprofile')
 def donor_profile():
-    donors = donor.get_by_id(55214)
+    donors=donor.get_by_id(55214)
     return render_template("donor_profile.html", donors=donors)
 
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('donation_form.html')
 
-@app.route('/documents')
-def documents():
-    documents = documentation.get(DO_ID=55214)
-    return render_template('documentation.html', document=documents)
+@app.route('/foodbankprofile')
+def fb_profile():
+    foodbanks = foodbank.get_by_id(84134)
+    return render_template("foodbank_profile.html", fb=foodbanks)
+@app.route('/make_a_donation', methods=['POST'])
+def make_a_donation():
+    return render_template('donation_form.html')
 
-@app.route('/update_document', methods=['POST'])
-def update_doc():
-    return 'Document Updated'
+
+@app.route('/documents')
+def doc():
+    for documents in documentation.select():
+        return render_template('documentation.html', document=documents)
+
+ALLOWED_EXTENSIONS={'txt', 'pdf','png','jpg','jpeg','gif'}
+app.config['UPLOAD_FOLDER']="static/"
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/document_updated',methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        f = request.files['fileUpload']
+        filename = secure_filename(f.filename)
+        f.save(app.config['UPLOAD_FOLDER'] + filename) 
+        return "File successfully uploaded"

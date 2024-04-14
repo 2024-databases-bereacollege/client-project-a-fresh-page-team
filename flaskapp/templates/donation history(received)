@@ -13,12 +13,6 @@
       align-items: flex-start; /* Align items to the start of the flex container */
       /* height: 100vh; */ /* You can remove this line or adjust it as needed */
     }
-
-    /* .profile-pic {
-      width: 200px; 
-      height: auto; 
-      border-radius: 50%; 
-    } */
   </style>
 </head>
 <body>
@@ -31,8 +25,6 @@
   <header>
     <h1> Foodbank</h1>
   </header>
-
-  <!-- Removed profile pic section -->
 
   <!-- Added sections for donations, my documents, and donation requests -->
   <section id="donations">
