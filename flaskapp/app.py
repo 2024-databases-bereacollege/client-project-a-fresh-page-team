@@ -47,8 +47,6 @@ def donation_form():
     return render_template('do_do_req_frm.html')
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
 
 
@@ -78,18 +76,18 @@ if __name__ == '__main__':
 
 
 
-@app.route('/donorprofile')
-def donor_profile():
-    donors=donor.get_by_id(55214)
+@app.route('/donorprofile/<doID>')
+def donor_profile(doID):
+    donors=donor.get_by_id(doID)
     return render_template("donor_profile.html", donors=donors)
 
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('donation_form.html')
 
-@app.route('/foodbankprofile')
-def fb_profile():
-    foodbanks = foodbank.get_by_id(84134)
+@app.route('/foodbankprofile/<fbID>')
+def fb_profile(fbID):
+    foodbanks = foodbank.get_by_id(fbID)
     return render_template("foodbank_profile.html", fb=foodbanks)
 @app.route('/make_a_donation', methods=['POST'])
 def make_a_donation():
@@ -102,8 +100,10 @@ def index():
 
 @app.route('/documents')
 def doc():
-    for documents in documentation.select():
-        return render_template('documentation.html', document=documents)
+    if documentation.DO_ID != 'null' and documentation.FB_ID == 'null':
+        query=documentation.select(documentation.DOC_ID).join(donor, on=documentation.DO_ID==donor.DO_ID)
+        return query
+        #return render_template('documentation.html', document=query)
 
 ALLOWED_EXTENSIONS={'txt', 'pdf','png','jpg','jpeg','gif'}
 app.config['UPLOAD_FOLDER']="static/"
@@ -118,3 +118,10 @@ def upload_file():
         filename = secure_filename(f.filename)
         f.save(app.config['UPLOAD_FOLDER'] + filename) 
         return "File successfully uploaded"
+    
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
