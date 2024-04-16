@@ -96,6 +96,10 @@ def fb_profile():
 def make_a_donation():
     return render_template('donation_form.html')
 
+@app.route('/')
+def index():
+    return render_template('foodbank.html')
+
 
 @app.route('/documents')
 def doc():
