@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Documents</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation - {{document.DO_ID.name_of_org}}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Document ID</th>
+                <th>Document Type</th>
+                <th>Organization Name</th>
+                <th>Date Obtained</th>
+                <th>Date Valid</th>
+                <th>View Document</th>
+                <th>Update the Document</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr>
+                <td>{{document.DOC_ID}}</td>
+                <td>{{document.type_of_documentation}}</td>
+                <td>{{document.DO_ID.name_of_org}}</td>
+                <td>{{document.date_obtained}}</td>
+                <td>{{document.date_valid}}</td>      
+                <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
+                <td>
+                    <form action="/document_updated" method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileUpload" id="fileUpload">
+                        <input type="submit" value="Upload">
+                    </form>
+                  </td>
+                 
+            </tr>
+            
+        </tbody>
+    </table>
+</body>
+</html>

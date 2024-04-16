@@ -1,0 +1,81 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .profile-header {
+            background-color: #8c9193;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-header h1 {
+            margin: 10;
+            font-size: 50px;
+        }
+        .profile-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .profile-info img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10%;
+            margin-bottom: 0px;
+        }
+        .profile-info p {
+            margin: 10px 0;
+        }
+        .post {
+            background-color: #fffdfd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-header">
+        <div class="profile-info img">
+        <img src="static/Screenshot.png"' alt="Profile Picture"> 
+    </div>
+        <h1>{{donors.name_of_org}}</h1>
+        <form action="/request_a_donation" method="POST">
+            <input type="submit" value="Request a Donation"/></form>
+        </div>
+    <div class="profile-info">
+        <p><strong>Location:</strong> {{donors.address}} {{donors.city}} {{donors.state}} {{donors.zip}}</p>
+        <p><strong>Email:</strong> {{donors.email}}</p>
+        <p><strong>Primary Contact Person:</strong> {{donors.primary_contact_name}}</p>
+        <p><strong>Phone Number:</strong> {{donors.phone_num}} </p>
+        <p><strong>Member Since:</strong> {{donors.date_joined}} </p>
+    </div>
+    <div class="post">
+        <h2>About {{donors.name_of_org}}</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget turpis ac nisi varius commodo. Mauris sodales auctor enim, sit amet convallis ligula tincidunt nec.</p>
+    </div>
+    <div class="profile-info img">
+        <h2>Photos</h2>
+        <img src="static/Screenshot.png",alt="Public Photos">
+        <img src="static/Amusement_Park.jpg" alt="Public Photos">
+    </div>
+    <!-- More posts can be added here -->
+</body>
+</html>
+
