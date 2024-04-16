@@ -33,7 +33,12 @@ def search():
     # Perform the database query using Peewee
     if query:
         # Use case-insensitive search for example, adjust as needed
-       search_results = foodbank.select().where(fn.lower(foodbank.city).contains(query.lower()))
+        
+        # Split the query into keywords
+        search_results = foodbank.select().where(
+            fn.lower(foodbank.city).contains(query.lower()))
+
+        # Assuming description field contains information about services like "foodbanks"
 
     else:
         search_results = []
