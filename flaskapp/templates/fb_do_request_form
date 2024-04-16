@@ -16,12 +16,15 @@
         <label for = "name_of_org" > Name of org:</label>
         <input type="text" name ="name_of_org" required> 
         <br>
-        <label for = "item"> Item</label>
+        <label for = "item"> Item:</label>
         <input type="text" name ="item" required>
         <br>
         <label for = "quantity"> Quantity(in number):</label>
         <input type ="number" name="quantity" required>
-        <label for = "date"> Date(yyyy/mm/dd)</label>
-        <input type ="date" name="date" requuired>
+        <br>
+        <label for = "date"> Date(yyyy/mm/dd):</label>
+        <input type ="text" name="date" required>
+        <br>
+        <input type ="submit" name = "Search"
     </form>
 </header>

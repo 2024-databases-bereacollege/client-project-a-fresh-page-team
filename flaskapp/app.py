@@ -26,7 +26,7 @@ def homepage():
 
 @app.route('/do_form')
 def donation_form():
-    return render_template('donation_form.html')
+    return render_template('do_do_req_frm.html')
 
 
 
