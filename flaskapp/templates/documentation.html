@@ -24,27 +24,31 @@
     <table>
         <thead>
             <tr>
+                <th>Document ID</th>
                 <th>Document Type</th>
                 <th>Organization Name</th>
                 <th>Date Obtained</th>
                 <th>Date Valid</th>
                 <th>View Document</th>
-                <th>Updates</th>
+                <th>Update the Document</th>
             </tr>
         </thead>
         <tbody>
-            
+           
             <tr>
+                <td>{{document.DOC_ID}}</td>
                 <td>{{document.type_of_documentation}}</td>
                 <td>{{document.DO_ID.name_of_org}}</td>
                 <td>{{document.date_obtained}}</td>
-                <td>{{document.date_valid}}</td>
-                <td><a href="document1.pdf" target="_blank">View Document</a></td>
+                <td>{{document.date_valid}}</td>      
+                <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
                 <td>
-                    <form action="/update_document" method="POST">
-                      <input type="submit" value="Update Document"/>
+                    <form action="/document_updated" method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileUpload" id="fileUpload">
+                        <input type="submit" value="Upload">
                     </form>
                   </td>
+                 
             </tr>
             
         </tbody>

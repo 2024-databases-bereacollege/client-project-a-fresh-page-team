@@ -4,23 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header Example</title>
+    <style>
+        /* CSS styles for header */
+        header {
+            background-color: #333; /* Change color as per your preference */
+            padding: 10px 0; /* Adjust padding as needed */
+            color: #fff; /* Text color */
+
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px; /* Adjust spacing between menu items */
+        }
+        nav ul li a {
+            color: #fff; /* Text color for menu items */
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            color: #ffd700; /* Change color on hover */
+        }
+
+        /* CSS styles for search bar */
+        .search-container {
+            float: right;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 40px;
+        }
+        .search-container input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            border: none;
+            font-size: 17px;
+
+        }
+        .search-container button {
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to My Website</h1>
+    <h1 style = "margin-left: 15px;"> A Fresh Page</h1>
     <nav>
+        <!--   
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
+
+        -->  
+       
     </nav>
+
+    <!-- Search bar -->
+    <div class="search-container">
+        <form action="/search" method="POST">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div>
+    <img src = "images/User.png">
+    </div>
 </header>
 
 <main>
     <!-- Main content of the page goes here -->
 </main>
-
 </body>
 </html>

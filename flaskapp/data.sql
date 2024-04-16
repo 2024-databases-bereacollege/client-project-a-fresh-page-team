@@ -67,6 +67,7 @@ VALUES
     (65680, 85314, 31557, 'Finances', '2025-10-11', '2023-09-14'), -- Changed FB_ID to match foodbank FB_ID
     (11174, 63353, 18607, 'Licenses', '2029-01-08', '2024-08-14'),
     (66381, 52309, 60551, 'Quality Assurance', '2028-04-24', '2023-10-23'),
-    (28244, 35740, 90226, 'Finances', '2024-09-02', '2025-01-07'); -- Changed FB_ID to match foodbank FB_ID
+    (28244, 35740, 90226, 'Finances', '2024-09-02', '2025-01-07'), -- Changed FB_ID to match foodbank FB_ID
+    (66388, 55214, 60551, 'Quality Assurance', '2028-04-24', '2023-10-23');
 
 

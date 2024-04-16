@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodbank Items</title>
+</head>
+<body>
+    <h1>Foodbank Items</h1>
+    <ul>
+        {% if search_results %}
+            {% for foodbank in search_results %}
+                <li>{{ foodbank.name_of_org }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No results found</li>
+        {% endif %}
+    </ul>
+    
+</body>
+</html>
