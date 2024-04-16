@@ -47,8 +47,8 @@ VALUES
 -- Insert data into "fb_donation_request" table
 INSERT INTO "fb_donation_request" ("FB_REQ_ID","FB_ID", "DO_ID","username","name_of_org", "item", "quantity","status", "date_requested")
 VALUES
-    (00000, 84134, 36580,'Dictum Limited','shoes', 3, 'pending', '2021-12-01'),
-    (01111, 14789, 36580, 'Libero Est LLP','apples', 50, 'pending', '2022-11-01');
+    (00000, 84134, 36580,'Dictum Limited','fb_user84134','shoes', 3, 'pending', '2021-12-01'),
+    (01111, 14789, 36580, 'Libero Est LLP','fb_user14789','apples', 50, 'pending', '2022-11-01');
 
 -- Insert data into "do_donation_request" table
 INSERT INTO "do_donation_request" ("DO_REQ_ID", "DO_ID", "FB_ID","name_of_org","username", "item", "quantity", "status", "date_requested")
