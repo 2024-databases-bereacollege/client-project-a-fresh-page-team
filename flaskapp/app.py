@@ -2,11 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 from models import foodbank, donor, documentation, donation
-
-
+from peewee import fn
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/donor')
 def donorList():
     donors = donor.select()
     return render_template("donor.html", 
@@ -27,22 +26,20 @@ def homepage():
     return render_template('homepage.html')
 
 
-@app.route('/search')
+@app.route('/search', methods=['POST'])
 def search():
-    # Get the search query from the request arguments (query parameters)
-    query = request.args.get('query')
-
+    # Retrieve the search query from the request parameters
+    query = request.form.get('search')
+    # Perform the database query using Peewee
     if query:
-        # Perform the search using Peewee and filter by city
-        search_results = foodbank.select().where(foodbank.city.ilike(f'%{query}%'))
+        # Use case-insensitive search for example, adjust as needed
+       search_results = foodbank.select().where(fn.lower(foodbank.city).contains(query.lower()))
+
     else:
-        # If no query is provided, return an empty result set
         search_results = []
 
     # Render the search results template with the search results
     return render_template('search.html', search_results=search_results)
-
-
 
 
 @app.route('/do_form')
@@ -50,6 +47,8 @@ def donation_form():
     return render_template('donation_form.html')
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
