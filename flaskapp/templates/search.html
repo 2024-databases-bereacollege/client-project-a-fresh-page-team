@@ -10,7 +10,7 @@
     <ul>
         {% if search_results %}
             {% for foodbank in search_results %}
-                <li>{{ foodbank.name_of_org }}</li>
+                <li><a href="{{ url_for('donor_profile', id= foodbank.id) }}">{{ foodbank.name_of_org }}</a></li>
             {% endfor %}
         {% else %}
             <li>No results found</li>
