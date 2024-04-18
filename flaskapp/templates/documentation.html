@@ -25,26 +25,19 @@
         <thead>
             <tr>
                 <th>Document ID</th>
-<<<<<<< Updated upstream
                 <th>Document ID</th>
-=======
->>>>>>> Stashed changes
                 <th>Document Type</th>
                 <th>Organization Name</th>
                 <th>Date Obtained</th>
                 <th>Date Valid</th>
                 <th>View Document</th>
                 <th>Update the Document</th>
-<<<<<<< Updated upstream
+
                 <th>Update the Document</th>
             </tr>
         </thead>
         <tbody>
-<<<<<<< Updated upstream
             {% for document in document %}
-=======
-           
->>>>>>> Stashed changes
             <tr>
                 <td>{{document.DOC_ID}}</td>
                 <td>{{document.DOC_ID}}</td>
@@ -60,15 +53,14 @@
                 <td>{{document.DO_ID.name_of_org}}</td>
                 <td>{{document.date_obtained}}</td>
                 <td>{{document.date_valid}}</td>      
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
                 <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
 =======
                 <td><a href="Amusement_Park.jpg" target="blank">View Document</a></td>
->>>>>>> Stashed changes
+
 =======
                 <td><a href="Amusement_Park.jpg" target="blank">View Document</a></td>
->>>>>>> Stashed changes
+
                 <td>
                     <form action="/document_updated" method="post" enctype="multipart/form-data">
                         <input type="file" name="fileUpload" id="fileUpload">
@@ -76,10 +68,7 @@
                     </form>
                   </td>
                  
-<<<<<<< Updated upstream
                  
-=======
->>>>>>> Stashed changes
             </tr>
             {% endfor %}
         </tbody>
