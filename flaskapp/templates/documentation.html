@@ -31,44 +31,30 @@
                 <th>Date Valid</th>
                 <th>View Document</th>
                 <th>Update the Document</th>
-
-                <th>Update the Document</th>
             </tr>
         </thead>
         <tbody>
             {% for document in document %}
             <tr>
                 <td>{{document.DOC_ID}}</td>
-                <td>{{document.DOC_ID}}</td>
-=======
             </tr>
         </thead>
         <tbody>
            
             <tr>
                 <td>{{document.DOC_ID}}</td>
-                <td>{{document.DOC_ID}}</td>
->>>>>>> Stashed changes
                 <td>{{document.type_of_documentation}}</td>
                 <td>{{document.DO_ID.name_of_org}}</td>
                 <td>{{document.date_obtained}}</td>
                 <td>{{document.date_valid}}</td>      
 
                 <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
-=======
-                <td><a href="Amusement_Park.jpg" target="blank">View Document</a></td>
-
-=======
-                <td><a href="Amusement_Park.jpg" target="blank">View Document</a></td>
-
                 <td>
                     <form action="/document_updated" method="post" enctype="multipart/form-data">
                         <input type="file" name="fileUpload" id="fileUpload">
                         <input type="submit" value="Upload">
                     </form>
-                  </td>
-                 
-                 
+                  </td>     
             </tr>
             {% endfor %}
         </tbody>

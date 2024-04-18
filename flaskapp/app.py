@@ -5,10 +5,7 @@ from models import foodbank, donor, documentation, donation
 from peewee import fn
 app = Flask(__name__)
 
-<<<<<<< Updated upstream
 @app.route('/donors')
-=======
->>>>>>> Stashed changes
 @app.route('/')
 def donorList():
     donors = donor.select()
@@ -60,40 +57,26 @@ def donation_form():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/donor_profile/<doID>')
-def donor_profile(doID):
-    donors=donor.get_by_id(doID)
+@app.route('/donorprofile')
+def donor_profile():
+    donors=donor.get_by_id(55214)
     return render_template("donor_profile.html", donors=donors)
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('donation_form.html')
 
-<<<<<<< Updated upstream
+@app.route('/foodbankprofile')
+def fb_profile():
+    foodbanks = foodbank.get_by_id(84134)
+    return render_template("foodbank_profile.html", fb=foodbanks)
+@app.route('/make_a_donation', methods=['POST'])
+def make_a_donation():
+    return render_template('donation_form.html')
+
+@app.route('/profilefoodbank')
+def index():
+    return render_template('foodbank.html')
+
 @app.route('/documents')
 def doc():
     for documents in documentation.select():
@@ -102,11 +85,11 @@ def doc():
     for documents in documentation.select():
         return render_template('documentation.html', document=documents)
 
-=======
 @app.route('/foodbankprofile')
 def fb_profile():
     foodbanks = foodbank.get_by_id(84134)
     return render_template("foodbank_profile.html", fb=foodbanks)
+
 @app.route('/make_a_donation', methods=['POST'])
 def make_a_donation():
     return render_template('donation_form.html')
@@ -117,13 +100,11 @@ def doc():
     for documents in documentation.select():
         return render_template('documentation.html', document=documents)
 
->>>>>>> Stashed changes
 @app.route('/document_updated', methods=['POST'])
 def doc_updated():
     return "Document successfully updated!"
     
     
-
 @app.route('/test')
 def test():
     return render_template('test.html')
