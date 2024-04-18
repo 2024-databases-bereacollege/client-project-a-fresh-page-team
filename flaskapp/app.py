@@ -57,6 +57,7 @@ def donation_form():
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -85,11 +86,31 @@ def donation_form():
 @app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
+=======
+@app.route('/donorprofile')
+def donor_profile():
+    donors=donor.get_by_id(55214)
+>>>>>>> 60ab88b (routes)
     return render_template("donor_profile.html", donors=donors)
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('donation_form.html')
 
+<<<<<<< HEAD
+=======
+@app.route('/foodbankprofile')
+def fb_profile():
+    foodbanks = foodbank.get_by_id(84134)
+    return render_template("foodbank_profile.html", fb=foodbanks)
+@app.route('/make_a_donation', methods=['POST'])
+def make_a_donation():
+    return render_template('donation_form.html')
+
+@app.route('/profilefoodbank')
+def index():
+    return render_template('foodbank.html')
+
+>>>>>>> 60ab88b (routes)
 @app.route('/documents')
 def doc():
     for documents in documentation.select():
