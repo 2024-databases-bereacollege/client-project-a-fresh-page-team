@@ -58,6 +58,7 @@ VALUES
 
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
 VALUES
+<<<<<<< Updated upstream
     (32128, 55214, null, 'Finances', '2029-05-08', '2023-06-23'),
     (69644, null, 44204, 'Licenses', '2027-06-21', '2024-07-08'),
     (25464, 79989, null, 'Quality Assurance', '2033-07-13', '2024-09-18'), -- Changed FB_ID to match foodbank FB_ID
@@ -69,5 +70,17 @@ VALUES
     (66381, 52309, null, 'Quality Assurance', '2028-04-24', '2023-10-23'),
     (28244, null, 90226, 'Finances', '2024-09-02', '2025-01-07'), -- Changed FB_ID to match foodbank FB_ID
     (66388, 55214, null, 'Quality Assurance', '2028-04-24', '2023-10-23');
+=======
+    (32128, 55214, 84134, 'Finances', '2029-05-08', '2023-06-23'),
+    (69644, 36580, 44204, 'Licenses', '2027-06-21', '2024-07-08'),
+    (25464, 79989, 31557, 'Quality Assurance', '2033-07-13', '2024-09-18'), -- Changed FB_ID to match foodbank FB_ID
+    (70638, 60159, 31557, 'Licenses', '2026-04-30', '2023-11-24'), -- Changed FB_ID to match foodbank FB_ID
+    (56902, 93180, 90226, 'Quality Assurance', '2027-04-14', '2023-06-17'),
+    (13906, 44241, 60551, 'Licenses', '2033-06-19', '2024-02-20'),
+    (65680, 85314, 31557, 'Finances', '2025-10-11', '2023-09-14'), -- Changed FB_ID to match foodbank FB_ID
+    (11174, 63353, 18607, 'Licenses', '2029-01-08', '2024-08-14'),
+    (66381, 52309, 60551, 'Quality Assurance', '2028-04-24', '2023-10-23'),
+    (28244, 35740, 90226, 'Finances', '2024-09-02', '2025-01-07'), -- Changed FB_ID to match foodbank FB_ID
+    (66388, 55214, 60551, 'Quality Assurance', '2028-04-24', '2023-10-23');
 
 

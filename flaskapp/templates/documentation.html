@@ -34,6 +34,12 @@
             </tr>
         </thead>
         <tbody>
+            {% for document in document %}
+            <tr>
+                <td>{{document.DOC_ID}}</td>
+            </tr>
+        </thead>
+        <tbody>
            
             <tr>
                 <td>{{document.DOC_ID}}</td>
@@ -41,16 +47,16 @@
                 <td>{{document.DO_ID.name_of_org}}</td>
                 <td>{{document.date_obtained}}</td>
                 <td>{{document.date_valid}}</td>      
+
                 <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
                 <td>
                     <form action="/document_updated" method="post" enctype="multipart/form-data">
                         <input type="file" name="fileUpload" id="fileUpload">
                         <input type="submit" value="Upload">
                     </form>
-                  </td>
-                 
+                  </td>     
             </tr>
-            
+            {% endfor %}
         </tbody>
     </table>
 </body>
