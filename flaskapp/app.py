@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
-from models import foodbank, donor, documentation, donation
+from models import foodbank, donor, documentation, donation, fb_donation_request
 from peewee import fn
 app = Flask(__name__)
 
@@ -42,10 +42,23 @@ def search():
     return render_template('search.html', search_results=search_results)
 
 
-@app.route('/do_form')
+@app.route('/do_form', methods = ["GET", "POST"])
 def donation_form():
-    return render_template('do_do_req_frm.html')
-
+    if request.method == "POST":
+        Username = request.form.get("username") 
+        Name_of_org = request.form.get("name_of_org") 
+        Item = request.form.get("item")
+        Quantity = request.form.get("quantity")
+        Date_Requested = request.form.get("date")
+# Insert the form data into the Donation table
+        fb_donation_request.create(
+            username= Username,
+            name_of_org= Name_of_org,
+            item= Item,
+            quantity= Quantity,
+            date_requested= Date_Requested
+        )
+    return render_template('fb_form.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
