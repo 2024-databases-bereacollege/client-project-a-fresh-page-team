@@ -5,7 +5,10 @@ from models import foodbank, donor, documentation, donation
 from peewee import fn
 app = Flask(__name__)
 
+<<<<<<< Updated upstream
 @app.route('/donors')
+=======
+>>>>>>> Stashed changes
 @app.route('/')
 def donorList():
     donors = donor.select()
@@ -90,6 +93,7 @@ def donor_profile(doID):
 def request_a_donation():
     return render_template('donation_form.html')
 
+<<<<<<< Updated upstream
 @app.route('/documents')
 def doc():
     for documents in documentation.select():
@@ -98,6 +102,22 @@ def doc():
     for documents in documentation.select():
         return render_template('documentation.html', document=documents)
 
+=======
+@app.route('/foodbankprofile')
+def fb_profile():
+    foodbanks = foodbank.get_by_id(84134)
+    return render_template("foodbank_profile.html", fb=foodbanks)
+@app.route('/make_a_donation', methods=['POST'])
+def make_a_donation():
+    return render_template('donation_form.html')
+
+
+@app.route('/documents')
+def doc():
+    for documents in documentation.select():
+        return render_template('documentation.html', document=documents)
+
+>>>>>>> Stashed changes
 @app.route('/document_updated', methods=['POST'])
 def doc_updated():
     return "Document successfully updated!"
