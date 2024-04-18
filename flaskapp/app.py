@@ -17,8 +17,10 @@ def donorList():
 def see_details():
     """
     """
-    gg = request.form.get('DO_ID')
-    return gg
+    for fb in search_results:
+        if fb['id'] == foodbank_id:
+            return fb
+    return None
 
 
 @app.route('/')
@@ -81,7 +83,7 @@ def donation_form():
 
 
 
-@app.route('/donorprofile/<doID>')
+@app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
     return render_template("donor_profile.html", donors=donors)
@@ -90,10 +92,11 @@ def donor_profile(doID):
 def request_a_donation():
     return render_template('donation_form.html')
 
-@app.route('/foodbankprofile/<fbID>')
-def fb_profile(fbID):
-    foodbanks = foodbank.get_by_id(fbID)
-    return render_template("foodbank_profile.html", fb=foodbanks)
+@app.route('/foodbank_profile/<FB_ID>')
+def fb_profile(FB_ID):
+    foodbank_info = foodbank.get_by_id(FB_ID)
+    return render_template("foodbank_profile.html", fb=foodbank_info)
+    
 @app.route('/make_a_donation', methods=['POST'])
 def make_a_donation():
     return render_template('donation_form.html')
