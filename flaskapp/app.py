@@ -74,40 +74,43 @@ def donation_form():
 
 
 
-
+#This what a donor profile will look like when viewed by another user
+#All details added and are working
+#Need to connect to the the fb donation request form (foodbank fills out to request donations from donors)
+#Images are wokring on and off; size are too big; might need to add size restrictions
+#Find a way to insert the 
 @app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
     return render_template("donor_profile.html", donors=donors)
+#This is not the correct form; using this form as test
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('donation_form.html')
 
+#This what a foodbank profile will look like when viewed by another user
+#All details added and are working
+#Need to connect to the the  DO donation request form (donor fills out to request to donate to foodbanks)
+#Images are wokring on and off; size are too big; might need to add size restrictions
 @app.route('/foodbank_profile/<FB_ID>')
 def fb_profile(FB_ID):
     foodbank_info = foodbank.get_by_id(FB_ID)
     return render_template("foodbank_profile.html", fb=foodbank_info)
-    
+#Might not be the correct form, using this as a test template to see if users will be sent to another page if they click on "request to donate"    
 @app.route('/make_a_donation', methods=['POST'])
 def make_a_donation():
     return render_template('donation_form.html')
 
-@app.route('/profilefoodbank')
-def index():
-    return render_template('foodbank.html')
-
+#Need to add queries
+#Connect it to search bar and/or the documents button from the homepage
+#Basic view: all the documents that have been added by the user
+#Filter options: date uploaded, type of doc, expiration date
+#Need to add an 'uploaded date column'
 @app.route('/documents')
 def doc():
-    for documents in documentation.select():
+        for docs in documentation:
+            documents=docs.select().where(docs.DO_ID==55214)
         return render_template('documentation.html', document=documents)
-
-
-
-
-@app.route('/document_updated', methods=['POST'])
-def doc_updated():
-    return "Document successfully updated!"
-    
     
 @app.route('/test')
 def test():
