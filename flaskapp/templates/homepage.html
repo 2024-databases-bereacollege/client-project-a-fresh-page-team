@@ -7,10 +7,9 @@
     <style>
         /* CSS styles for header */
         header {
-            background-color: #333; /* Change color as per your preference */
+            background-color: #76A21E; /* Change color as per your preference */
             padding: 10px 0; /* Adjust padding as needed */
             color: #fff; /* Text color */
-
         }
         nav ul {
             list-style-type: none;
@@ -28,7 +27,6 @@
         nav ul li a:hover {
             color: #ffd700; /* Change color on hover */
         }
-
         /* CSS styles for search bar */
         .search-container {
             float: right;
@@ -43,52 +41,113 @@
             margin-right: 16px;
             border: none;
             font-size: 17px;
-
+            border-radius: 5px;
         }
         .search-container button {
             padding: 6px 10px;
             margin-top: 8px;
             margin-right: 16px;
-            background: #ddd;
+            background: #ddd; /* Change button background color */
             font-size: 17px;
             border: none;
             cursor: pointer;
+            border-radius: 5px; /* Add border radius for curved edges */
+            background-color: #560D0D;
+            color: #fff; /* Change button text color */
         }
         .search-container button:hover {
-            background: #ccc;
+            background: #C6CF65;
+        }
+        .user_img {
+            position: absolute;
+            top: 10%;
+            right: 55px; /* Adjust distance from the right */
+            transform: translateY(-50%);    
+            max-width: 25%; /* Adjust the width as needed */
+            max-height: 25%; /* Maintain aspect ratio */
+        }
+        .username {
+            position: absolute;
+            top: 12%;
+            right: 123px; /* Adjust distance from the right */
+            transform: translateY(-50%);
+            cursor: pointer; /* Add cursor pointer */
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+           
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1 style = "margin-left: 15px;"> A Fresh Page</h1>
-    <nav>
-          
-        <ul>
-            <li><a href="#">Documents</a></li>
-            <li><a href="#">Donation History</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-
-     
-       
-    </nav>
-
-    <!-- Search bar -->
-    <div class="search-container">
-        <form action="/search" method="POST">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <div>
-    <img src = "static/User.png">
-    </div>
-</header>
-
-<main>
-    <!-- Main content of the page goes here -->
-</main>
+    <header>
+        <h1 style="margin-left: 15px;">A Fresh Page</h1>
+        <nav></nav>
+        <!-- Search bar -->
+        <div class="search-container">
+            <form action="/search" method="POST">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="username" onclick="toggleDropdown()">Username</div>
+        <div class="user_img">
+            <img src="static/user.png">
+        </div>
+        <div class="dropdown">
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Profile</a>
+                <a href="#">Documents</a>
+                <a href="#"> Donation History</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+        <script>
+            function toggleDropdown() {
+                var dropdownContent = document.getElementById("myDropdown");
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            }
+            // Close the dropdown menu if the user clicks outside of it
+            window.onclick = function(event) {
+                if (!event.target.matches('.username')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.style.display === "block") {
+                            openDropdown.style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+    </header>
+    <main>
+        <!-- Main content of the page goes here -->
+    </main>
 </body>
 </html>

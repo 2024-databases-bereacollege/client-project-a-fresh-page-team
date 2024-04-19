@@ -6,7 +6,6 @@ from peewee import fn
 app = Flask(__name__)
 
 @app.route('/donors')
-@app.route('/')
 def donorList():
     donors = donor.select()
     return render_template("donor.html", 
@@ -14,14 +13,6 @@ def donorList():
                             page_description="Choose from one of the available Donor", 
                             donors=donors)
 
-@app.route('/see details', methods=['POST'])
-def see_details():
-    """
-    """
-    for fb in search_results:
-        if fb['id'] == foodbank_id:
-            return fb
-    return None
 
 
 @app.route('/')
@@ -109,24 +100,9 @@ def index():
 def doc():
     for documents in documentation.select():
         return render_template('documentation.html', document=documents)
-def doc():
-    for documents in documentation.select():
-        return render_template('documentation.html', document=documents)
-
-@app.route('/foodbankprofile')
-def fb_profile():
-    foodbanks = foodbank.get_by_id(84134)
-    return render_template("foodbank_profile.html", fb=foodbanks)
-
-@app.route('/make_a_donation', methods=['POST'])
-def make_a_donation():
-    return render_template('donation_form.html')
 
 
-@app.route('/documents')
-def doc():
-    for documents in documentation.select():
-        return render_template('documentation.html', document=documents)
+
 
 @app.route('/document_updated', methods=['POST'])
 def doc_updated():
