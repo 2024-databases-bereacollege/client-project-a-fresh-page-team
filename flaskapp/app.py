@@ -125,39 +125,47 @@ def donation_form():
 
 
 
-#This what a donor profile will look like when viewed by another user
+
+
+
+
+
+#USER PUBLIC ROFILES
+#Public view of donors and foodbanks (how another user will see their profile)
 #All details added and are working
-#Need to connect to the the fb donation request form (foodbank fills out to request donations from donors)
-#Images are wokring on and off; size are too big; might need to add size restrictions
-#Find a way to insert the 
+#Request a donation (fb requesting) connected to the 'fb_do_request_form'
+#Request to Donate (donor requesting) connected to the 'do_do_req.frm.html'
+#Image size are working; 200x200 for profile pic & 100x100 for posts for now
+#Find a way to insert the bio from the user side (when creating account; may or may be implemented)
+
+#donor public profile
 @app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
     return render_template("donor_profile.html", donors=donors)
-#This is not the correct form; using this form as test
+#form for foodbank requesting donation from a donor's profile
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
-    return render_template('donation_form.html')
+    return render_template('fb_do_request_form')
 
-#This what a foodbank profile will look like when viewed by another user
-#All details added and are working
-#Need to connect to the the  DO donation request form (donor fills out to request to donate to foodbanks)
-#Images are wokring on and off; size are too big; might need to add size restrictions
+#foodbank public profile
 @app.route('/foodbank_profile/<FB_ID>')
 def fb_profile(FB_ID):
     foodbank_info = foodbank.get_by_id(FB_ID)
     return render_template("foodbank_profile.html", fb=foodbank_info)
-#Might not be the correct form, using this as a test template to see if users will be sent to another page if they click on "request to donate"    
-@app.route('/make_a_donation', methods=['POST'])
+#Form for donor to requesting to donate from a foodbank's profile
+@app.route('/request_to_donate', methods=['POST'])
 def make_a_donation():
-    return render_template('donation_form.html')
+    return render_template('do_do_req_frm.html')
 
-
+#DOCUMENTS
 #Need to add queries
-#Connect it to search bar and/or the documents button from the homepage
-#Basic view: all the documents that have been added by the user
-#Filter options (maybe): date uploaded, type of doc, expiration date
-#Need to add an 'uploaded date column'
+#Connect it to search bar and/or the documents button from the homepage (maybe/maybe not?)
+#Basic view: all the documents that have been added by the user (implmented)
+#Filter options (maybe): date uploaded, type of doc, expiration date (may not be implemented)
+#Need to add an 'uploaded date column' (may not be possible to implement anymore)
+
+#donor documents
 @app.route('/documents/<do_ID>')
 def doc(do_ID):
     donors=donor.get_by_id(do_ID)
@@ -169,5 +177,5 @@ def doc(do_ID):
 
 #uload files on the documents
 
-#doc for fb
+#foodbank documents
     
