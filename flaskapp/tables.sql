@@ -77,5 +77,5 @@ CREATE TABLE "documentation"(
     FOREIGN KEY ("DO_ID") REFERENCES Donor("DO_ID"),
     type_of_documentation varchar(100),
     date_obtained date,
-    date_valid date
+    expiration_date date
 );

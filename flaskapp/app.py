@@ -74,6 +74,57 @@ def donation_form():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #This what a donor profile will look like when viewed by another user
 #All details added and are working
 #Need to connect to the the fb donation request form (foodbank fills out to request donations from donors)
@@ -101,17 +152,22 @@ def fb_profile(FB_ID):
 def make_a_donation():
     return render_template('donation_form.html')
 
+
 #Need to add queries
 #Connect it to search bar and/or the documents button from the homepage
 #Basic view: all the documents that have been added by the user
-#Filter options: date uploaded, type of doc, expiration date
+#Filter options (maybe): date uploaded, type of doc, expiration date
 #Need to add an 'uploaded date column'
-@app.route('/documents')
-def doc():
-        for docs in documentation:
-            documents=docs.select().where(docs.DO_ID==55214)
-        return render_template('documentation.html', document=documents)
+@app.route('/documents/<do_ID>')
+def doc(do_ID):
+    donors=donor.get_by_id(do_ID)
+    query = (documentation
+        .select()
+        .join(donor, on=documentation.DO_ID==donor.DO_ID)
+        .where(documentation.DO_ID==donors))
+    return render_template('documentation.html', document=query)
+
+#uload files on the documents
+
+#doc for fb
     
-@app.route('/test')
-def test():
-    return render_template('test.html')

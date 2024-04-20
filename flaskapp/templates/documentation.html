@@ -20,7 +20,8 @@
     </style>
 </head>
 <body>
-    <h1>Documentation - {{document.DO_ID.name_of_org}}</h1>
+    <h1>Your Documents</h1>
+    </div>
     <table>
         <thead>
             <tr>
@@ -28,7 +29,7 @@
                 <th>Document Type</th>
                 <th>Organization Name</th>
                 <th>Date Obtained</th>
-                <th>Date Valid</th>
+                <th>Expiration Date</th>
                 <th>View Document</th>
                 <th>Update the Document</th>
             </tr>
@@ -39,13 +40,13 @@
             </tr>
         </thead>
         <tbody>
-           
+            {% for document in document %}
             <tr>
                 <td>{{document.DOC_ID}}</td>
                 <td>{{document.type_of_documentation}}</td>
                 <td>{{document.DO_ID.name_of_org}}</td>
                 <td>{{document.date_obtained}}</td>
-                <td>{{document.date_valid}}</td>      
+                <td>{{document.expiration_date}}</td>      
 
                 <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
                 <td>
@@ -53,8 +54,9 @@
                         <input type="file" name="fileUpload" id="fileUpload">
                         <input type="submit" value="Upload">
                     </form>
-                  </td>     
+                </td>     
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>

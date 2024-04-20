@@ -56,7 +56,7 @@ VALUES
     (11111, 55214, 44204,'Turpis Ltd','jesse_lopez','hats', 5, 'pending', '2023-11-26'),
     (12222, 55214, 18607, 'Turpis Ltd','jesse_lopez','oranges', 9, 'pending', '2024-02-01');
 
-INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "date_valid")
+INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "expiration_date")
 VALUES
     (32128, 55214, null, 'Finances', '2029-05-08', '2023-06-23'),
     (69644, null, 44204, 'Licenses', '2027-06-21', '2024-07-08'),
