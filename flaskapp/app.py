@@ -166,16 +166,34 @@ def make_a_donation():
 #Need to add an 'uploaded date column' (may not be possible to implement anymore)
 
 #donor documents
-@app.route('/documents/<do_ID>')
-def doc(do_ID):
+@app.route('/do_documents/<do_ID>')
+def DO_doc(do_ID):
     donors=donor.get_by_id(do_ID)
     query = (documentation
         .select()
         .join(donor, on=documentation.DO_ID==donor.DO_ID)
         .where(documentation.DO_ID==donors))
-    return render_template('documentation.html', document=query)
-
-#uload files on the documents
+    return render_template('donor_documents.html', document=query)
 
 #foodbank documents
+@app.route('/fb_documents/<fb_ID>')
+def FB_doc(fb_ID):
+    fb=foodbank.get_by_id(fb_ID)
+    query = (documentation
+        .select()
+        .join(foodbank, on=documentation.FB_ID==foodbank.FB_ID)
+        .where(documentation.FB_ID==fb))
+    return render_template('foodbank_documents.html', document=query)
+
+#upload files on the documents
+ALLOWED_EXTENSIONS={'txt', 'pdf','png','jpg','jpeg','gif'}
+app.config['UPLOAD_FOLDER']="static/"
+
+@app.route('/document_updated',methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        f = request.files['fileUpload']
+        filename = secure_filename(f.filename)
+        f.save(app.config['UPLOAD_FOLDER'] + filename) 
+        return "File successfully uploaded!"
     

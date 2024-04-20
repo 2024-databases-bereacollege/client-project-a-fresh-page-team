@@ -35,7 +35,7 @@ class foodbank(baseModel):
     date_joined = DateField() 
     city = CharField()
     state = CharField()
-    zip = CharField()
+    zip = CharField()  
 
 class donor (baseModel):
     DO_ID = PrimaryKeyField()
