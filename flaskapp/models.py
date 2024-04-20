@@ -35,7 +35,7 @@ class foodbank(baseModel):
     date_joined = DateField() 
     city = CharField()
     state = CharField()
-    zip = CharField()
+    zip = CharField()  
 
 class donor (baseModel):
     DO_ID = PrimaryKeyField()
@@ -88,7 +88,7 @@ class documentation(baseModel):
     FB_ID = ForeignKeyField(foodbank,null = True, column_name='FB_ID') 
     type_of_documentation = CharField(255)
     date_obtained = DateField() 
-    date_valid = DateField() 
+    expiration_date = DateField() 
 
 
   
