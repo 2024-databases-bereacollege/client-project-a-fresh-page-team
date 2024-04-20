@@ -61,7 +61,7 @@ class donation(baseModel):
     date_donated = DateField()
 
 class fb_donation_request(baseModel):
-    FB_REQ_ID = PrimaryKeyField()
+    FB_REQ_ID = AutoField()
     FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
     DO_ID = ForeignKeyField(donor,column_name='DO_ID')
     username = CharField(225)

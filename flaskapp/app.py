@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-
 from models import foodbank, donor, documentation, donation, fb_donation_request
 from peewee import fn
 app = Flask(__name__)
@@ -55,17 +54,18 @@ def donation_form():
         Item = request.form.get("item")
         Quantity = request.form.get("quantity")
         Date_Requested = request.form.get("date")
+        Fb = foodbank.select().where(username = Username)
 # Insert the form data into the Donation table
         fb_donation_request.create(
             username= Username,
             name_of_org= Name_of_org,
             item= Item,
             quantity= Quantity,
-            date_requested= Date_Requested
+            date_requested= Date_Requested,
+            FB_ID = Fb,
+            DO_ID = Do
         )
     return render_template('fb_form.html')
-
-
 
 
 
