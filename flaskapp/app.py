@@ -153,7 +153,7 @@ def request_a_donation():
 def fb_profile(FB_ID):
     foodbank_info = foodbank.get_by_id(FB_ID)
     return render_template("foodbank_profile.html", fb=foodbank_info)
-#Form for donor to requesting to donate from a foodbank's profile
+#Form for donor to request to donate from a foodbank's profile
 @app.route('/request_to_donate', methods=['POST'])
 def make_a_donation():
     return render_template('do_do_req_frm.html')
