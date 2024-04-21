@@ -1,4 +1,5 @@
 from peewee import *
+from sklearn.utils import tosequence
 
 # Database Configuration
 ################################
@@ -25,7 +26,7 @@ class Example (baseModel):
 """
 
 class foodbank(baseModel):
-    FB_ID = PrimaryKeyField()
+    FB_ID = AutoField(primary_key = True)
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
     primary_contact_name = CharField(100)
@@ -38,7 +39,7 @@ class foodbank(baseModel):
     zip = CharField()  
 
 class donor (baseModel):
-    DO_ID = PrimaryKeyField()
+    DO_ID = AutoField(primary_key = True)
     username = CharField(20, unique = True)
     name_of_org = CharField(100)
     type_of_org = CharField(100) 
@@ -53,7 +54,7 @@ class donor (baseModel):
     zip = CharField()
 
 class donation(baseModel):
-    DN_ID = PrimaryKeyField()
+    DN_ID = AutoField(primary_key = True)
     DO_ID = ForeignKeyField(donor, column_name='DO_ID')
     FB_ID = ForeignKeyField(foodbank, column_name='FB_ID')
     type_of_donation = CharField(255)
@@ -61,7 +62,7 @@ class donation(baseModel):
     date_donated = DateField()
 
 class fb_donation_request(baseModel):
-    FB_REQ_ID = AutoField()
+    FB_REQ_ID = AutoField(primary_key = True)
     FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
     DO_ID = ForeignKeyField(donor,column_name='DO_ID')
     username = CharField(225)
@@ -72,7 +73,7 @@ class fb_donation_request(baseModel):
     status = CharField(255, default = 'pending') #
 
 class do_donation_request(baseModel):
-    DO_REQ_ID = PrimaryKeyField()
+    DO_REQ_ID = AutoField(primary_key = True)
     DO_ID = ForeignKeyField(donor,column_name='DO_ID')
     FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
     username = CharField(225)
@@ -83,7 +84,7 @@ class do_donation_request(baseModel):
     status = CharField(255, default = 'pending')
 
 class documentation(baseModel):
-    DOC_ID = PrimaryKeyField()
+    DOC_ID = AutoField(primary_key = True)
     DO_ID = ForeignKeyField(donor, null = True, column_name='DO_ID') 
     FB_ID = ForeignKeyField(foodbank,null = True, column_name='FB_ID') 
     type_of_documentation = CharField(255)

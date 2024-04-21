@@ -43,15 +43,16 @@ def search():
 @app.route('/do_form', methods = ["GET", "POST"])
 def donation_form():
     if request.method == "POST":
-        Username = request.form.get("username") 
+        fbusnm = request.form.get("username")
         Name_of_org = request.form.get("name_of_org") 
         Item = request.form.get("item")
         Quantity = request.form.get("quantity")
         Date_Requested = request.form.get("date")
-        Fb = foodbank.select().where(username = Username)
+        Fb = getPK(foodbank, 'FB_ID', fbusnm)
+        Do = getPK(donor, 'DO_ID', fbusnm)
 # Insert the form data into the Donation table
         fb_donation_request.create(
-            username= Username,
+            username= fbusnm,
             name_of_org= Name_of_org,
             item= Item,
             quantity= Quantity,
@@ -61,6 +62,11 @@ def donation_form():
         )
     return render_template('fb_form.html')
 
+def getPK(tb, col_name, usnm) :
+    query = (tb.select().where(tb.username == usnm));
+    for q in query:
+        q = q.col_name;
+    return q
 
 
 
