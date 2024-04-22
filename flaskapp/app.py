@@ -142,3 +142,8 @@ def upload_file():
 def fb_information(FB_ID):
     foodbank_information = foodbank.get_by_id(FB_ID)
     return render_template("profilefb.html", fb=foodbank_information)
+
+@app.route('/profiledonor/<DO_ID>')
+def profile_donor(DO_ID):
+    donors=donor.get_by_id(DO_ID)
+    return render_template("profiledonor.html", donors=donors)
