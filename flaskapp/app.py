@@ -70,6 +70,88 @@ def getPK(tb, col_name, usnm) :
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #USER PUBLIC ROFILES
 #Public view of donors and foodbanks (how another user will see their profile)
 #All details added and are working
@@ -86,7 +168,7 @@ def donor_profile(doID):
 #form for foodbank requesting donation from a donor's profile
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
-    return render_template('fb_do_request_form')
+    return render_template('fb_form.html')
 
 #foodbank public profile
 @app.route('/foodbank_profile/<FB_ID>')
@@ -96,7 +178,7 @@ def fb_profile(FB_ID):
 #Form for donor to request to donate from a foodbank's profile
 @app.route('/request_to_donate', methods=['POST'])
 def make_a_donation():
-    return render_template('do_do_req_frm.html')
+    return render_template('do_form.html')
 
 #DOCUMENTS
 #Need to add queries
