@@ -4,15 +4,6 @@ from models import foodbank, donor, documentation, donation, fb_donation_request
 from peewee import fn
 app = Flask(__name__)
 
-@app.route('/donors')
-def donorList():
-    donors = donor.select()
-    return render_template("donor.html", 
-                            page_title="Donor List",
-                            page_description="Choose from one of the available Donor", 
-                            donors=donors)
-
-
 
 @app.route('/')
 def homepage():
@@ -149,7 +140,13 @@ def getPK(tb, col_name, usnm) :
 
 
 
-
+#Add Bio to profile page
+@app.route('/add_bio')
+def add():
+    if request.method==['POST']:
+        bio=request.form.get('bio')
+    
+    return render_template('add_bio.html')
 
 
 #USER PUBLIC ROFILES
