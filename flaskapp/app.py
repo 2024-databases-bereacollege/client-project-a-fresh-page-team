@@ -70,85 +70,6 @@ def getPK(tb, col_name, usnm) :
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #USER PUBLIC ROFILES
 #Public view of donors and foodbanks (how another user will see their profile)
 #All details added and are working
@@ -215,4 +136,20 @@ def upload_file():
         filename = secure_filename(f.filename)
         f.save(app.config['UPLOAD_FOLDER'] + filename) 
         return "File successfully uploaded!"
-    
+
+# This route handles the form submission and displays the food bank profile dynamically
+@app.route('/search_results', methods=['POST'])
+def search_results():
+    # Retrieve the search query from the request parameters
+    search_query = request.form.get('search_query')
+
+    # Perform the database query using Peewee
+    if search_query:
+        # Use case-insensitive search for example, adjust as needed
+        matching_foodbanks =foodbank.select().where(
+            fn.lower(foodbank.name_of_org).contains(search_query.lower()))
+    else:
+        matching_foodbanks = []
+
+    # Render the search results template with the search results
+    return render_template('search_results.html', foodbanks=matching_foodbanks)
