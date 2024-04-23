@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/main.css">
     <title>User Profile</title>
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
-        }
+        
         .profile-header {
             background-color: #8c9193;
             color: #ffffff;
@@ -58,6 +55,7 @@
     </style>
 </head>
 <body>
+    {% include 'header.html' %}
     <div class="profile-header">
         <div class="profile-info img">
             <img src="/static/default_user.jpg" alt="Public Photos">

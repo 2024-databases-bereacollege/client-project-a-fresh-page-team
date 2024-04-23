@@ -1,4 +1,75 @@
+/* Example of a generic display class */
 .display {
     border: 5px dashed darksalmon;
     border-radius: 5px;
+}
+
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set base font size and family */
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2em; /* 32px */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em; /* 24px */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.2em; /* 19.2px */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Paragraph styles */
+p {
+    font-size: 1em; /* 16px */
+    line-height: 1.5; /* 24px */
+    margin-bottom: 15px;
+}
+
+/* Link styles */
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Container styles */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Example of a button style */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: darkblue;
 }

@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodbank Items</title>
+    <style>
+
+    </style>
 </head>
 <body>
-
-    <h1>Foodbank Items</h1>
+    {% include 'header.html' %}
+    <div class = "search_items">
+    <h3>Results:</h3>
     <ul>
         {% if search_results %}
             {% for result in search_results %}
@@ -17,6 +21,7 @@
             <li>No results found</li>
         {% endif %}
     </ul>
+    </div>
     
 </body>
 </html>
