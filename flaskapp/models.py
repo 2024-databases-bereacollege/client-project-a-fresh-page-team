@@ -62,7 +62,7 @@ class donation(baseModel):
     date_donated = DateField()
 
 class fb_donation_request(baseModel):
-    FB_REQ_ID = PrimaryKeyField()
+    FB_REQ_ID = AutoField(primary_key = True)
     FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
     DO_ID = ForeignKeyField(donor,column_name='DO_ID')
     username = CharField(225)
@@ -73,7 +73,7 @@ class fb_donation_request(baseModel):
     status = CharField(255, default = 'pending') #
 
 class do_donation_request(baseModel):
-    DO_REQ_ID = PrimaryKeyField()
+    DO_REQ_ID = AutoField(primary_key = True)
     DO_ID = ForeignKeyField(donor,column_name='DO_ID')
     FB_ID = ForeignKeyField(foodbank,column_name='FB_ID')
     username = CharField(225)

@@ -1,34 +1,97 @@
 <!-- This form is filled by the foodbanks to request a donation-->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Example</title>
+    <title>Header Example</title> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Request Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9CDA9C;
+            margin: 0;
+            padding: 0;
+            font-size: 10px; 
+        }
+
+        header {
+            background-color: #9CDA9C;
+            color: #0C0B09;
+            padding: 30px;
+            text-align: left;
+        }
+
+        form {
+            max-width: 2000px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #CD900B;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <h1 Please fill in this form to request a donation /h1>
-    <form action= "/do_form" method = "POST">
-        <label for = "username" > Enter your username:</label>
-        <input type="text" name ="username" required> 
-        <br>
-        <label for = "username" > Username of donor:</label>
-        <input type="text" name ="username" required> 
-        <br>
-        <label for = "name_of_org" > Name of org:</label>
-        <input type="text" name ="name_of_org" required> 
-        <br>
-        <label for = "item"> Item:</label>
-        <input type="text" name ="item" required>
-        <br>
-        <label for = "quantity"> Quantity(in number):</label>
-        <input type ="number" name="quantity" required>
-        <br>
-        <label for = "date"> Date(yyyy/mm/dd):</label>
-        <input type ="text" name="date" required>
-        <br>
-        <input type ="submit" value = "submit"/>
-    </form>
-</header>
+    <header>
+        <h1 Please fill in this form to request a donation /h1>
+        <form action= "/request_a_donation" method = "POST">
+            <label for = "username" > Enter your username:</label>
+            <input type="text" name ="username" required> 
+            <br>
+            <label for = "username" > Username of donor:</label>
+            <input type="text" name ="username" required> 
+            <br>
+            <label for = "name_of_org" > Name of org:</label>
+            <input type="text" name ="name_of_org" required> 
+            <br>
+            <label for = "item"> Item:</label>
+            <input type="text" name ="item" required>
+            <br>
+            <label for = "quantity"> Quantity(in number):</label>
+            <input type ="number" name="quantity" required>
+            <br>
+            <label for = "date"> Date(yyyy/mm/dd):</label>
+            <input type ="text" name="date" required>
+            <br>
+            <input type ="submit" value = "submit"/>
+        </form>
+    </header>
+</body>
