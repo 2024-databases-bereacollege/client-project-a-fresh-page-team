@@ -38,15 +38,21 @@
 
   <!-- Added sections for organization, username, email, address, phone, and date joined -->
   <section id="section2">
-    <h2>Profile Information for our Wonderful Donors!</h2>
+    <h2>Donor's Information</h2>
     <ul>
-      <li><strong>Organization:</strong> Example Organization</li>
-      <li><strong>Username:</strong> example_user</li>
-      <li><strong>Email:</strong> example@example.com</li>
-      <li><strong>Address:</strong> 123 Example Street, City, Zipcode</li>
-      <li><strong>Phone:</strong> +1234567890</li>
-      <li><strong>Date Joined:</strong> January 1, 2024</li>
-    </ul>
+      <div class="profile-info">
+        <p><strong> Name of the Organization: </strong> {{donors.name_of_org}}</p>
+        <p><strong>Location:</strong> {{donors.address}} {{donors.city}} {{donors.state}} {{donors.zip}}</p>
+        <p><strong>Email:</strong> {{donors.email}}</p>
+        <p><strong>Primary Contact Person:</strong> {{donors.primary_contact_name}}</p>
+        <p><strong>Phone Number:</strong> {{donors.phone_num}} </p>
+        <p><strong>Member Since:</strong> {{donors.date_joined}} </p>
+    </div>
+    <div class="post">
+        <h2>About {{donors.name_of_org}}</h2>
+        <!--This will be collected from the user when they create their account -->
+        <p>Company Bio</p>
+    </div>
   </section>
 
   <script>

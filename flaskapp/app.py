@@ -4,15 +4,6 @@ from models import foodbank, donor, documentation, donation, fb_donation_request
 from peewee import fn
 app = Flask(__name__)
 
-@app.route('/donors')
-def donorList():
-    donors = donor.select()
-    return render_template("donor.html", 
-                            page_title="Donor List",
-                            page_description="Choose from one of the available Donor", 
-                            donors=donors)
-
-
 
 @app.route('/')
 def homepage():
@@ -150,6 +141,15 @@ def getPK(tb, col_name, usnm) :
 
 
 
+#Add Bio to profile page
+@app.route('/add_bio')
+def add():
+    if request.method==['POST']:
+        bio=request.form.get('bio')
+    
+    return render_template('add_bio.html')
+
+
 #USER PUBLIC ROFILES
 #Public view of donors and foodbanks (how another user will see their profile)
 #All details added and are working
@@ -166,7 +166,7 @@ def donor_profile(doID):
 #form for foodbank requesting donation from a donor's profile
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
-    return render_template('fb_do_request_form')
+    return render_template('fb_form.html')
 
 #foodbank public profile
 @app.route('/foodbank_profile/<FB_ID>')
@@ -176,7 +176,7 @@ def fb_profile(FB_ID):
 #Form for donor to request to donate from a foodbank's profile
 @app.route('/request_to_donate', methods=['POST'])
 def make_a_donation():
-    return render_template('do_do_req_frm.html')
+    return render_template('do_form.html')
 
 #DOCUMENTS
 #Need to add queries
@@ -216,4 +216,14 @@ def upload_file():
         filename = secure_filename(f.filename)
         f.save(app.config['UPLOAD_FOLDER'] + filename) 
         return "File successfully uploaded!"
-    
+
+# This route handles the form submission and displays the food bank profile dynamically
+@app.route('/profilefb/<FB_ID>')
+def fb_information(FB_ID):
+    foodbank_information = foodbank.get_by_id(FB_ID)
+    return render_template("profilefb.html", fb=foodbank_information)
+
+@app.route('/profiledonor/<DO_ID>')
+def profile_donor(DO_ID):
+    donors=donor.get_by_id(DO_ID)
+    return render_template("profiledonor.html", donors=donors)
