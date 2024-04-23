@@ -248,3 +248,7 @@ def fb_information(FB_ID):
 def profile_donor(DO_ID):
     donors=donor.get_by_id(DO_ID)
     return render_template("profiledonor.html", donors=donors)
+
+@app.route('/donation_history')
+def donations_received():
+    return render_template('donation_history.html')
