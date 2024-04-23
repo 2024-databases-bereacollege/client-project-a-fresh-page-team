@@ -233,7 +233,7 @@ def FB_doc(fb_ID):
 ALLOWED_EXTENSIONS={'txt', 'pdf','png','jpg','jpeg','gif'}
 app.config['UPLOAD_FOLDER']="static/"
 
-@app.route('/document_updated',methods=['POST'])
+@app.route('/document_uploaded',methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         f = request.files['fileUpload']
