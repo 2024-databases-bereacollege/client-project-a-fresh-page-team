@@ -45,7 +45,7 @@
         }
         .search-container button {
             padding: 6px 10px;
-            margin-top: 8px;
+            margin-top: 20px;
             margin-right: 16px;
             background: #ddd; /* Change button background color */
             font-size: 17px;
@@ -56,7 +56,7 @@
             color: #fff; /* Change button text color */
         }
         .search-container button:hover {
-            background: #C6CF65;
+            background: #9CDA9C;
         }
         .user_img {
             position: absolute;
@@ -68,7 +68,7 @@
         }
         .username {
             position: absolute;
-            top: 12%;
+            top: 15%;
             right: 123px; /* Adjust distance from the right */
             transform: translateY(-50%);
             cursor: pointer; /* Add cursor pointer */
@@ -76,7 +76,8 @@
         .dropdown {
             position: relative;
             display: inline-block;
-            left: 1080px
+            left: 1080px;
+            top: -32px; 
            
         }
         .dropdown-content {
@@ -86,6 +87,7 @@
             min-width: 160px;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             z-index: 1;
+            
         }
         .dropdown-content a {
             color: black;
@@ -103,7 +105,10 @@
 </head>
 <body>
     <header>
-        <h1 style="margin-left: 15px;">A Fresh Page</h1>
+        <!-- <h1 style="margin-left: 15px;">A Fresh Page</h1> -->
+        <img src="static/logo.png" width="100" height="100" style="margin-left: 25px; margin-top: 7px;">
+
+
         <nav></nav>
         <!-- Search bar -->
         <div class="search-container">
@@ -114,11 +119,11 @@
         </div>
         <div class="username" onclick="toggleDropdown()">Username</div>
         <div class="user_img">
-            <img src="static/user.png">
+            <img src="static/user.png" style= "margin-top: 28px;"">
         </div>
         <div class="dropdown">
             <div id="myDropdown" class="dropdown-content">
-                <a href="#">Profile</a>
+                <a href="/do_documents">Profile</a>
                 <a href="#">Documents</a>
                 <a href="#"> Donation History</a>
                 <a href="#">Logout</a>
