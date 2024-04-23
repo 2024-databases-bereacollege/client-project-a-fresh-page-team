@@ -82,6 +82,9 @@ def getPK(tb, col_name, usnm) :
     return q
 
 
+app.route('')
+
+
 
 
 
