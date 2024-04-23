@@ -58,7 +58,8 @@ def donation_form():
             quantity= Quantity,
             date_requested= Date_Requested,
             FB_ID = Fb,
-            DO_ID = Do
+            DO_ID = Do,
+            FB_REQ_ID = 87908
         )
     return render_template('fb_form.html')
 
