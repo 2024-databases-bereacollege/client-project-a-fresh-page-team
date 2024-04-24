@@ -186,7 +186,7 @@ def add():
 @app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
-    return render_template("donor_profile.html", donors=donors)
+    return render_template("donor_profile.html", do=donors)
 #form for foodbank requesting donation from a donor's profile
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
