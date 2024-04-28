@@ -24,7 +24,7 @@
         }
 
         header {
-            background-color: #9CDA9C;
+            background-color: #CD900B;
             color: #0C0B09;
             padding: 30px;
             text-align: left;
@@ -34,14 +34,14 @@
             max-width: 2000px;
             margin: 40px auto;
             padding: 40px;
-            background-color: #CD900B;
+            background-color: #9CDA9C;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         input[type="text"],
@@ -55,8 +55,8 @@
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
-            color: #fff;
+            background-color: #0C0B09;
+            color: #4CAF50;
             border: none;
             padding: 12px 20px;
             border-radius: 4px;
@@ -64,8 +64,18 @@
             font-size: 16px;
         }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
+        input[type="Submit"]:hover {
+            background-color: #0C0B09;
+        }
+
+        .display-box {
+            background-color: #0C0B09;
+            color: #4CAF50;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: auto;
         }
     </style>
 </head>
@@ -73,11 +83,13 @@
     <header>
         <h1 Please fill in this form to request a donation /h1>
         <form action= "/request_a_donation" method = "POST">
-            <label for = "username" > Enter your username:</label>
-            <input type="text" name ="username" required> 
+            <div class="display-box" contenteditable="false">
+            </div>
+            <label for = "fbusername" > Enter your username:</label>
+            <input type="text" name ="fbusername" required> 
             <br>
-            <label for = "username" > Username of donor:</label>
-            <input type="text" name ="username" required> 
+            <label for = "dousername" > Username of donor:</label>
+            <input type="text" name ="dousername" required> 
             <br>
             <label for = "name_of_org" > Name of org:</label>
             <input type="text" name ="name_of_org" required> 
@@ -91,7 +103,7 @@
             <label for = "date"> Date(yyyy/mm/dd):</label>
             <input type ="text" name="date" required>
             <br>
-            <input type ="submit" value = "submit"/>
+            <input type ="submit" value = "Submit"/>
         </form>
     </header>
 </body>
