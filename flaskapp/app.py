@@ -163,7 +163,9 @@ def getPK(tb, col_name, usnm) :
 
 
 
-
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 #Add Bio to profile page
 @app.route('/add_bio')
@@ -219,6 +221,21 @@ def DO_doc(doID):
         .where(documentation.DO_ID==donors))
     return render_template('do_documents.html', document=query)
 
+@app.route('/document_edit', methods=['POST'])
+def document_edit():
+    return render_template ('document_edit.html')
+
+docID=32128
+@app.route('/document_edited/<docID>', methods=['POST', 'GET'])
+def update(docID):
+    document=documentation.get_by_id(docID)
+    if request.method == 'POST' or 'GET':
+        document.type_of_documentation = request.form['type_of_documentation']
+        document.name_of_org = request.form['name_of_org']
+        document.date_obtained = request.form['date_obtained']
+        document.expiration_date = request.form['expiration_date']
+    return render_template('do_documents.html', document=document)
+
 #foodbank documents
 @app.route('/fb_documents/<fbID>')
 def FB_doc(fbID):
@@ -255,3 +272,29 @@ def profile_donor(doID):
 @app.route('/donation_history')
 def donations_received():
     return render_template('donation_history.html')
+
+#ADMIN VIEWS
+
+#homepage of admin
+#menu looks different from users
+@app.route('/admin')
+def admin_homepage():
+    return render_template('admin_homepage.html')
+
+#ability to see all foodbanks in the system
+@app.route('/all_fb')
+def fb():
+    foodbanks=foodbank
+    return render_template('all_fb.html', fb=foodbanks)
+
+#ability to see all the donors in the system
+@app.route('/all_do')
+def do():
+    donors=donor
+    return render_template('all_do.html', do=donors)
+@app.route('/all_doc')
+def doc():
+    return ""
+@app.route('/all_dn')
+def dn():
+    return ""

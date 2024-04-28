@@ -20,12 +20,13 @@
     </style>
 </head>
 <body>
-    <h1>Your Documents</h1>
+    <h1>All Documents</h1>
     <table>
         <thead>
             <tr>
                 <th>Document ID</th>
                 <th>Document Type</th>
+                <th>Organization Type</th>
                 <th>Organization Name</th>
                 <th>Date Obtained</th>
                 <th>Expiration Date</th>
@@ -33,11 +34,29 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{document.DOC_ID}}</td>
-            </tr>
         </thead>
         <tbody>
+            {% for document in document %}
+            <tr>
+                <td>{{document.DOC_ID}}</td>
+                <td>{{document.type_of_documentation}}</td>
+                <td>{{document.DO_ID.name_of_org}}</td>
+                <td>{{document.date_obtained}}</td>
+                <td>{{document.expiration_date}}</td>      
+                <td>
+                    <form action="/document_uploaded" method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileUpload" id="fileUpload">
+                        <input type="submit" value="Upload">
+                    </form>
+                </td>
+                <td>
+                    <form action="/document_edit" method="POST">
+                        <input type="submit" value="Edit" id="DOC_ID">
+                    </form>
+                </td>     
+            </tr>
+            {% endfor %}
+
             {% for document in document %}
             <tr>
                 <td>{{document.DOC_ID}}</td>
