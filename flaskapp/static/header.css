@@ -1,0 +1,99 @@
+/* CSS styles for header */
+header {
+    background-color: #7BC67B; /* Change color as per your preference */
+    padding: 10px 0; /* Adjust padding as needed */
+    color: #fff; /* Text color */
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px; /* Adjust spacing between menu items */
+}
+nav ul li a {
+    color: #fff; /* Text color for menu items */
+    text-decoration: none;
+}
+nav ul li a:hover {
+    color: #ffd700; /* Change color on hover */
+}
+/* CSS styles for search bar */
+.search-container {
+    float: right;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+}
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: none;
+    font-size: 17px;
+    border-radius: 5px;
+}
+.search-container button {
+    padding: 6px 10px;
+    margin-top: 20px;
+    margin-right: 16px;
+    background: #ddd; /* Change button background color */
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Add border radius for curved edges */
+    background-color: #000;
+    color: #fff; /* Change button text color */
+}
+.search-container button:hover {
+    background: #CD900B;
+}
+.user_img {
+    position: absolute;
+    top: 10%;
+    right: 55px; /* Adjust distance from the right */
+    transform: translateY(-50%);    
+    max-width: 25%; /* Adjust the width as needed */
+    max-height: 25%; /* Maintain aspect ratio */
+}
+.username {
+    position: absolute;
+    top: 15%;
+    right: 110px; /* Adjust distance from the right */
+    transform: translateY(-50%);
+    cursor: pointer; /* Add cursor pointer */
+    color: #000;
+    font-weight: bold; /* Add this line to make the text bold */
+
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    left: 1080px;
+    top: -32px; 
+   
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}

@@ -30,7 +30,6 @@
                 <th>Organization Name</th>
                 <th>Date Obtained</th>
                 <th>Expiration Date</th>
-                <th>View Document</th>
                 <th>Update the Document</th>
             </tr>
         </thead>
@@ -44,13 +43,11 @@
             <tr>
                 <td>{{document.DOC_ID}}</td>
                 <td>{{document.type_of_documentation}}</td>
-                <td>{{document.FB_ID.name_of_org}}</td>
+                <td>{{document.DO_ID.name_of_org}}</td>
                 <td>{{document.date_obtained}}</td>
                 <td>{{document.expiration_date}}</td>      
-
-                <td><a href="static/Screenshot.png" target="blank">View Document</a></td>
                 <td>
-                    <form action="/document_updated" method="post" enctype="multipart/form-data">
+                    <form action="/document_uploaded" method="post" enctype="multipart/form-data">
                         <input type="file" name="fileUpload" id="fileUpload">
                         <input type="submit" value="Upload">
                     </form>

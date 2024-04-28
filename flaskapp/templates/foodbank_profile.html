@@ -3,85 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/main.css">
     <title>User Profile</title>
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
-        }
-        .profile-header {
-            background-color: #8c9193;
-            color: #ffffff;
+        
+        .profile-background {
+            background-color: #0c0b09;
+            color: #cd900b;
             padding: 20px;
+            border-radius: 10px;
             text-align: center;
         }
-        .profile-header h1 {
-            margin: 100;
-            font-size: 50px;
-        }
-        .profile-info {
-            background-color: #fff;
+        .user-info {
+            background-color: #9cda9c;
+            color:#0c0b09;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 40px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 20px 20px 20px rgba(15, 15, 15, 0.1);
             margin: 50px auto;
             max-width: 600px;
         }
-        .profile-info img {
-            background-color: #fff;
+        .user-photo img {
             width: 200px;
             height: 200px;
             border-radius: 10%;
             margin-bottom: 0px;
         }
+        .bio {
+            background-color: #9cda9c;
+            color:#0c0b09;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 20px 20px 20px rgba(15, 15, 15, 0.1);
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        .photos-background{
+            background-color: #9cda9c;
+            color:#0c0b09;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 20px 20px 20px rgba(15, 15, 15, 0.1);
+            margin: 50px auto;
+            max-width: 800px;
+        }
         .public-photos img  {
+
             width: 100px;
             height: 100px;
             border-radius: 10%;
-            margin-bottom: 0px;
+            max-width: 600px;
         }
-        .profile-info p {
-            margin: 10px 0;
-        }
-        .post {
-            background-color: #fffdfd;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .post h2 {
-            margin-top: 0;
-        }
+        
     </style>
 </head>
 <body>
-    <div class="profile-header">
-        <div class="profile-info img">
+    {% include 'header.html' %}
+    <div class="profile-background">
+        <div class="user-photo img">
             <img src="/static/default_user.jpg" alt="Public Photos">
         </div>
         <h1>{{fb.name_of_org}}</h1>
         <form action="/request_to_donate" method="POST">
             <input type="submit" value="Request to Donate"/></form>
     </div>
-    <div class="profile-info">
+    <div class="user-info">
         <p><strong>Location:</strong> {{fb.address}} {{fb.city}} {{fb.state}} {{fb.zip}}</p>
         <p><strong>Email:</strong> {{fb.email}}</p>
         <p><strong>Primary Contact Person:</strong> {{fb.primary_contact_name}}</p>
         <p><strong>Phone Number:</strong> {{fb.phone_num}} </p>
         <p><strong>Member Since:</strong> {{fb.date_joined}} </p>
     </div>
-    <div class="post">
+    <div class="bio">
         <h2>About {{fb.name_of_org}}</h2>
         <!--This will be collected from the user when they create their account -->
         <p>Company Bio</p>
     </div>
-    <div class="public-photos img">
-        <h2>Photos</h2>
-        <img src="/static/feature.jpg",alt="Public Photos">
-        <img src="/static/hero.png" alt="Public Photos">
+    <div class="photos-background">
+        <div class="public-photos img">
+            <h2>Photos</h2>
+            <img src="/static/feature.jpg",alt="Public Photos">
+            <img src="/static/hero.png" alt="Public Photos">
+        </div>
     </div>
     <!-- More posts can be added here -->
 </body>

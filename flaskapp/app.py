@@ -146,6 +146,9 @@ def getPK(tb, col_name, usnm) :
 
 
 
+
+
+
 #Add Bio to profile page
 @app.route('/add_bio')
 def add():
@@ -167,17 +170,17 @@ def add():
 @app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
-    return render_template("donor_profile.html", donors=donors)
+    return render_template("donor_profile.html", do=donors)
 #form for foodbank requesting donation from a donor's profile
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('fb_form.html')
 
 #foodbank public profile
-@app.route('/foodbank_profile/<FB_ID>')
-def fb_profile(FB_ID):
-    foodbank_info = foodbank.get_by_id(FB_ID)
-    return render_template("foodbank_profile.html", fb=foodbank_info)
+@app.route('/foodbank_profile/<fbID>')
+def fb_profile(fbID):
+    foodbanks = foodbank.get_by_id(fbID)
+    return render_template("foodbank_profile.html", fb=foodbanks)
 #Form for donor to request to donate from a foodbank's profile
 # @app.route('/request_to_donate', methods=['POST'])
 # def make_a_donation():
@@ -191,30 +194,30 @@ def fb_profile(FB_ID):
 #Need to add an 'uploaded date column' (may not be possible to implement anymore)
 
 #donor documents
-@app.route('/do_documents/<do_ID>')
-def DO_doc(do_ID):
-    donors=donor.get_by_id(do_ID)
+@app.route('/do_documents/<doID>')
+def DO_doc(doID):
+    donors=donor.get_by_id(doID)
     query = (documentation
         .select()
         .join(donor, on=documentation.DO_ID==donor.DO_ID)
         .where(documentation.DO_ID==donors))
-    return render_template('donor_documents.html', document=query)
+    return render_template('do_documents.html', document=query)
 
 #foodbank documents
-@app.route('/fb_documents/<fb_ID>')
-def FB_doc(fb_ID):
-    fb=foodbank.get_by_id(fb_ID)
+@app.route('/fb_documents/<fbID>')
+def FB_doc(fbID):
+    fb=foodbank.get_by_id(fbID)
     query = (documentation
         .select()
         .join(foodbank, on=documentation.FB_ID==foodbank.FB_ID)
         .where(documentation.FB_ID==fb))
-    return render_template('foodbank_documents.html', document=query)
+    return render_template('fb_documents.html', document=query)
 
 #upload files on the documents
 ALLOWED_EXTENSIONS={'txt', 'pdf','png','jpg','jpeg','gif'}
-app.config['UPLOAD_FOLDER']="static/"
+app.config['UPLOAD_FOLDER']="static/Document_Uploads/"
 
-@app.route('/document_updated',methods=['POST'])
+@app.route('/document_uploaded',methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         f = request.files['fileUpload']
@@ -223,12 +226,16 @@ def upload_file():
         return "File successfully uploaded!"
 
 # This route handles the form submission and displays the food bank profile dynamically
-@app.route('/profilefb/<FB_ID>')
-def fb_information(FB_ID):
-    foodbank_information = foodbank.get_by_id(FB_ID)
-    return render_template("profilefb.html", fb=foodbank_information)
+@app.route('/profilefb/<fbID>')
+def fb_information(fbID):
+    foodbanks = foodbank.get_by_id(fbID)
+    return render_template("profilefb.html", fb=foodbanks)
 
-@app.route('/profiledonor/<DO_ID>')
-def profile_donor(DO_ID):
-    donors=donor.get_by_id(DO_ID)
+@app.route('/profiledonor/<doID>')
+def profile_donor(doID):
+    donors=donor.get_by_id(doID)
     return render_template("profiledonor.html", donors=donors)
+
+@app.route('/donation_history')
+def donations_received():
+    return render_template('donation_history.html')
