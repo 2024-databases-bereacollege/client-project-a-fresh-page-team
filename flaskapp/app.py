@@ -339,3 +339,46 @@ def donations():
     return render_template('all_dn.html', fb=fb, do=do, dn=dn)
 9
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route('/donor_donation/<doID>')
+def donor_donations(doID):
+    donor_info = donor.get_by_id(doID)
+    query = (donation
+             .select()
+             .join(donor, on=donation.DO_ID == donor.DO_ID)
+             .where(donation.DO_ID == doID))
+    donations_info1 = query.execute()
+    return render_template('donor_donation.html', donor=donor_info, donations=donations_info1)
