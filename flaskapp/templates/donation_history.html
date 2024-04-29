@@ -8,6 +8,30 @@
     <!-- Add any custom styles if needed -->
     <style>
         /* Add custom styles here */
+        .container {
+            text-align: center;
+        }
+
+        .details-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .custom-button {
+            background-color: #9cda9c !important;
+            color: #0c0b09 !important;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -23,70 +47,44 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for donation in donations %}
                         <tr>
-                            <td>Jesse Lopez</td>
+                            <td><strong>Name of the Organization:</strong> {{ foodbank.name_of_org }}</td>
                             <td>
-                                <button class="btn btn-primary">View Details</button>
+                                <button class="btn btn-primary custom-button" onclick="showDetails('{{ donation.type_of_donation }}', '{{ donation.quantity }}', '{{ donation.date_donated }}')">View Details</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Angelica Barnes</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Naida Cash</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Boris Hines</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Hedy Frye</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Hiram Reid</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Elton Melendez</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Dai Merrill</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Aspen Weaver</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lael Skinner</td>
-                            <td>
-                                <button class="btn btn-primary">View Details</button>
-                            </td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <!-- Details Popup -->
+    <div id="detailsPopup" class="details-popup">
+        <h2>Donation Details</h2>
+        <p><strong>Type of Donation:</strong> <span id="donation"></span></p>
+        <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+        <p><strong>Date:</strong> <span id="date"></span></p>
+        <button onclick="closeDetails()" class="btn btn-secondary">Close</button>
+    </div>
+
+    <script>
+        function showDetails(donation, quantity, date) {
+            // Display details in the popup
+            document.getElementById('donation').textContent = donation;
+            document.getElementById('quantity').textContent = quantity;
+            document.getElementById('date').textContent = date;
+
+            // Show the popup
+            document.getElementById('detailsPopup').style.display = 'block';
+        }
+
+        function closeDetails() {
+            // Hide the popup
+            document.getElementById('detailsPopup').style.display = 'none';
+        }
+    </script>
 </body>
 </html>

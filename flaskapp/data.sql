@@ -31,7 +31,7 @@ VALUES
 
 -- Insert data into "donation" table
 -- Insert data into "donation" table
-INSERT INTO "donation" ("DN_ID", "DO_ID", "FB_ID", "type_of_donation", "quantity", "date_donated")
+INSERT INTO "donation" ("DN_ID", "DO_ID", "55214", "type_of_donation", "quantity", "date_donated")
 VALUES
     (10001, 55214, 90226, 'pies', 3, '2023-12-23'),
     (10002, 44241, 49917, 'sandwiches', 5, '2023-07-03'),
