@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL DONORS</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #cd900b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Donors</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Donor ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Email</th>
+                <th>Date Joined</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </thead>
+        <tbody>
+            {% for do in do %}
+            <tr>
+                <td>{{do.DO_ID}}</td>
+                <td>{{do.name_of_org}}</td>
+                <td>{{do.city}} {{do.state}}</td>
+                <td>{{do.email}}</td>
+                <td>{{do.date_joined}}</td>      
+                <td>
+                    <a class="btn btn-primary" href="profiledonor/{{do.DO_ID}}" role="button">More Details</a><br>
+                    <a class="btn btn-primary" href="do_documents/{{do.DO_ID}}" role="button">View Documents</a>
+                </td>    
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

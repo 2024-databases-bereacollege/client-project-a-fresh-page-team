@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from models import foodbank, donor, documentation, donation, fb_donation_request
+from models import foodbank, donor, documentation, donation, fb_donation_request, do_donation_request
 from peewee import fn
 app = Flask(__name__)
 
@@ -31,7 +31,7 @@ def search():
     return render_template('search.html', search_results=search_results)
 
 
-@app.route('/request_to_donate', methods = ["GET", "POST"])
+@app.route('/request_a_donation', methods = ["GET", "POST"])
 def donation_form():
     if request.method == "POST":
         print("Handling POST")
@@ -43,19 +43,16 @@ def donation_form():
         Date_Requested = request.form.get("date")
         Fb = getPK(foodbank, fbusnm)
         Do = getPK(donor, dousnm)
-        if Fb != 'None':
-            fb_donation_request.create(
-                fbusername= fbusnm,
-                dousername= dousnm,
-                name_of_org= Name_of_org,
-                item= Item,
-                quantity= Quantity,
-                date_requested= Date_Requested,
-                FB_ID = Fb,
-                DO_ID = Do
-            )
-        else:
-            return 
+        fb_donation_request.create(
+            fbusername= fbusnm,
+            dousername= dousnm,
+            name_of_org= Name_of_org,
+            item= Item,
+            quantity= Quantity,
+            date_requested= Date_Requested,
+            FB_ID = Fb,
+            DO_ID = Do
+        )
             
         return render_template('fb_form.html')
 
@@ -155,7 +152,9 @@ def getPK(tb, usnm):
 
 
 
-
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 #Add Bio to profile page
 @app.route('/add_bio')
@@ -211,6 +210,20 @@ def DO_doc(doID):
         .where(documentation.DO_ID==donors))
     return render_template('do_documents.html', document=query)
 
+@app.route('/document_edit', methods=['POST'])
+def document_edit():
+    return render_template ('document_edit.html')
+
+@app.route('/document_edited/<docID>', methods=['POST', 'GET'])
+def update(docID):
+    document=documentation.get_by_id(docID)
+    if request.method == 'POST' or 'GET':
+        document.type_of_documentation = request.form['type_of_documentation']
+        document.name_of_org = request.form['name_of_org']
+        document.date_obtained = request.form['date_obtained']
+        document.expiration_date = request.form['expiration_date']
+    return render_template('do_documents.html', document=document)
+
 #foodbank documents
 @app.route('/fb_documents/<fbID>')
 def FB_doc(fbID):
@@ -247,3 +260,49 @@ def profile_donor(doID):
 @app.route('/donation_history')
 def donations_received():
     return render_template('donation_history.html')
+
+#ADMIN VIEWS
+
+#homepage of admin
+#menu looks different from users
+@app.route('/admin')
+def admin_homepage():
+    return render_template('admin_homepage.html')
+
+#ability to see all foodbanks in the system
+@app.route('/all_fb')
+def fb():
+    foodbanks=foodbank
+    return render_template('all_fb.html', fb=foodbanks)
+
+#ability to see all the donors in the system
+@app.route('/all_do')
+def do():
+    donors=donor
+    return render_template('all_do.html', do=donors)
+
+#ability to see all docs in the system
+@app.route('/all_doc')
+def doc():
+    fb = (documentation
+        .select()
+        .join(foodbank, on=documentation.FB_ID==foodbank.FB_ID))
+    do = (documentation
+        .select()
+        .join(donor, on=documentation.DO_ID==donor.DO_ID))
+    return render_template('all_doc.html', fb=fb, do=do)
+
+@app.route('/all_dn')
+def donations():
+    fb=(fb_donation_request
+        .select()
+        .join(foodbank, on=fb_donation_request.FB_ID==foodbank.FB_ID))
+    do=(do_donation_request
+        .select()
+        .join(donor, on=do_donation_request.DO_ID==donor.DO_ID))
+    dn=(donation
+         .select()
+        .join(foodbank, on=donation.FB_ID==foodbank.FB_ID)
+        .join(donor, on=donation.DO_ID==donor.DO_ID))
+    return render_template('all_dn.html', fb=fb, do=do, dn=dn)
+9

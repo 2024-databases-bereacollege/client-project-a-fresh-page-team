@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Documents</title>
+    <title>Donor Documents</title>
     <style>
         table {
             width: 100%;
@@ -15,13 +15,12 @@
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #cd900b;
         }
     </style>
 </head>
 <body>
     <h1>Your Documents</h1>
-    </div>
     <table>
         <thead>
             <tr>
@@ -30,7 +29,7 @@
                 <th>Organization Name</th>
                 <th>Date Obtained</th>
                 <th>Expiration Date</th>
-                <th>Update the Document</th>
+                <th>Document File</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +49,11 @@
                     <form action="/document_uploaded" method="post" enctype="multipart/form-data">
                         <input type="file" name="fileUpload" id="fileUpload">
                         <input type="submit" value="Upload">
+                    </form>
+                </td>
+                <td>
+                    <form action="/document_edit" method="POST">
+                        <input type="submit" value="Edit" id="DOC_ID">
                     </form>
                 </td>     
             </tr>
