@@ -5,7 +5,7 @@ INSERT INTO "foodbank" ("FB_ID","username", "name_of_org", "primary_contact_name
 VALUES 
     (84134, 'fb_user84134', 'Dictum Limited', 'Gavin Olsen', '(805) 811-5218', '1721 Nascetur Av.', 'curabitur.sed@google.edu', 'New York', 'NY', '10001', '2024-04-13'),
     (44204, 'fb_user44204', 'Nunc PC', 'Omar Compton', '(495) 487-2527', 'P.O. Box 394, 9121 Adipiscing Rd.', 'tristique.senectus@outlook.couk', 'Los Angeles', 'CA', '90001', '2025-03-23'),
-    (14789, 'fb_user14789', 'Libero Est LLP', 'Ciara Hopper', '(305) 451-8544', '8525 Praesent Road', 'rutrum@icloud.com', 'Chicago', 'IL', '60601', '2023-10-31'),
+    (14789, 'naida_cash', 'Libero Est LLP', 'Ciara Hopper', '(305) 451-8544', '8525 Praesent Road', 'rutrum@icloud.com', 'Chicago', 'IL', '60601', '2023-10-31'),
     (90226, 'fb_user90226', 'Arcu Incorporated', 'Savannah Brennan', '1-975-967-4234', '891-8625 Eleifend Street', 'sed.libero.proin@aol.edu', 'Houston', 'TX', '77001', '2023-11-30'),
     (95899, 'fb_user95899', 'Lacus Ut Ltd', 'Eaton Cote', '(628) 573-3280', '851-4808 Viverra. Avenue', 'nulla.integer@yahoo.couk', 'Phoenix', 'AZ', '85001', '2023-07-30'),
     (49917, 'fb_user49917', 'Nullam Suscipit Est Company', 'Preston Melton', '(691) 589-7369', '478-8401 Lorem, Rd.', 'nec@google.org', 'Philadelphia', 'PA', '19019', '2023-12-24'),
@@ -45,16 +45,16 @@ VALUES
     (10010, 52309, 18607, 'sandwiches', 18, '2024-08-04');
 
 -- Insert data into "fb_donation_request" table
-INSERT INTO "fb_donation_request" ("FB_ID", "DO_ID", "username", "name_of_org", "item", "quantity", "status", "date_requested")
+INSERT INTO "fb_donation_request" ("FB_ID", "DO_ID", "fbusername", "dousername", "name_of_org", "item", "quantity", "status", "date_requested")
 VALUES
-    (84134, 55214, 'fb_user84134', 'Dictum Limited', 'shoes', 3, 'pending', '2021-12-01'),
-    (14789, 55214, 'fb_user14789', 'Libero Est LLP', 'apples', 50, 'pending', '2022-11-01');
+    (84134, 55214, 'fb_user84134','jesse_lopez', 'Dictum Limited', 'shoes', 3, 'pending', '2021-12-01'),
+    (14789, 55214, 'fb_user14789','jesse_lopez', 'Libero Est LLP', 'apples', 50, 'pending', '2022-11-01');
 
 -- Insert data into "do_donation_request" table
-INSERT INTO "do_donation_request" ("DO_ID", "FB_ID", "name_of_org", "username", "item", "quantity", "status", "date_requested")
+INSERT INTO "do_donation_request" ("DO_ID", "FB_ID", "name_of_org", "dusnm", "fusnm", "item", "quantity", "status", "date_requested")
 VALUES
-    (55214, 84134, 'Turpis Ltd', 'jesse_lopez', 'hats', 5, 'pending', '2023-11-26'),
-    (55214, 84134, 'Turpis Ltd', 'jesse_lopez', 'oranges', 9, 'pending', '2024-02-01');
+    (55214, 84134, 'Turpis Ltd', 'jesse_lopez','fb_user84134', 'hats', 5, 'pending', '2023-11-26'),
+    (55214, 84134, 'Turpis Ltd', 'jesse_lopez','fb_user84134', 'oranges', 9, 'pending', '2024-02-01');
 
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "expiration_date")
 VALUES

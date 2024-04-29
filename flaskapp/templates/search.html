@@ -15,7 +15,7 @@
     <ul>
         {% if search_results %}
             {% for result in search_results %}
-                <li> <a href="{{ url_for('fb_profile', FB_ID= result.FB_ID) }}">{{ result.name_of_org }}</a></li>
+                <li> <a href="{{ url_for('fb_profile', fbID= result.FB_ID) }}">{{ result.name_of_org }}</a></li>
             {% endfor %}
         {% else %}
             <li>No results found</li>

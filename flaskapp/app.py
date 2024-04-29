@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from models import foodbank, donor, documentation, donation, fb_donation_request
+from models import foodbank, donor, documentation, donation, fb_donation_request, do_donation_request
 from peewee import fn
 app = Flask(__name__)
 
@@ -31,19 +31,21 @@ def search():
     return render_template('search.html', search_results=search_results)
 
 
-app.route('/request_a_donation', methods = ["GET", "POST"])
-def donation_form():
+@app.route('/request_a_donation', methods = ["GET", "POST"])
+def getdonation_form():
     if request.method == "POST":
-        fbusnm = request.form.get("username")
+        print("Handling POST")
+        fbusnm = request.form.get("fbusername")
+        dousnm = request.form.get("dousername")
         Name_of_org = request.form.get("name_of_org") 
         Item = request.form.get("item")
         Quantity = request.form.get("quantity")
         Date_Requested = request.form.get("date")
-        Fb = getPK(foodbank, 'FB_ID', fbusnm)
-        Do = getPK(donor, 'DO_ID', fbusnm)
-# Insert the form data into the Donation table
+        Fb = getPK(foodbank, fbusnm)
+        Do = getPK(donor, dousnm)
         fb_donation_request.create(
-            username= fbusnm,
+            fbusername= fbusnm,
+            dousername= dousnm,
             name_of_org= Name_of_org,
             item= Item,
             quantity= Quantity,
@@ -51,37 +53,57 @@ def donation_form():
             FB_ID = Fb,
             DO_ID = Do
         )
+            
     return render_template('fb_form.html')
 
-app.route('/request_to_donate', methods = ["GET", "POST"])
-def donation_form():
-    if request.method == "POST":
-        fbusnm = request.form.get("username")
-        Name_of_org = request.form.get("name_of_org") 
+@app.route('/request_to_donate', methods = ["GET", "POST"])
+def todonate_form():
+    if(request.method == "POST"):
+        print("Handling POST")
+        fbusnm = request.form.get("fusnm")
+        dousnm = request.form.get("dusnm")
+        Name_of_org = request.form.get("name_of_org")
         Item = request.form.get("item")
         Quantity = request.form.get("quantity")
         Date_Requested = request.form.get("date")
-        Fb = getPK(foodbank, 'FB_ID', fbusnm)
-        Do = getPK(donor, 'DO_ID', fbusnm)
-# Insert the form data into the Donation table
-        fb_donation_request.create(
-            username= fbusnm,
-            name_of_org= Name_of_org,
-            item= Item,
-            quantity= Quantity,
-            date_requested= Date_Requested,
-            FB_ID = Fb,
-            DO_ID = Do
-        )
-    return render_template('fb_form.html')
+        Fb = getPK(foodbank, fbusnm)
+        Do = getPK(donor, dousnm)
 
-def getPK(tb, col_name, usnm) :
-    query = (tb.select().where(tb.username == usnm));
-    for q in query:
-        q = q.col_name;
-    return q
+        if Fb and Do != 'None':
+            # Create donation request only if Fb and Do exist
+            try:
+                # Create donation request
+                do_donation_request.create(
+                    fusnm=fbusnm,
+                    dusnm=dousnm,
+                    name_of_org=Name_of_org,
+                    item=Item,
+                    quantity=Quantity,
+                    date_requested=Date_Requested,
+                    FB_ID=Fb,
+                    DO_ID=Do
+                )
+                return "Donation request created successfully"
+            except Exception as e:
+                # Handle database insertion error
+                return f"Error creating donation request: {e}"
+    return render_template("do_form.html")
 
 
+def getPK(tb, usnm):
+    try:
+        query = (tb.get(tb.username == usnm))
+        if query:
+            return getattr(query, tb._meta.primary_key.name)
+        else:
+            print("No record found with the specified username.")
+            return 'None'
+    except tb.DoesNotExist:
+        print("Table does not contain the specified record.")
+        return 'None'
+    except Exception as e:
+        print("An error occurred:", e)
+        return 'None'
 
 
 
@@ -164,6 +186,9 @@ def getPK(tb, col_name, usnm) :
 
 
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 #Add Bio to profile page
 @app.route('/add_bio')
@@ -186,21 +211,31 @@ def add():
 @app.route('/donor_profile/<doID>')
 def donor_profile(doID):
     donors=donor.get_by_id(doID)
-    return render_template("donor_profile.html", donors=donors)
+    return render_template("donor_profile.html", do=donors)
 #form for foodbank requesting donation from a donor's profile
 @app.route('/request_a_donation', methods=['POST'])
 def request_a_donation():
     return render_template('fb_form.html')
 
 #foodbank public profile
-@app.route('/foodbank_profile/<FB_ID>')
-def fb_profile(FB_ID):
-    foodbank_info = foodbank.get_by_id(FB_ID)
-    return render_template("foodbank_profile.html", fb=foodbank_info)
-#Form for donor to request to donate from a foodbank's profile
+@app.route('/foodbank_profile/<fbID>')
+def fb_profile(fbID):
+    foodbanks = foodbank.get_by_id(fbID)
+    return render_template("foodbank_profile.html", fb=foodbanks)
+# Form for donor to request to donate from a foodbank's profile
 @app.route('/request_to_donate', methods=['POST'])
 def make_a_donation():
     return render_template('do_form.html')
+
+@app.route('/donation_history/<fbID>')
+def foodbank_donations(fbID):
+    foodbank_info = foodbank.get_by_id(fbID)
+    query = (donation
+             .select()
+             .join(foodbank, on=donation.FB_ID == foodbank.FB_ID)
+             .where(donation.FB_ID == fbID))
+    donations_info = query.execute()
+    return render_template('donation_history.html', foodbank=foodbank_info, donations=donations_info)
 
 #DOCUMENTS
 #Need to add queries
@@ -210,30 +245,35 @@ def make_a_donation():
 #Need to add an 'uploaded date column' (may not be possible to implement anymore)
 
 #donor documents
-@app.route('/do_documents/<do_ID>')
-def DO_doc(do_ID):
-    donors=donor.get_by_id(do_ID)
+@app.route('/do_documents/<doID>')
+def DO_doc(doID):
+    do=donor.get_by_id(doID)
     query = (documentation
         .select()
         .join(donor, on=documentation.DO_ID==donor.DO_ID)
-        .where(documentation.DO_ID==donors))
-    return render_template('donor_documents.html', document=query)
+        .where(documentation.DO_ID==do))
+    return render_template('do_documents.html', document=query)
+
+@app.route('/document_edit/<id>', methods=['GET','POST'])
+def document_edit(id):
+    doc=documentation.get_by_id(id)
+    return render_template('document_edit.html', document=doc)
 
 #foodbank documents
-@app.route('/fb_documents/<fb_ID>')
-def FB_doc(fb_ID):
-    fb=foodbank.get_by_id(fb_ID)
+@app.route('/fb_documents/<fbID>')
+def FB_doc(fbID):
+    fb=foodbank.get_by_id(fbID)
     query = (documentation
         .select()
         .join(foodbank, on=documentation.FB_ID==foodbank.FB_ID)
         .where(documentation.FB_ID==fb))
-    return render_template('foodbank_documents.html', document=query)
+    return render_template('fb_documents.html', document=query)
 
 #upload files on the documents
 ALLOWED_EXTENSIONS={'txt', 'pdf','png','jpg','jpeg','gif'}
-app.config['UPLOAD_FOLDER']="static/"
+app.config['UPLOAD_FOLDER']="static/Document_Uploads/"
 
-@app.route('/document_updated',methods=['POST'])
+@app.route('/document_uploaded',methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         f = request.files['fileUpload']
@@ -242,16 +282,60 @@ def upload_file():
         return "File successfully uploaded!"
 
 # This route handles the form submission and displays the food bank profile dynamically
-@app.route('/profilefb/<FB_ID>')
-def fb_information(FB_ID):
-    foodbank_information = foodbank.get_by_id(FB_ID)
-    return render_template("profilefb.html", fb=foodbank_information)
+@app.route('/profilefb/<fbID>')
+def fb_information(fbID):
+    foodbanks = foodbank.get_by_id(fbID)
+    return render_template("profilefb.html", fb=foodbanks)
 
-@app.route('/profiledonor/<DO_ID>')
-def profile_donor(DO_ID):
-    donors=donor.get_by_id(DO_ID)
+@app.route('/profiledonor/<doID>')
+def profile_donor(doID):
+    donors=donor.get_by_id(doID)
     return render_template("profiledonor.html", donors=donors)
 
-@app.route('/donation_history')
-def donations_received():
-    return render_template('donation_history.html')
+
+#ADMIN VIEWS
+
+#homepage of admin
+#menu looks different from users
+@app.route('/admin')
+def admin_homepage():
+    return render_template('admin_homepage.html')
+
+#ability to see all foodbanks in the system
+@app.route('/all_fb')
+def fb():
+    foodbanks=foodbank
+    return render_template('all_fb.html', fb=foodbanks)
+
+#ability to see all the donors in the system
+@app.route('/all_do')
+def do():
+    donors=donor
+    return render_template('all_do.html', do=donors)
+
+#ability to see all docs in the system
+@app.route('/all_doc')
+def doc():
+    fb = (documentation
+        .select()
+        .join(foodbank, on=documentation.FB_ID==foodbank.FB_ID))
+    do = (documentation
+        .select()
+        .join(donor, on=documentation.DO_ID==donor.DO_ID))
+    return render_template('all_doc.html', fb=fb, do=do)
+
+@app.route('/all_dn')
+def donations():
+    fb=(fb_donation_request
+        .select()
+        .join(foodbank, on=fb_donation_request.FB_ID==foodbank.FB_ID))
+    do=(do_donation_request
+        .select()
+        .join(donor, on=do_donation_request.DO_ID==donor.DO_ID))
+    dn=(donation
+         .select()
+        .join(foodbank, on=donation.FB_ID==foodbank.FB_ID)
+        .join(donor, on=donation.DO_ID==donor.DO_ID))
+    return render_template('all_dn.html', fb=fb, do=do, dn=dn)
+9
+

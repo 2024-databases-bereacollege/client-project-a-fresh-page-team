@@ -1,11 +1,11 @@
-<!-- header.html -->
+<!-- header.html without search bar for forms-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
-    <!-- Link to CSS file -->
+    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="/static/header.css">
 
 </head>
@@ -17,13 +17,6 @@
         <img src="/static/logo.png" width="100" height="100" style="margin-left: 25px; margin-top: 7px;">
     </a>
 
-    <!-- Search bar -->
-    <div class="search-container">
-        <form action="/search" method="POST">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Search</button>
-        </form>
-    </div>
     <div class="username" onclick="toggleDropdown()">Username</div>
     <div class="user_img">
         <img src="/static/user.png" style= "margin-top: 38px;"">

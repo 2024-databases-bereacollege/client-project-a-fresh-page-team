@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Documents</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #cd900b;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Documents</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Document ID</th>
+                <th>Document Type</th>
+                <th>Organization Type</th>
+                <th>Organization Name</th>
+                <th>Date Obtained</th>
+                <th>Expiration Date</th>
+                <th>Document File</th>
+            </tr>
+        </thead>
+        <tbody>
+        </thead>
+        <tbody>
+            <!--documents of food banks first-->
+            {% for fb in fb %}
+            <tr>
+                <td>{{fb.DOC_ID}}</td>
+                <td>{{fb.type_of_documentation}}</td>
+                <td>FOOD BANK</td>
+                <td>{{fb.FB_ID.name_of_org}}</td>
+                <td>{{fb.date_obtained}}</td>
+                <td>{{fb.expiration_date}}</td>      
+                <td><a class="btn btn-primary" href="/static/logo.png" role="button">View Document</a></td>
+            </tr>
+            {% endfor %}
+
+            <!--documents of donors second-->
+            {% for do in do %}
+            <tr>
+                <td>{{do.DOC_ID}}</td>
+                <td>{{do.type_of_documentation}}</td>
+                <td>DONOR</td>
+                <td>{{do.DO_ID.name_of_org}}</td>
+                <td>{{do.date_obtained}}</td>
+                <td>{{do.expiration_date}}</td>  
+                <td><a class="btn btn-primary" href="/static/logo.png" role="button">View Document</a></td> 
+            </tr>      
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
