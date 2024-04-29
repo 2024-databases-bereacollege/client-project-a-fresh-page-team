@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from models import foodbank, donor, documentation, donation, fb_donation_request
+from models import foodbank, donor, documentation, donation, fb_donation_request, do_donation_request
 from peewee import fn
 app = Flask(__name__)
 
@@ -225,7 +225,6 @@ def DO_doc(doID):
 def document_edit():
     return render_template ('document_edit.html')
 
-docID=32128
 @app.route('/document_edited/<docID>', methods=['POST', 'GET'])
 def update(docID):
     document=documentation.get_by_id(docID)
@@ -292,9 +291,28 @@ def fb():
 def do():
     donors=donor
     return render_template('all_do.html', do=donors)
+
+#ability to see all docs in the system
 @app.route('/all_doc')
 def doc():
-    return ""
+    fb = (documentation
+        .select()
+        .join(foodbank, on=documentation.FB_ID==foodbank.FB_ID))
+    do = (documentation
+        .select()
+        .join(donor, on=documentation.DO_ID==donor.DO_ID))
+    return render_template('all_doc.html', fb=fb, do=do)
+
 @app.route('/all_dn')
-def dn():
-    return ""
+def donations():
+    fb=(fb_donation_request
+        .select()
+        .join(foodbank, on=fb_donation_request.FB_ID==foodbank.FB_ID))
+    do=(do_donation_request
+        .select()
+        .join(donor, on=do_donation_request.DO_ID==donor.DO_ID))
+    dn=(donation
+        .select()
+        .join(foodbank, on=donation.FB_ID==foodbank.FB_ID)
+        .join(donor, on=donation.DO_ID==donor.DO_ID))
+    return render_template('all_dn.html', fb=fb, do=do, dn=dn)

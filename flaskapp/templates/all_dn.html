@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Donations</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #cd900b;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Donations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Donation ID</th>
+                <th>Food Bank Name</th>
+                <th>Donor Name</th>
+                <th>Requested By</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Date Requested/Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+        </thead>
+        <tbody>
+            <!--fb requests first-->
+            {% for fb in fb %}
+            <tr>
+                <td>{{fb.FB_REQ_ID}}</td>
+                <td>{{fb.FB_ID.name_of_org}}</td>
+                <td>{{fb.DO_ID.name_of_org}}</td>
+                <td>Food Bank: {{fb.FB_ID.name_of_org}}</td>
+                <td>{{fb.item}}</td>
+                <td>{{fb.quantity}}</td>
+                <td>{{fb.status}}</td>      
+                <td>{{fb.date_requested}}</td>
+            </tr>
+            {% endfor %}
+
+            <!--do requests second-->
+            {% for do in do %}
+            <tr>
+                <td>{{do.DO_REQ_ID}}</td>
+                <td>{{do.FB_ID.name_of_org}}</td>
+                <td>{{do.DO_ID.name_of_org}}</td>
+                <td>Donor: {{do.DO_ID.name_of_org}}</td>
+                <td>{{do.item}}</td>
+                <td>{{do.quantity}}</td>
+                <td>{{do.status}}</td>      
+                <td>{{do.date_requested}}</td>
+            </tr> 
+            {% endfor %}
+            <!--completed donations third-->
+            {% for dn in dn %}
+            <tr>
+                <td>{{dn.DN_ID}}</td>
+                <td>{{dn.FB_ID.name_of_org}}</td>
+                <td>{{dn.DO_ID.name_of_org}}</td>
+                <td>N/A</td>
+                <td>{{dn.type_of_donation}}</td>
+                <td>{{dn.quantity}}</td>
+                <td>Completed</td>      
+                <td>{{dn.date_donated}}</td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

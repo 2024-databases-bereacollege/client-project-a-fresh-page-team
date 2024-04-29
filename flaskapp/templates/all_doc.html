@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Documents</title>
+    <title>All Documents</title>
     <style>
         table {
             width: 100%;
@@ -36,46 +36,30 @@
         <tbody>
         </thead>
         <tbody>
-            {% for document in document %}
+            <!--documents of food banks first-->
+            {% for fb in fb %}
             <tr>
-                <td>{{document.DOC_ID}}</td>
-                <td>{{document.type_of_documentation}}</td>
-                <td>{{document.DO_ID.name_of_org}}</td>
-                <td>{{document.date_obtained}}</td>
-                <td>{{document.expiration_date}}</td>      
-                <td>
-                    <form action="/document_uploaded" method="post" enctype="multipart/form-data">
-                        <input type="file" name="fileUpload" id="fileUpload">
-                        <input type="submit" value="Upload">
-                    </form>
-                </td>
-                <td>
-                    <form action="/document_edit" method="POST">
-                        <input type="submit" value="Edit" id="DOC_ID">
-                    </form>
-                </td>     
+                <td>{{fb.DOC_ID}}</td>
+                <td>{{fb.type_of_documentation}}</td>
+                <td>FOOD BANK</td>
+                <td>{{fb.FB_ID.name_of_org}}</td>
+                <td>{{fb.date_obtained}}</td>
+                <td>{{fb.expiration_date}}</td>      
+                <td><a class="btn btn-primary" href="/static/logo.png" role="button">View Document</a></td>
             </tr>
             {% endfor %}
 
-            {% for document in document %}
+            <!--documents of donors second-->
+            {% for do in do %}
             <tr>
-                <td>{{document.DOC_ID}}</td>
-                <td>{{document.type_of_documentation}}</td>
-                <td>{{document.DO_ID.name_of_org}}</td>
-                <td>{{document.date_obtained}}</td>
-                <td>{{document.expiration_date}}</td>      
-                <td>
-                    <form action="/document_uploaded" method="post" enctype="multipart/form-data">
-                        <input type="file" name="fileUpload" id="fileUpload">
-                        <input type="submit" value="Upload">
-                    </form>
-                </td>
-                <td>
-                    <form action="/document_edit" method="POST">
-                        <input type="submit" value="Edit" id="DOC_ID">
-                    </form>
-                </td>     
-            </tr>
+                <td>{{do.DOC_ID}}</td>
+                <td>{{do.type_of_documentation}}</td>
+                <td>DONOR</td>
+                <td>{{do.DO_ID.name_of_org}}</td>
+                <td>{{do.date_obtained}}</td>
+                <td>{{do.expiration_date}}</td>  
+                <td><a class="btn btn-primary" href="/static/logo.png" role="button">View Document</a></td> 
+            </tr>      
             {% endfor %}
         </tbody>
     </table>
