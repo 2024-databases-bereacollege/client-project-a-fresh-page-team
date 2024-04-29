@@ -68,7 +68,6 @@ def todonate_form():
         Date_Requested = request.form.get("date")
         Fb = getPK(foodbank, fbusnm)
         Do = getPK(donor, dousnm)
-
         if Fb and Do != 'None':
             # Create donation request only if Fb and Do exist
             try:
