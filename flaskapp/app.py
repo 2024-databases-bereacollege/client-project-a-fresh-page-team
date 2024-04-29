@@ -201,14 +201,15 @@ def fb_profile(fbID):
 #Need to add an 'uploaded date column' (may not be possible to implement anymore)
 
 #donor documents
-@app.route('/do_documents/<doID>')
-def DO_doc(doID):
-    donors=donor.get_by_id(doID)
-    query = (documentation
-        .select()
-        .join(donor, on=documentation.DO_ID==donor.DO_ID)
-        .where(documentation.DO_ID==donors))
-    return render_template('do_documents.html', document=query)
+@app.route('/donation_history/<fbID>')
+def foodbank_donations(fbID):
+    foodbank_info = foodbank.get_by_id(fbID)
+    query = (donation
+             .select()
+             .join(foodbank, on=donation.FB_ID == foodbank.FB_ID)
+             .where(donation.FB_ID == fbID))
+    donations_info = query.execute()
+    return render_template('donation_history.html', foodbank=foodbank_info, donations=donations_info)
 
 @app.route('/document_edit', methods=['POST'])
 def document_edit():
@@ -257,9 +258,6 @@ def profile_donor(doID):
     donors=donor.get_by_id(doID)
     return render_template("profiledonor.html", donors=donors)
 
-@app.route('/donation_history')
-def donations_received():
-    return render_template('donation_history.html')
 
 #ADMIN VIEWS
 
@@ -306,3 +304,4 @@ def donations():
         .join(donor, on=donation.DO_ID==donor.DO_ID))
     return render_template('all_dn.html', fb=fb, do=do, dn=dn)
 9
+
