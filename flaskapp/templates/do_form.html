@@ -56,15 +56,15 @@
     </style>
 </head>
 <body>
-    {% include 'header.html' %}
+    {% include 'form_header.html' %}
     
         <h1 Please fill in this form to make a donation /h1>
         <form id = donationForm action= "/request_to_donate" method = "POST">
             <label for = "dusnm" > Enter your username:</label>
-            <input type="text" name ="fusnm" required> 
+            <input type="text" name ="dusnm" required> 
             <br>
             <label for = "fusnm" > Username of foodbank:</label>
-            <input type="text" name ="dusnm" required> 
+            <input type="text" name ="fusnm" required> 
             <br>
             <label for = "name_of_org" > Name of org:</label>
             <input type="text" name ="name_of_org" required> 
@@ -78,13 +78,11 @@
             <label for = "date"> Date(yyyy/mm/dd):</label>
             <input type ="text" name="date" required>
             <br>
-            console.log("Form submitted");
-            <input type ="submit" value = "submit"/>
+            <input type ="submit" value = "Submit"/>
         </form>
-        <script>
+        <!-- <script>
             document.getElementById("donationForm").addEventListener("submit", function(event) {
                 event.preventDefault(); // Prevent default form submission
-                console.log("Form submitted");
                 const formData = new FormData(event.target);
                 // Add additional validation or processing logic here if needed
                 fetch("/request_to_donate", {
@@ -95,6 +93,6 @@
                     console.error("Error submitting form:", error);
                 });
             });
-        </script>
+        </script> -->
     
 </body>

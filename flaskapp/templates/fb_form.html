@@ -72,7 +72,7 @@
     </style>
 </head>
 <body>
-    {% include 'header.html' %}
+    {% include 'form_header.html' %}
     
         <h1 Please fill in this form to request a donation /h1>
         <form action= "/request_a_donation" method = "POST">
@@ -100,7 +100,8 @@
         </form>
         <script>
             console.log("JavaScript loaded");
-            document.getElementById("donationForm").addEventListener("submit", function(event) {
+            document.getElementById("donationForm").addEventListener("submit", function(event)
+            {
                 event.preventDefault(); // Prevent default form submission
                 const formData = new FormData(event.target);
                 // Add additional validation or processing logic here if needed

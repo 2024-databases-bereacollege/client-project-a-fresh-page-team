@@ -58,26 +58,35 @@ def getdonation_form():
 
 @app.route('/request_to_donate', methods = ["GET", "POST"])
 def todonate_form():
-    if request.method == "POST":
+    if(request.method == "POST"):
         print("Handling POST")
         fbusnm = request.form.get("fusnm")
         dousnm = request.form.get("dusnm")
-        Name_of_org = request.form.get("name_of_org") 
+        Name_of_org = request.form.get("name_of_org")
         Item = request.form.get("item")
         Quantity = request.form.get("quantity")
         Date_Requested = request.form.get("date")
         Fb = getPK(foodbank, fbusnm)
         Do = getPK(donor, dousnm)
-        do_donation_request.create(
-            fbusername= fbusnm,
-            dousername= dousnm,
-            name_of_org= Name_of_org,
-            item= Item,
-            quantity= Quantity,
-            date_requested= Date_Requested,
-            FB_ID = Fb,
-            DO_ID = Do
-        )
+
+        if Fb and Do != 'None':
+            # Create donation request only if Fb and Do exist
+            try:
+                # Create donation request
+                do_donation_request.create(
+                    fusnm=fbusnm,
+                    dusnm=dousnm,
+                    name_of_org=Name_of_org,
+                    item=Item,
+                    quantity=Quantity,
+                    date_requested=Date_Requested,
+                    FB_ID=Fb,
+                    DO_ID=Do
+                )
+                return "Donation request created successfully"
+            except Exception as e:
+                # Handle database insertion error
+                return f"Error creating donation request: {e}"
     return render_template("do_form.html")
 
 
@@ -204,9 +213,9 @@ def donor_profile(doID):
     donors=donor.get_by_id(doID)
     return render_template("donor_profile.html", do=donors)
 #form for foodbank requesting donation from a donor's profile
-# @app.route('/request_a_donation', methods=['POST'])
-# def request_a_donation():
-#     return render_template('fb_form.html')
+@app.route('/request_a_donation', methods=['POST'])
+def request_a_donation():
+    return render_template('fb_form.html')
 
 #foodbank public profile
 @app.route('/foodbank_profile/<fbID>')
@@ -214,9 +223,9 @@ def fb_profile(fbID):
     foodbanks = foodbank.get_by_id(fbID)
     return render_template("foodbank_profile.html", fb=foodbanks)
 # Form for donor to request to donate from a foodbank's profile
-# @app.route('/request_to_donate', methods=['POST'])
-# def make_a_donation():
-#     return render_template('do_form.html')
+@app.route('/request_to_donate', methods=['POST'])
+def make_a_donation():
+    return render_template('do_form.html')
 
 #DOCUMENTS
 #Need to add queries

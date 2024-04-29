@@ -53,7 +53,7 @@ nav ul li a:hover {
 }
 .user_img {
     position: absolute;
-    top: 10%;
+    top: 5%;
     right: 55px; /* Adjust distance from the right */
     transform: translateY(-50%);    
     max-width: 25%; /* Adjust the width as needed */
@@ -61,8 +61,8 @@ nav ul li a:hover {
 }
 .username {
     position: absolute;
-    top: 15%;
-    right: 110px; /* Adjust distance from the right */
+    top: 10%;
+    right: 44px; /* Adjust distance from the right */
     transform: translateY(-50%);
     cursor: pointer; /* Add cursor pointer */
     color: #000;
@@ -72,8 +72,8 @@ nav ul li a:hover {
 .dropdown {
     position: relative;
     display: inline-block;
-    left: 1080px;
-    top: -32px; 
+    left: 1590px;
+    top: -10px; 
    
 }
 .dropdown-content {
