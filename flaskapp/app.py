@@ -227,14 +227,6 @@ def fb_profile(fbID):
 def make_a_donation():
     return render_template('do_form.html')
 
-#DOCUMENTS
-#Need to add queries
-#Connect it to search bar and/or the documents button from the homepage (maybe/maybe not?)
-#Basic view: all the documents that have been added by the user (implmented)
-#Filter options (maybe): date uploaded, type of doc, expiration date (may not be implemented)
-#Need to add an 'uploaded date column' (may not be possible to implement anymore)
-
-#donor documents
 @app.route('/donation_history/<fbID>')
 def foodbank_donations(fbID):
     foodbank_info = foodbank.get_by_id(fbID)
@@ -245,19 +237,27 @@ def foodbank_donations(fbID):
     donations_info = query.execute()
     return render_template('donation_history.html', foodbank=foodbank_info, donations=donations_info)
 
-@app.route('/document_edit', methods=['POST'])
-def document_edit():
-    return render_template ('document_edit.html')
+#DOCUMENTS
+#Need to add queries
+#Connect it to search bar and/or the documents button from the homepage (maybe/maybe not?)
+#Basic view: all the documents that have been added by the user (implmented)
+#Filter options (maybe): date uploaded, type of doc, expiration date (may not be implemented)
+#Need to add an 'uploaded date column' (may not be possible to implement anymore)
 
-@app.route('/document_edited/<docID>', methods=['POST', 'GET'])
-def update(docID):
-    document=documentation.get_by_id(docID)
-    if request.method == 'POST' or 'GET':
-        document.type_of_documentation = request.form['type_of_documentation']
-        document.name_of_org = request.form['name_of_org']
-        document.date_obtained = request.form['date_obtained']
-        document.expiration_date = request.form['expiration_date']
-    return render_template('do_documents.html', document=document)
+#donor documents
+@app.route('/do_documents/<doID>')
+def DO_doc(doID):
+    do=donor.get_by_id(doID)
+    query = (documentation
+        .select()
+        .join(donor, on=documentation.DO_ID==donor.DO_ID)
+        .where(documentation.DO_ID==do))
+    return render_template('do_documents.html', document=query)
+
+@app.route('/document_edit/<id>', methods=['GET','POST'])
+def document_edit(id):
+    doc=documentation.get_by_id(id)
+    return render_template('document_edit.html', document=doc)
 
 #foodbank documents
 @app.route('/fb_documents/<fbID>')
