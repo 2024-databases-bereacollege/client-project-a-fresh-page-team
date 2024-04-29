@@ -41,30 +41,38 @@ def donation_form():
         Item = request.form.get("item")
         Quantity = request.form.get("quantity")
         Date_Requested = request.form.get("date")
-        Fb = getPK(foodbank, 'FB_ID', fbusnm)
-        Do = getPK(donor, 'DO_ID', dousnm)
-# Insert the form data into the Donation table
-        print("INserting request")
-        fb_donation_request.create(
-            fbusername= fbusnm,
-            dousername= dousnm,
-            name_of_org= Name_of_org,
-            item= Item,
-            quantity= Quantity,
-            date_requested= Date_Requested,
-            FB_ID = Fb,
-            DO_ID = Do
-        )
-    print("Done with POST")
+        Fb = getPK(foodbank, fbusnm)
+        Do = getPK(donor, dousnm)
+        if Fb != 'None':
+            fb_donation_request.create(
+                fbusername= fbusnm,
+                dousername= dousnm,
+                name_of_org= Name_of_org,
+                item= Item,
+                quantity= Quantity,
+                date_requested= Date_Requested,
+                FB_ID = Fb,
+                DO_ID = Do
+            )
+        else:
+            return 
+            
+        return render_template('fb_form.html')
 
-    return render_template('fb_form.html')
-
-def getPK(tb, col_name, usnm) :
-    query = (tb.select().where(tb.username == usnm));
-    for q in query:
-        q = q.col_name;
-    return q
-
+def getPK(tb, usnm):
+    try:
+        query = (tb.get(tb.username == usnm))
+        if query:
+            return getattr(query, tb._meta.primary_key.name)
+        else:
+            print("No record found with the specified username.")
+            return 'None'
+    except tb.DoesNotExist:
+        print("Table does not contain the specified record.")
+        return 'None'
+    except Exception as e:
+        print("An error occurred:", e)
+        return 'None'
 
 
 

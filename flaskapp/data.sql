@@ -47,13 +47,13 @@ VALUES
 -- Insert data into "fb_donation_request" table
 INSERT INTO "fb_donation_request" ("FB_ID", "DO_ID", "fbusername", "dousername", "name_of_org", "item", "quantity", "status", "date_requested")
 VALUES
-    (84134, 55214, 'fb_user84134', 'Dictum Limited', 'shoes', 3, 'pending', '2021-12-01'),
-    (14789, 55214, 'fb_user14789', 'Libero Est LLP', 'apples', 50, 'pending', '2022-11-01');
+    (84134, 55214, 'fb_user84134','jesse_lopez', 'Dictum Limited', 'shoes', 3, 'pending', '2021-12-01'),
+    (14789, 55214, 'fb_user14789','jesse_lopez', 'Libero Est LLP', 'apples', 50, 'pending', '2022-11-01');
 
 -- Insert data into "do_donation_request" table
 INSERT INTO "do_donation_request" ("DO_ID", "FB_ID", "name_of_org", "dusnm", "fusnm", "item", "quantity", "status", "date_requested")
-VALUES,
-    (55214, 84134, 'Turpis Ltd', 'jesse_lopez','fb_user84134' 'hats', 5, 'pending', '2023-11-26'),
+VALUES
+    (55214, 84134, 'Turpis Ltd', 'jesse_lopez','fb_user84134', 'hats', 5, 'pending', '2023-11-26'),
     (55214, 84134, 'Turpis Ltd', 'jesse_lopez','fb_user84134', 'oranges', 9, 'pending', '2024-02-01');
 
 INSERT INTO "documentation" ("DOC_ID", "DO_ID", "FB_ID", "type_of_documentation", "date_obtained", "expiration_date")
