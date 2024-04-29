@@ -43,17 +43,23 @@ def getdonation_form():
         Date_Requested = request.form.get("date")
         Fb = getPK(foodbank, fbusnm)
         Do = getPK(donor, dousnm)
-        fb_donation_request.create(
-            fbusername= fbusnm,
-            dousername= dousnm,
-            name_of_org= Name_of_org,
-            item= Item,
-            quantity= Quantity,
-            date_requested= Date_Requested,
-            FB_ID = Fb,
-            DO_ID = Do
-        )
-            
+
+        if Fb and Do != 'None':
+            try:
+                fb_donation_request.create(
+                    fbusername= fbusnm,
+                    dousername= dousnm,
+                    name_of_org= Name_of_org,
+                    item= Item,
+                    quantity= Quantity,
+                    date_requested= Date_Requested,
+                    FB_ID = Fb,
+                    DO_ID = Do
+                )
+                return "Donation request created successfully"
+            except Exception as e:
+                # Handle database insertion error
+                return f"Error creating donation request: {e}"    
     return render_template('fb_form.html')
 
 @app.route('/request_to_donate', methods = ["GET", "POST"])
@@ -336,7 +342,6 @@ def donations():
         .join(foodbank, on=donation.FB_ID==foodbank.FB_ID)
         .join(donor, on=donation.DO_ID==donor.DO_ID))
     return render_template('all_dn.html', fb=fb, do=do, dn=dn)
-9
 
 
 
