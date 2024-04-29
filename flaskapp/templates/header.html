@@ -24,13 +24,15 @@
     </div>
     <div class="username" onclick="toggleDropdown()">Username</div>
     <div class="user_img">
+    <a href = "{{ url_for('homepage')}}">
         <img src="/static/user.png" style= "margin-top: 38px;"">
+    </a>
     </div>
     <div class="dropdown">
         <div id="myDropdown" class="dropdown-content">
             <a href="/profiledonor/55214">Profile</a>
             <a href="/do_documents/55214">Documents</a>
-            <a href=<"a href="/donation_history/49917"> Donation History</a>
+            <a href="/donor_donation/49917"> Donation History</a>
             <a href="#">Logout</a>
         </div>
     </div>
