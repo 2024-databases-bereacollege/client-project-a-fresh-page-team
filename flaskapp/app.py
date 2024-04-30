@@ -376,13 +376,33 @@ def donations():
 
 
 
-
+"""
 @app.route('/donor_donation/<doID>')
 def donor_donations(doID):
     donor_info = donor.get_by_id(doID)
     query = (donation
              .select()
-             .join(donor, on=donation.DO_ID == donor.DO_ID)
+             .join(donor, on=(donation.DO_ID == donor.DO_ID))
+             .join(foodbank, on=(donation.FB_ID == foodbank.FB_ID))  # Corrected
              .where(donation.DO_ID == doID))
     donations_info1 = query.execute()
     return render_template('donor_donation.html', donor=donor_info, donations=donations_info1)
+"""
+
+@app.route('/donor_donation/<doID>')
+def donor_donations(doID):
+    # Fetch donor's donations
+    donor_donations = donation.select().where(donation.DO_ID == doID).execute()
+
+    # Extract unique food bank IDs from the donations
+    foodbank_ids = set(donation.FB_ID for donation in donor_donations)
+
+    # Fetch food bank information for the extracted IDs
+    foodbanks = []
+    for fb_id in foodbank_ids:
+        foodbank_info = foodbank.get_by_id(fb_id)  # Assuming you have a function to get food bank info by ID
+        foodbanks.append(foodbank_info)
+
+    # Pass the donor and food bank information to the template
+    donor_info = donor.get_by_id(doID)
+    return render_template('donor_donation.html', donor=donor_info, foodbanks=foodbanks)

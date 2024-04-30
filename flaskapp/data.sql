@@ -4,15 +4,15 @@
 INSERT INTO "foodbank" ("FB_ID","username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip", "date_joined")
 VALUES 
     (84134, 'fb_user84134', 'Dictum Limited', 'Gavin Olsen', '(805) 811-5218', '1721 Nascetur Av.', 'curabitur.sed@google.edu', 'New York', 'NY', '10001', '2024-04-13'),
-    (44204, 'fb_user44204', 'Nunc PC', 'Omar Compton', '(495) 487-2527', 'P.O. Box 394, 9121 Adipiscing Rd.', 'tristique.senectus@outlook.couk', 'Los Angeles', 'CA', '90001', '2025-03-23'),
+    (44204, 'fb_user44204', 'Nunc PC', 'Omar Compton', '(495) 487-2527', 'P.O. Box 394, 9121 Adipiscing Rd.', 'tristique.senectus@outlook.couk', 'New York', 'NY', '90001', '2025-03-23'),
     (14789, 'naida_cash', 'Libero Est LLP', 'Ciara Hopper', '(305) 451-8544', '8525 Praesent Road', 'rutrum@icloud.com', 'Chicago', 'IL', '60601', '2023-10-31'),
     (90226, 'fb_user90226', 'Arcu Incorporated', 'Savannah Brennan', '1-975-967-4234', '891-8625 Eleifend Street', 'sed.libero.proin@aol.edu', 'Houston', 'TX', '77001', '2023-11-30'),
-    (95899, 'fb_user95899', 'Lacus Ut Ltd', 'Eaton Cote', '(628) 573-3280', '851-4808 Viverra. Avenue', 'nulla.integer@yahoo.couk', 'Phoenix', 'AZ', '85001', '2023-07-30'),
+    (95899, 'fb_user95899', 'Lacus Ut Ltd', 'Eaton Cote', '(628) 573-3280', '851-4808 Viverra. Avenue', 'nulla.integer@yahoo.couk', 'New York', 'NY', '85001', '2023-07-30'),
     (49917, 'fb_user49917', 'Nullam Suscipit Est Company', 'Preston Melton', '(691) 589-7369', '478-8401 Lorem, Rd.', 'nec@google.org', 'Philadelphia', 'PA', '19019', '2023-12-24'),
-    (60551, 'fb_user60551', 'Eu Eleifend Corporation', 'Sonia Petty', '(777) 451-0807', '685-5050 Etiam Ave', 'nec.metus@google.couk', 'San Antonio', 'TX', '78201', '2023-08-18'),
+    (60551, 'fb_user60551', 'Eu Eleifend Corporation', 'Sonia Petty', '(777) 451-0807', '685-5050 Etiam Ave', 'nec.metus@google.couk', 'New York', 'NY', '78201', '2023-08-18'),
     (71474, 'fb_user71474', 'Ligula Tortor Limited', 'Pandora Landry', '1-921-357-7113', '945-2142 Mauris Av.', 'sapien.cursus@hotmail.edu', 'San Diego', 'CA', '92101', '2024-09-30'),
     (31557, 'fb_user58335', 'Molestie Tortor PC', 'Valentine Figueroa', '1-446-684-2218', 'P.O. Box 650, 4463 Feugiat Road', 'ornare.facilisis@protonmail.edu', 'Dallas', 'TX', '75201', '2023-09-25'),
-    (18607, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', 'San Jose', 'CA', '95101', '2023-11-24');
+    (18607, 'fb_user85300', 'Est Mollis Industries', 'Kaitlin Serrano', '(528) 516-5768', '594-8395 Est St.', 'nonummy.ultricies@outlook.net', 'New York', 'NY', '95101', '2023-11-24');
 -- Insert data into "donor" table
 INSERT INTO "donor" ("DO_ID","username", "name_of_org", "primary_contact_name", "phone_num", "address", "email", "city", "state", "zip", "date_joined", "type_of_org", "subscribed")
 VALUES

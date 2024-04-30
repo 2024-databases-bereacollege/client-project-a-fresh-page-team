@@ -55,6 +55,29 @@
             border-radius: 10%;
             max-width: 600px;
         }
+        .donate-button {
+        background-color: #9cda9c; /* Green */
+        border: none;
+        color: #0c0b09;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Button hover effect */
+    .donate-button:hover {
+        background-color: #cd900b; /* Darker green */
+    }
+    
+    /* Button focus style */
+    
         
     </style>
 </head>
@@ -66,7 +89,8 @@
         </div>
         <h1>{{fb.name_of_org}}</h1>
         <form action="/request_to_donate" method="POST">
-            <input type="submit" value="Request to Donate"/></form>
+            <input class="donate-button" type="submit" value="Request to Donate" />
+        </form>
     </div>
     <div class="user-info">
         <p><strong>Location:</strong> {{fb.address}} {{fb.city}} {{fb.state}} {{fb.zip}}</p>

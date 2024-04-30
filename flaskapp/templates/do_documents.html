@@ -17,14 +17,41 @@
             text-align: left;
         }
         th {
-            background-color: #cd900b;
+            background-color: #9cda9c;
         }
+
+        .edit-btn {
+            background-color: #9cda9c;
+            color: #0C0B09;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .edit-btn:hover {
+    background-color: #CD900B;
+}
+        .custom-file-upload {
+            background-color: #9cda9c;
+            color: #0C0B09;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+}
+
+.custom-file-upload:hover {
+    background-color: #CD900B;
+}
+
     </style>
    
 </head>
 <body>
     
-    <h1>Your Documents</h1>
+    <div style = "background-color:#0C0B09; padding-bottom: 10px; padding-top: 10px; padding-left: 20px;">
+        <h1 style = " text-align: center; color: #CD900B; margin-top: 20px;"> Your Documents </h1>
+</div>
     <table>
         <thead>
             <tr>
@@ -38,11 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{document.DOC_ID}}</td>
-            </tr>
-        </thead>
-        <tbody>
+            
             {% for document in document %}
             <tr>
                 <td>{{document.DOC_ID}}</td>
@@ -52,18 +75,32 @@
                 <td>{{document.expiration_date}}</td>      
                 <td>
                     <form action="/document_uploaded" method="post" enctype="multipart/form-data">
-                        <input type="file" name="fileUpload" id="fileUpload">
-                        <input type="submit" value="Upload">
+                        <label for="fileUpload" class="custom-file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i> Choose File
+                        </label>
+                        <span id="fileNameDisplay" style = "padding: 10px;">No file chosen</span>
+                        <input type="file" name="fileUpload" id="fileUpload" style="display:none;">
+                        
+                        <input type="submit" value="Upload" class="edit-btn">
                     </form>
                 </td>
                 <td>
                     <form action="/document_edit/{{document.DOC_ID}}" method="POST">
-                        <input type="submit" value="Edit" id="DOC_ID">
+                        <input type="submit" value="Edit" id="DOC_ID" class="edit-btn">
                     </form>
                 </td>     
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('fileUpload').addEventListener('change', function() {
+                var fileName = this.files[0].name;
+                document.getElementById('fileNameDisplay').textContent = fileName;
+            });
+        });
+    </script>
 </body>
 </html>

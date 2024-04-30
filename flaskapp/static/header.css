@@ -25,7 +25,7 @@ nav ul li a:hover {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 50px;
+    top: 35px;
 }
 .search-container input[type=text] {
     padding: 6px;
@@ -34,6 +34,7 @@ nav ul li a:hover {
     border: none;
     font-size: 17px;
     border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
 }
 .search-container button {
     padding: 6px 10px;
@@ -46,6 +47,7 @@ nav ul li a:hover {
     border-radius: 5px; /* Add border radius for curved edges */
     background-color: #000;
     color: #fff; /* Change button text color */
+    font-family: 'Times New Roman', Times, serif;
 }
 .search-container button:hover {
     background: #CD900B;

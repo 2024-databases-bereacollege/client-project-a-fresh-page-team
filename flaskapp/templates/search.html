@@ -5,23 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodbank Items</title>
     <style>
+        .search_results {
+            margin-top: 20px;
+            border-collapse: collapse; /* Collapse borders of table cells */
+            width: 100%; /* Make the table take up 100% of its container's width */
+        }
+        .search_results th, .search_results td {
+            border: 1px solid #000; /* Add borders to table cells */
+            padding: 8px; /* Add padding inside table cells */
+            text-align: left; /* Align text to the left */
+        }
+        .search_results th {
+            background-color: #0C0B09; /* Background color for table header cells */
+            color: #CD900B; /* Text color for table header cells */
+        }
+        .search_items ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+        }
+        .search_items ul li {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Align items along the main axis with space-between */
+    align-items: center; /* Align items vertically */
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+}
 
-    </style>
+.view-profile {
+    padding: 10px 20px;
+    background-color: #9cda9c;
+    color: #0C0B09;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.view-profile:hover{
+    background-color: #CD900B;
+}
+</style>
 </head>
 <body>
     {% include 'header.html' %}
-    <div class = "search_items">
-    <h3>Results:</h3>
-    <ul>
-        {% if search_results %}
-            {% for result in search_results %}
-                <li> <a href="{{ url_for('fb_profile', fbID= result.FB_ID) }}">{{ result.name_of_org }}</a></li>
-            {% endfor %}
-        {% else %}
-            <li>No results found</li>
-        {% endif %}
-    </ul>
+    <div class="search_items">
+        <div style="background-color:#0C0B09; padding-bottom: 10px; padding-top: 10px; padding-left: 20px;">
+            <h1 style="text-align: center; color: #CD900B; margin-top: 20px;"> Search Results: </h1>
+        </div>
+        <ul>
+            {% if search_results %}
+                {% for result in search_results %}
+                    <li>{{ result.name_of_org }} <a href="{{ url_for('fb_profile', fbID=result.FB_ID) }}" class="view-profile">View Profile</a></li>
+                {% endfor %}
+            {% else %}
+                <li>No results found</li>
+            {% endif %}
+        </ul>
     </div>
-    
 </body>
 </html>

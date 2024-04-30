@@ -35,6 +35,10 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .custom-button:hover{
+        background-color: #cd900b;
+    }
         body {
     font-family: "Times New Roman", Times, serif;
     font-size: 16px;
@@ -44,7 +48,7 @@
 </head>
 <body>
     {% include 'header.html' %}
-        <div style = "background-color:#0C0B09; padding-bottom: 20px; padding-top: 20px; padding-left: 20px;">
+        <div style = "background-color:#0C0B09; padding-bottom: 10px; padding-top: 10px; padding-left: 20px;">
             <h1 style = " text-align: center; color: #CD900B; margin-top: 20px;"> Donations Made </h1>
     </div>
     <div class = "container">
@@ -60,7 +64,7 @@
                     <tbody>
                         {% for donation in donations %}
                         <tr>
-                            <td>{{ donor.name_of_org }}</td>
+                            <td>{{ foodbank.name_of_org }}</td>
                             <td>
                                 <button class="btn btn-primary custom-button" onclick="showDetails('{{ donation.type_of_donation }}', '{{ donation.quantity }}', '{{ donation.date_donated }}')">View Details</button>
                             </td>
