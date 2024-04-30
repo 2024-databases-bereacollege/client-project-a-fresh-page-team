@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/main.css">
     <title>Donations Received</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Add any custom styles if needed -->
@@ -10,6 +12,7 @@
         /* Add custom styles here */
         .container {
             text-align: center;
+            margin-top: 10px;
         }
 
         .details-popup {
@@ -20,7 +23,7 @@
             transform: translate(-50%, -50%);
             padding: 20px;
             background-color: #fff;
-            border: 1px solid #ccc;
+            border: 1px solid #9cda9c;
             z-index: 1000;
         }
 
@@ -32,25 +35,32 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+
     </style>
 </head>
 <body>
     {% include 'header.html' %}
-    <div class="container">
-        <h1>Donations Made </h1>
+        <div style = "background-color:#0C0B09; padding-bottom: 20px; padding-top: 20px; padding-left: 20px;">
+            <h1 style = " text-align: center; color: #CD900B; margin-top: 20px;"> Donations Made </h1>
+    </div>
+    <div class = "container">
         <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Name of the Organisation</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for donation in donations %}
                         <tr>
-                            <td><strong>Name of the Organization: </strong>{{ donor.name_of_org }}</td>
+                            <td>{{ donor.name_of_org }}</td>
                             <td>
                                 <button class="btn btn-primary custom-button" onclick="showDetails('{{ donation.type_of_donation }}', '{{ donation.quantity }}', '{{ donation.date_donated }}')">View Details</button>
                             </td>
@@ -60,7 +70,9 @@
                 </table>
             </div>
         </div>
+
     </div>
+  
 
     <!-- Details Popup -->
     <div id="detailsPopup" class="details-popup">
