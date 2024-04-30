@@ -62,9 +62,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for donation in donations %}
+                        {% for donation in donation %}
                         <tr>
-                            <td>{{ foodbank.name_of_org }}</td>
+                            <td>{{ donation.FB_ID.name_of_org }}</td>
                             <td>
                                 <button class="btn btn-primary custom-button" onclick="showDetails('{{ donation.type_of_donation }}', '{{ donation.quantity }}', '{{ donation.date_donated }}')">View Details</button>
                             </td>
