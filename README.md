@@ -1,7 +1,10 @@
 # project-milestones
 For working with each project milestone 
 
-P1 - A Fresh Page: Creating a Data Model
+Homepage Screenshot - ![AFP1](https://github.com/user-attachments/assets/a9396989-e7de-4db5-8212-2a76287c8b2b)
+
+
+P1 - A Fresh Page: Creating a Data Model 
 
 Data Sources:
 1. Meeting notes from our Meeting
