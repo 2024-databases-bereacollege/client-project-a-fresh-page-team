@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile Info</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/main.css">
+  <style>
+    /* Custom styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 10px;
+      background-color: #9cda9c; /* Set background color to green */
+    }
+
+    .navbar button {
+      background-color: #9cda9c;/* Set button color to yellow */
+      color: #000; /* Text color */
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .navbar button:hover{
+      background-color: #cd900b;
+    }
+
+    /* Profile Info section */
+    #section2 {
+      padding: 20px; /* Add padding */
+    }
+
+    .profile-info-title {
+  background-color: #000; /* Set background color to black */
+  color: #fff; /* Set text color to white */
+  padding: 10px 20px; /* Add padding */
+  margin-bottom: 20px; /* Add space at the bottom */
+  display: flex; /* Make the container a flexbox */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+    .profile-info-title h1 {
+      margin: 0; /* Remove default margin for h1 */
+     
+    }
+
+    .edit-button {
+    background-color: #fff; /* Set background color to white */
+    color: #000; /* Text color */
+    border: 2px solid #000; /* Add black border */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+    .header-title {
+      color: #cd900b; /* Set title color to white */
+      margin: 0; /* Remove default margin */
+    }
+
+    /* About section style */
+    .post h2 {
+      color: #000; /* Gold color for "About" section title */
+    }
+
+    /* Style for the bio box */
+  .bio-box {
+    background-color: #9cda9c; /* Set background color */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 20px; /* Add margin at the top */
+    margin-left: 350px;
+    margin-right: 400px;
+    margin-bottom: 20px;
+  }
+
+  .title-container {
+  display: flex;
+  flex-grow: 1; /* Allow the container to grow */
+  margin-left: 500px;
+  }
+
+
+  .navbar {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  }
+
+  
+
+ 
+
+  </style>
+</head>
+<body>
+
+  {% include 'header.html' %}
+
+  <div class="profile-info-title">
+    <div class="title-container">
+      <h1 class="header-title">Profile Info</h1>
+    </div>
+    <div class="navbar">
+      <button class="edit-button" onclick="scrollToSection('section3')">Edit</button>
+    </div>
+  </div>
+  
+
+  <!-- Added sections for organization, username, email, address, phone, and date joined -->
+  <div class="bio-box">
+  <section id="section2">
+    <ul>
+      <div class="profile-info">
+        <p><strong> Name of the Organization: </strong> {{donors.name_of_org}}</p>
+        <p><strong>Location:</strong> {{donors.address}} {{donors.city}} {{donors.state}} {{donors.zip}}</p>
+        <p><strong>Email:</strong> {{donors.email}}</p>
+        <p><strong>Primary Contact Person:</strong> {{donors.primary_contact_name}}</p>
+        <p><strong>Phone Number:</strong> {{donors.phone_num}} </p>
+        <p><strong>Member Since:</strong> {{donors.date_joined}} </p>
+      </div>
+      </ul>
+    </div>
+    <div class = "bio-box" >
+      <div class="post">
+        <h2>About {{donors.name_of_org}}</h2>
+        <!--This will be collected from the user when they create their account -->
+        <p>Company Bio</p>
+      </div>
+    </ul>
+  </section>
+</div>
+
+  <script>
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!-- This form is filled by the foodbanks to request a donation-->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Example</title> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Request Form</title>
+    <link rel="stylesheet" href="/static/main.css">
+    <style>
+        header {
+            background-color: #CD900B;
+            color: #0C0B09;
+            padding: 30px;
+            text-align: left;
+        }
+
+        form {
+            max-width: 2000px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #9CDA9C;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #0C0B09;
+            color: #4CAF50;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="Submit"]:hover {
+            background-color: #0C0B09;
+        }
+
+        .display-box {
+            background-color: #0C0B09;
+            color: #4CAF50;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    {% include 'form_header.html' %}
+    
+        <h1 Please fill in this form to request a donation /h1>
+        <form action= "/request_a_donation" method = "POST">
+            <!-- <div class="display-box" contenteditable="false">
+            </div> -->
+            <label for = "fbusername" > Enter your username:</label>
+            <input type="text" name ="fbusername" required> 
+            <br>
+            <label for = "dousername" > Username of donor:</label>
+            <input type="text" name ="dousername" required> 
+            <br>
+            <label for = "name_of_org" > Name of org:</label>
+            <input type="text" name ="name_of_org" required> 
+            <br>
+            <label for = "item"> Item:</label>
+            <input type="text" name ="item" required>
+            <br>
+            <label for = "quantity"> Quantity(in number):</label>
+            <input type ="number" name="quantity" required>
+            <br>
+            <label for = "date"> Date(yyyy/mm/dd):</label>
+            <input type ="text" name="date" required>
+            <br>
+            <input type ="submit" value = "submit"/>
+        </form>
+        <script>
+            console.log("JavaScript loaded");
+            document.getElementById("donationForm").addEventListener("submit", function(event)
+            {
+                event.preventDefault(); // Prevent default form submission
+                const formData = new FormData(event.target);
+                // Add additional validation or processing logic here if needed
+                fetch("/request_to_donate", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // Display the response message
+                })
+                .catch(error => {
+                    console.error("Error submitting form:", error);
+                });
+            });
+        </script>
+   
+</body>
